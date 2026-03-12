@@ -124,22 +124,23 @@ async function lookupPostcode(postcode) {
 
 function initMap() {
   const mapEl = document.getElementById('map');
-  if (!mapEl || typeof google === 'undefined') return;
+  if (!mapEl || typeof L === 'undefined') return;
 
-  const defaultCenter = { lat: 51.5072, lng: -0.1276 };
+  const defaultCenter = [51.5072, -0.1276];
 
-  map = new google.maps.Map(mapEl, {
-    zoom: 11,
-    center: defaultCenter
-  });
+  map = L.map(mapEl).setView(defaultCenter, 11);
 
-  marker = new google.maps.Marker({
-    map,
-    position: defaultCenter
-  });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  marker = L.marker(defaultCenter).addTo(map);
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 100);
 }
-
-window.initMap = initMap;
 
 if (quoteForm) {
   quoteForm.addEventListener('change', () => {
@@ -186,3 +187,4 @@ if (quoteForm) {
     if (statusMessage) statusMessage.textContent = 'Unable to load initial quote.';
   });
 }
+document.addEventListener('DOMContentLoaded', initMap);
