@@ -1,6 +1,65 @@
 let map;
 let marker;
 
+function initMap() {
+  const mapEl = document.getElementById('map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  const defaultCenter = [51.5072, -0.1276];
+
+  map = L.map(mapEl).setView(defaultCenter, 11);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  marker = L.marker(defaultCenter).addTo(map);
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 100);
+}
+
+async function lookupPostcode(postcode) {
+  const statusMessage = document.getElementById('statusMessage');
+
+  if (!postcode || !map) {
+    if (statusMessage) statusMessage.textContent = 'Map unavailable.';
+    return;
+  }
+
+  try {
+    if (statusMessage) statusMessage.textContent = 'Checking postcode...';
+
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=gb&q=${encodeURIComponent(postcode)}`
+    );
+
+    const results = await response.json();
+
+    if (!results.length) {
+      if (statusMessage) statusMessage.textContent = 'Postcode not found.';
+      return;
+    }
+
+    const lat = Number(results[0].lat);
+    const lon = Number(results[0].lon);
+
+    map.setView([lat, lon], 13);
+
+    if (marker) {
+      marker.setLatLng([lat, lon]);
+    } else {
+      marker = L.marker([lat, lon]).addTo(map);
+    }
+
+    if (statusMessage) statusMessage.textContent = 'Postcode found.';
+  } catch (error) {
+    if (statusMessage) statusMessage.textContent = 'Unable to check postcode.';
+  }
+}
+
 const BACKEND_URL = 'https://leafletpro-backend.onrender.com';
 
 const quoteForm = document.getElementById('quoteForm');
@@ -188,3 +247,41 @@ if (quoteForm) {
   });
 }
 document.addEventListener('DOMContentLoaded', initMap);
+document.addEventListener("DOMContentLoaded", () => {
+
+  const mapLookupBtn = document.getElementById("mapLookupBtn");
+  const mapPostcode = document.getElementById("mapPostcode");
+
+  if (mapLookupBtn && mapPostcode) {
+    mapLookupBtn.addEventListener("click", async () => {
+
+      const postcode = mapPostcode.value.trim();
+
+      if (!postcode) return;
+
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&countrycodes=gb&q=${encodeURIComponent(postcode)}`
+      );
+
+      const data = await res.json();
+
+      if (!data.length) {
+        alert("Postcode not found");
+        return;
+      }
+
+      const lat = parseFloat(data[0].lat);
+      const lon = parseFloat(data[0].lon);
+
+      map.setView([lat, lon], 13);
+
+      if (marker) {
+        marker.setLatLng([lat, lon]);
+      } else {
+        marker = L.marker([lat, lon]).addTo(map);
+      }
+
+    });
+  }
+
+});
