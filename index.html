@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafletPro UK | Premium Leaflet Distribution</title>
+  <meta name="description" content="Premium leaflet distribution and print ordering website starter for UK businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="#top">LeafletPro UK</a>
+      <nav class="main-nav">
+        <a href="#services">Services</a>
+        <a href="#calculator">Quote</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#process">How it works</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="/admin/">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Premium UK leaflet distribution</div>
+          <h1>Professional leaflet delivery, print and booking in one polished platform.</h1>
+          <p class="hero-text">A stronger, cleaner version of your website with a better hero section, live pricing, postcode targeting, Stripe-ready checkout and an admin dashboard to manage orders.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#calculator">Get instant quote</a>
+            <a class="btn btn-dark" href="#contact">Talk to us</a>
+          </div>
+          <div class="hero-points">
+            <span>Trusted by local businesses</span>
+            <span>GPS-led targeting starter</span>
+            <span>Built to convert</span>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>Quick booking</h2>
+          <p>Pick your leaflet quantity and get a fast estimate.</p>
+          <div class="mini-stat"><strong>100,000+</strong><span>Leaflets supported</span></div>
+          <div class="mini-stat"><strong>£39–£55</strong><span>From per 1,000 delivery</span></div>
+          <div class="mini-stat"><strong>Stripe</strong><span>Ready for online payment</span></div>
+          <a class="btn btn-full" href="#calculator">Start now</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-bar">
+      <div class="container trust-grid">
+        <div><strong>500+</strong><span>Campaigns delivered</span></div>
+        <div><strong>Postcode</strong><span>Coverage lookup</span></div>
+        <div><strong>Live</strong><span>Quote calculator</span></div>
+        <div><strong>Admin</strong><span>Order management</span></div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow dark">Everything in one place</span>
+          <h2>A more expensive-looking website without losing your core business message.</h2>
+        </div>
+        <div class="cards three-up">
+          <article class="feature-card">
+            <h3>Distribution</h3>
+            <p>Quote from 1,000 up to 250,000 leaflets with shared or solus delivery pricing.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Print & design</h3>
+            <p>Add print bundles and a design service fee directly inside the live quote flow.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Orders dashboard</h3>
+            <p>View and update leads and orders in the built-in admin dashboard starter.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" class="section section-dark">
+      <div class="container calculator-grid">
+        <div>
+          <div class="section-heading left light">
+            <span class="eyebrow">Instant pricing</span>
+            <h2>Live quote calculator</h2>
+            <p>Use this section as the core conversion area of the website.</p>
+          </div>
+          <form id="quoteForm" class="quote-form">
+            <div class="field-grid">
+              <label>
+                <span>Customer name</span>
+                <input name="customerName" placeholder="Your name" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="your@email.com" required>
+              </label>
+              <label>
+                <span>Phone</span>
+                <input name="phone" placeholder="Mobile or office number">
+              </label>
+              <label>
+                <span>Postcode</span>
+                <input id="postcodeInput" name="postcode" placeholder="e.g. N1 6RB" required>
+              </label>
+              <label>
+                <span>Leaflet quantity</span>
+                <select name="quantity" id="quantitySelect">
+                  <option value="1000">1,000</option>
+                  <option value="5000">5,000</option>
+                  <option value="10000">10,000</option>
+                  <option value="20000">20,000</option>
+                  <option value="50000">50,000</option>
+                  <option value="75000">75,000</option>
+                  <option value="100000">100,000</option>
+                  <option value="150000">150,000</option>
+                  <option value="250000">250,000</option>
+                </select>
+              </label>
+              <label>
+                <span>Delivery type</span>
+                <select name="deliveryType" id="deliveryTypeSelect">
+                  <option value="solus">Solus distribution</option>
+                  <option value="shared">Shared distribution</option>
+                </select>
+              </label>
+              <label>
+                <span>Print bundles (per 1,000)</span>
+                <select name="printBundles" id="printBundlesSelect">
+                  <option value="0">No printing</option>
+                  <option value="1">1,000 print</option>
+                  <option value="5">5,000 print</option>
+                  <option value="10">10,000 print</option>
+                  <option value="20">20,000 print</option>
+                </select>
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" name="designNeeded" id="designNeeded">
+                <span>Add design service (+£95)</span>
+              </label>
+            </div>
+            <label>
+              <span>Project notes</span>
+              <textarea name="notes" placeholder="Tell us about your area, dates or campaign goals"></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="button" class="btn btn-gold" id="saveOrderBtn">Save order</button>
+              <button type="button" class="btn btn-dark" id="checkoutBtn">Pay with Stripe</button>
+            </div>
+            <p class="fine-print">Stripe checkout works once you add your real keys in the .env file.</p>
+          </form>
+        </div>
+
+        <aside class="quote-summary">
+          <h3>Quote summary</h3>
+          <div class="summary-row"><span>Distribution</span><strong id="distributionCost">£55.00</strong></div>
+          <div class="summary-row"><span>Print</span><strong id="printCost">£0.00</strong></div>
+          <div class="summary-row"><span>Design</span><strong id="designCost">£0.00</strong></div>
+          <div class="summary-row total"><span>Total</span><strong id="totalCost">£55.00</strong></div>
+          <div id="statusMessage" class="status-message"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="coverage" class="section">
+      <div class="container coverage-grid">
+        <div>
+          <div class="section-heading left">
+            <span class="eyebrow dark">Coverage targeting</span>
+            <h2>Google Maps postcode lookup area</h2>
+            <p>Enter a postcode to centre the map. This gives your site a stronger, more premium booking feel.</p>
+          </div>
+          <div class="map-tools">
+            <input id="mapPostcode" placeholder="Enter postcode to view on map">
+            <button class="btn btn-gold" id="mapLookupBtn" type="button">Check postcode</button>
+          </div>
+          <p class="fine-print">Add your Google Maps API key in the script tag below before going live.</p>
+        </div>
+        <div class="map-card">
+          <div id="map"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section section-soft">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow dark">How it works</span>
+          <h2>Simple flow for customers, cleaner workflow for your business.</h2>
+        </div>
+        <div class="cards four-up">
+          <article class="step-card"><span>01</span><h3>Check postcode</h3><p>Customer enters a postcode and sees the target area.</p></article>
+          <article class="step-card"><span>02</span><h3>Get live price</h3><p>Quote updates instantly with quantity, print and design extras.</p></article>
+          <article class="step-card"><span>03</span><h3>Pay or submit</h3><p>Customer can save an order or go to Stripe checkout.</p></article>
+          <article class="step-card"><span>04</span><h3>Manage in admin</h3><p>You review every order from the built-in dashboard.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-panel">
+        <div>
+          <span class="eyebrow dark">Contact</span>
+          <h2>Ready to launch this website?</h2>
+          <p>This starter is designed so you can improve it further with a database, real authentication, customer order tracking and invoice emails.</p>
+        </div>
+        <div class="contact-box">
+          <div><strong>Email</strong><span id="businessEmail">info@leafletprouk.com</span></div>
+          <div><strong>Phone</strong><span id="businessPhone">020 8103 5100</span></div>
+          <a class="btn btn-dark btn-full" href="/admin/">Open admin dashboard</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© 2026 LeafletPro UK</span>
+      <span>Premium starter website package</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+</body>
+</html>
