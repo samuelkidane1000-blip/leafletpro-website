@@ -47,25 +47,41 @@ function getFormData() {
 }
 
 async function refreshQuote() {
-  const response = await fetch('/api/quote', {
+  const response = await fetch('https://leafletpro-backend.onrender.com/api/quote', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(getFormData())
   });
   const quote = await response.json();
-  document.getElementById('distributionCost').textContent = money(quote.distributionCost);
-  document.getElementById('printCost').textContent = money(quote.printCost);
-  document.getElementById('designCost').textContent = money(quote.designFee);
-  document.getElementById('totalCost').textContent = money(quote.subtotal);
-  return quote;
-}
+
+const setText = (id, value) => {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+};
+
+setText('distributionCost', money(quote.distributionCost || 0));
+setText('printCost', money(quote.printCost || 0));
+setText('trackingCost', money(quote.trackingCost || 0));
+setText('designCost', money(quote.designCost || 0));
+setText('setupCost', money(quote.setupCost || 0));
+setText('priorityCost', money(quote.priorityCost || 0));
+setText('subtotalCost', money(quote.subtotalCost || 0));
+setText('vatCost', money(quote.vatCost || 0));
+setText('totalCost', money(quote.totalCost || 0));
+setText('estimatedHomes', quote.estimatedHomes || 0);
+setText('estimatedDays', quote.estimatedDays || '-');
+setText('ratePerThousand', money(quote.ratePerThousand || 0));
+setText('summaryZone', quote.zoneName || '-');
+  
+  
+
 
 async function lookupPostcode(postcode) {
   if (!postcode || typeof google === 'undefined') return;
   const geocoder = new google.maps.Geocoder();
   geocoder.geocode({ address: postcode, componentRestrictions: { country: 'GB' } }, (results, status) => {
     if (status === 'OK' && results[0] && map) {
-      const location = results[0].geometry.location;
+      const response = await fetch('https://leafletpro-backend.onrender.com/api/order', {
       map.setCenter(location);
       map.setZoom(13);
       if (marker) marker.setMap(null);
