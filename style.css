@@ -360,3 +360,16 @@ textarea { min-height: 130px; resize: vertical; }
   .section { padding: 72px 0; }
   .footer-row, .trust-grid { flex-direction: column; }
 }
+#map{
+  height: 400px;
+  width: 100%;
+  border-radius: 12px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.map-card{
+  min-height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+}
