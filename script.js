@@ -159,3 +159,18 @@ if (document.getElementById('postcodeInput')) {
 
 refreshQuote();
 loadConfig();
+if (quoteForm) {
+  quoteForm.addEventListener('change', refreshQuote);
+}
+
+if (saveOrderBtn) {
+  saveOrderBtn.addEventListener('click', saveOrder);
+}
+
+if (checkoutBtn) {
+  checkoutBtn.addEventListener('click', saveOrder);
+}
+
+if (mapLookupBtn) {
+  mapLookupBtn.addEventListener('click', () => lookupPostcode(mapPostcode.value));
+}
