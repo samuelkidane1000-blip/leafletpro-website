@@ -46,32 +46,36 @@ function getFormData() {
   };
 }
 
-async function refreshQuote() 
-const response = await fetch('https://leafletpro-backend.onrender.com/api/order', {
+async function refreshQuote() {
+  const response = await fetch('https://leafletpro-backend.onrender.com/api/quote', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(getFormData())
   });
+
   const quote = await response.json();
 
-const setText = (id, value) => {
-  const el = document.getElementById(id);
-  if (el) el.textContent = value;
-};
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
 
-setText('distributionCost', money(quote.distributionCost || 0));
-setText('printCost', money(quote.printCost || 0));
-setText('trackingCost', money(quote.trackingCost || 0));
-setText('designCost', money(quote.designCost || 0));
-setText('setupCost', money(quote.setupCost || 0));
-setText('priorityCost', money(quote.priorityCost || 0));
-setText('subtotalCost', money(quote.subtotalCost || 0));
-setText('vatCost', money(quote.vatCost || 0));
-setText('totalCost', money(quote.totalCost || 0));
-setText('estimatedHomes', quote.estimatedHomes || 0);
-setText('estimatedDays', quote.estimatedDays || '-');
-setText('ratePerThousand', money(quote.ratePerThousand || 0));
-setText('summaryZone', quote.zoneName || '-');
+  setText('distributionCost', money(quote.distributionCost || 0));
+  setText('printCost', money(quote.printCost || 0));
+  setText('trackingCost', money(quote.trackingCost || 0));
+  setText('designCost', money(quote.designCost || 0));
+  setText('setupCost', money(quote.setupCost || 0));
+  setText('priorityCost', money(quote.priorityCost || 0));
+  setText('subtotalCost', money(quote.subtotalCost || 0));
+  setText('vatCost', money(quote.vatCost || 0));
+  setText('totalCost', money(quote.totalCost || 0));
+  setText('estimatedHomes', quote.estimatedHomes || 0);
+  setText('estimatedDays', quote.estimatedDays || '-');
+  setText('ratePerThousand', money(quote.ratePerThousand || 0));
+  setText('summaryZone', quote.zoneName || '-');
+
+  return quote;
+}
   
   
 
