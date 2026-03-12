@@ -46,8 +46,8 @@ function getFormData() {
   };
 }
 
-async function refreshQuote() {
-  const response = await fetch('/api/order', {
+async function refreshQuote() 
+const response = await fetch('https://leafletpro-backend.onrender.com/api/order', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(getFormData())
@@ -97,7 +97,7 @@ async function saveOrder() {
   if (!quoteForm.reportValidity()) return;
   statusMessage.textContent = 'Saving order...';
   await refreshQuote();
-  const response = await fetch('/api/orders', {
+  const response = awaitfetch('https://leafletpro-backend.onrender.com/api/order', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(getFormData())
