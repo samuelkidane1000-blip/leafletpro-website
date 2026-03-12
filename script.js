@@ -1,176 +1,188 @@
 let map;
 let marker;
 
-async function initMap() {
-  const defaultCenter = { lat: 51.5072, lng: -0.1276 };
-  const mapEl = document.getElementById('map');
-  if (!mapEl || typeof google === 'undefined') return;
-  map = new google.maps.Map(mapEl, {
-    zoom: 11,
-    center: defaultCenter,
-    styles: [
-      { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-      { featureType: 'transit', stylers: [{ visibility: 'off' }] }
-    ]
-  });
-  marker = new google.maps.Marker({ position: defaultCenter, map, title: 'Default coverage area' });
-}
-window.initMap = initMap;
+const BACKEND_URL = 'https://leafletpro-backend.onrender.com';
 
 const quoteForm = document.getElementById('quoteForm');
-const quantitySelect = document.getElementById('quantitySelect');
-const deliveryTypeSelect = document.getElementById('deliveryTypeSelect');
-const printBundlesSelect = document.getElementById('printBundlesSelect');
-const designNeeded = document.getElementById('designNeeded');
-const saveOrderBtn = document.getElementById('saveOrderBtn');
-const checkoutBtn = document.getElementById('checkoutBtn');
 const statusMessage = document.getElementById('statusMessage');
-const mapLookupBtn = document.getElementById('mapLookupBtn');
 const mapPostcode = document.getElementById('mapPostcode');
+const mapLookupBtn = document.querySelector('.map-tools button');
+const saveOrderBtn = document.querySelector('.form-actions button:first-child');
+const checkoutBtn = document.querySelector('.form-actions button:last-child');
 
 const money = (value) => `£${Number(value || 0).toFixed(2)}`;
 
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
 function getFormData() {
+  if (!quoteForm) return {};
+
   const formData = new FormData(quoteForm);
+
   return {
     customerName: formData.get('customerName') || '',
     email: formData.get('email') || '',
     phone: formData.get('phone') || '',
-    postcode: formData.get('postcode') || '',
+    postcode: String(formData.get('postcode') || '').trim(),
     quantity: Number(formData.get('quantity') || 1000),
-    deliveryType: formData.get('deliveryType') || 'solus',
+    deliveryType: formData.get('deliveryType') || 'shared',
     printBundles: Number(formData.get('printBundles') || 0),
-    designNeeded: formData.get('designNeeded') === 'on',
+    designNeeded: !!formData.get('designNeeded'),
     notes: formData.get('notes') || '',
     origin: window.location.origin
   };
 }
 
 async function refreshQuote() {
-  const response = await fetch('https://leafletpro-backend.onrender.com/api/quote', {
+  if (!quoteForm) return;
+
+  if (statusMessage) statusMessage.textContent = 'Calculating quote...';
+
+  const response = await fetch(`${BACKEND_URL}/api/quote`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(getFormData())
   });
+
+  if (!response.ok) {
+    throw new Error('Quote request failed');
+  }
 
   const quote = await response.json();
 
-  const setText = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  };
-
-  setText('distributionCost', money(quote.distributionCost || 0));
-  setText('printCost', money(quote.printCost || 0));
-  setText('trackingCost', money(quote.trackingCost || 0));
-  setText('designCost', money(quote.designCost || 0));
-  setText('setupCost', money(quote.setupCost || 0));
-  setText('priorityCost', money(quote.priorityCost || 0));
-  setText('subtotalCost', money(quote.subtotalCost || 0));
-  setText('vatCost', money(quote.vatCost || 0));
-  setText('totalCost', money(quote.totalCost || 0));
+  setText('distributionCost', money(quote.distributionCost));
+  setText('printCost', money(quote.printCost));
+  setText('trackingCost', money(quote.trackingCost));
+  setText('designCost', money(quote.designCost));
+  setText('setupCost', money(quote.setupCost));
+  setText('priorityCost', money(quote.priorityCost));
+  setText('subtotalCost', money(quote.subtotalCost));
+  setText('vatCost', money(quote.vatCost));
+  setText('totalCost', money(quote.totalCost));
   setText('estimatedHomes', quote.estimatedHomes || 0);
   setText('estimatedDays', quote.estimatedDays || '-');
-  setText('ratePerThousand', money(quote.ratePerThousand || 0));
+  setText('ratePerThousand', money(quote.ratePerThousand));
   setText('summaryZone', quote.zoneName || '-');
+  setText('summaryInsight', quote.summaryInsight || '-');
 
+  if (statusMessage) statusMessage.textContent = 'Quote updated.';
   return quote;
-}
-  
-  
-
-
-async function lookupPostcode(postcode) {
-  if (!postcode || typeof google === 'undefined') return;
-  const geocoder = new google.maps.Geocoder();
-  geocoder.geocode({ address: postcode, componentRestrictions: { country: 'GB' } }, (results, status) => {
-    if (status === 'OK' && results[0] && map) {
-      const response = await fetch('https://leafletpro-backend.onrender.com/api/order', {
-      map.setCenter(location);
-      map.setZoom(13);
-      if (marker) marker.setMap(null);
-      marker = new google.maps.Marker({ map, position: location, title: postcode.toUpperCase() });
-      statusMessage.textContent = `Coverage map centred on ${postcode.toUpperCase()}.`;
-    } else {
-      statusMessage.textContent = 'Postcode lookup did not return a result yet. Check your Google Maps API key and postcode format.';
-    }
-  });
 }
 
 async function saveOrder() {
-  if (!quoteForm.reportValidity()) return;
-  statusMessage.textContent = 'Saving order...';
-  await refreshQuote();
-  const response = awaitfetch('https://leafletpro-backend.onrender.com/api/order', {
+  if (!quoteForm) return;
+
+  if (statusMessage) statusMessage.textContent = 'Saving order...';
+
+  const response = await fetch(`${BACKEND_URL}/order`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(getFormData())
   });
-  const data = await response.json();
+
   if (!response.ok) {
-    statusMessage.textContent = data.error || 'Unable to save order.';
+    throw new Error('Order save failed');
+  }
+
+  if (statusMessage) statusMessage.textContent = 'Order saved successfully.';
+  return response.json();
+}
+
+async function lookupPostcode(postcode) {
+  if (!postcode || typeof google === 'undefined' || !map) {
+    if (statusMessage) statusMessage.textContent = 'Map lookup unavailable.';
     return;
   }
-  statusMessage.textContent = `Order ${data.id} saved successfully.`;
+
+  const geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode(
+    { address: postcode, componentRestrictions: { country: 'GB' } },
+    (results, status) => {
+      if (status === 'OK' && results[0]) {
+        const location = results[0].geometry.location;
+        map.setCenter(location);
+        map.setZoom(13);
+
+        if (marker) marker.setMap(null);
+        marker = new google.maps.Marker({
+          map,
+          position: location,
+          title: postcode.toUpperCase()
+        });
+
+        if (statusMessage) statusMessage.textContent = 'Postcode found.';
+      } else {
+        if (statusMessage) statusMessage.textContent = 'Postcode not found.';
+      }
+    }
+  );
 }
 
-async function goToCheckout() {
-  if (!quoteForm.reportValidity()) return;
-  statusMessage.textContent = 'Creating Stripe checkout...';
-  await refreshQuote();
-  const response = await fetch('/api/create-checkout-session', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(getFormData())
+function initMap() {
+  const mapEl = document.getElementById('map');
+  if (!mapEl || typeof google === 'undefined') return;
+
+  const defaultCenter = { lat: 51.5072, lng: -0.1276 };
+
+  map = new google.maps.Map(mapEl, {
+    zoom: 11,
+    center: defaultCenter
   });
-  const data = await response.json();
-  if (!response.ok) {
-    statusMessage.textContent = data.error || 'Stripe checkout could not be created.';
-    return;
-  }
-  window.location.href = data.url;
-}
 
-async function loadConfig() {
-  try {
-    const response = await fetch('/api/config');
-    const config = await response.json();
-    const businessEmail = document.getElementById('businessEmail');
-    const businessPhone = document.getElementById('businessPhone');
-    if (businessEmail) businessEmail.textContent = config.businessEmail || 'info@leafletprouk.com';
-    if (businessPhone) businessPhone.textContent = config.businessPhone || '020 8103 5100';
-  } catch (error) {
-    // no-op
-  }
-}
-
-[quantitySelect, deliveryTypeSelect, printBundlesSelect, designNeeded].forEach((el) => {
-  if (el) el.addEventListener('change', refreshQuote);
-});
-
-if (saveOrderBtn) saveOrderBtn.addEventListener('click', saveOrder);
-if (checkoutBtn) checkoutBtn.addEventListener('click', goToCheckout);
-if (mapLookupBtn) mapLookupBtn.addEventListener('click', () => lookupPostcode(mapPostcode.value));
-if (document.getElementById('postcodeInput')) {
-  document.getElementById('postcodeInput').addEventListener('blur', (e) => {
-    if (e.target.value) lookupPostcode(e.target.value);
+  marker = new google.maps.Marker({
+    map,
+    position: defaultCenter
   });
 }
 
-refreshQuote();
-loadConfig();
+window.initMap = initMap;
+
 if (quoteForm) {
-  quoteForm.addEventListener('change', refreshQuote);
+  quoteForm.addEventListener('change', () => {
+    refreshQuote().catch(() => {
+      if (statusMessage) statusMessage.textContent = 'Unable to update quote.';
+    });
+  });
+
+  quoteForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    refreshQuote().catch(() => {
+      if (statusMessage) statusMessage.textContent = 'Unable to update quote.';
+    });
+  });
 }
 
 if (saveOrderBtn) {
-  saveOrderBtn.addEventListener('click', saveOrder);
+  saveOrderBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    saveOrder().catch(() => {
+      if (statusMessage) statusMessage.textContent = 'Unable to save order.';
+    });
+  });
 }
 
 if (checkoutBtn) {
-  checkoutBtn.addEventListener('click', saveOrder);
+  checkoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    saveOrder().catch(() => {
+      if (statusMessage) statusMessage.textContent = 'Unable to save order.';
+    });
+  });
 }
 
-if (mapLookupBtn) {
-  mapLookupBtn.addEventListener('click', () => lookupPostcode(mapPostcode.value));
+if (mapLookupBtn && mapPostcode) {
+  mapLookupBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    lookupPostcode(mapPostcode.value);
+  });
+}
+
+if (quoteForm) {
+  refreshQuote().catch(() => {
+    if (statusMessage) statusMessage.textContent = 'Unable to load initial quote.';
+  });
 }
