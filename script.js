@@ -287,14 +287,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-if (checkoutBtn) {
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutBtn = document.getElementById("checkoutBtn");
+
+  if (!checkoutBtn) return;
+
   checkoutBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    const totalText = document.getElementById("totalCost")?.textContent || "£0";
+    const totalEl = document.getElementById("totalCost");
+    const totalText = totalEl ? totalEl.textContent : "£0";
     const amount = Math.round(Number(totalText.replace(/[^\d.]/g, "")) * 100);
 
-    if (!amount) {
+    if (!amount || amount < 50) {
       alert("Please generate a quote first.");
       return;
     }
@@ -310,9 +315,9 @@ if (checkoutBtn) {
     const session = await response.json();
 
     if (session.id) {
-      await stripe.redirectToCheckout({ sessionId: session.id });
+      stripe.redirectToCheckout({ sessionId: session.id });
     } else {
       alert("Unable to start checkout.");
     }
   });
-}
+});
