@@ -1,89 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>LeafletPro Orders</title>
-<style>
-body{
-font-family: Arial;
-background:#0d1b2a;
-color:white;
-padding:40px;
-}
-
-h1{
-margin-bottom:30px;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-color:black;
-}
-
-th,td{
-padding:12px;
-border-bottom:1px solid #ddd;
-text-align:left;
-}
-
-th{
-background:#f4f4f4;
-}
-
-tr:hover{
-background:#f1f1f1;
-}
-</style>
-</head>
-
-<body>
-
-<h1>LeafletPro Orders</h1>
-
-<table id="ordersTable">
-<thead>
-<tr>
-<th>Postcode</th>
-<th>Quantity</th>
-<th>Total (£)</th>
-<th>Delivery</th>
-<th>Date</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
-
 <script>
+async function loadOrders() {
+  const table = document.querySelector("#ordersTable tbody");
 
-async function loadOrders(){
+  try {
+    const res = await fetch("https://leafletpro-backend.onrender.com/orders");
+    const orders = await res.json();
 
-const res = await fetch("https://leafletpro-backend.onrender.com/orders");
-const orders = await res.json();
+    if (!orders || orders.length === 0) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td colspan="5">No orders yet</td>`;
+      table.appendChild(row);
+      return;
+    }
 
-const table = document.querySelector("#ordersTable tbody");
-
-orders.forEach(order => {
-
-const row = document.createElement("tr");
-
-row.innerHTML = `
-<td>${order.postcode || ""}</td>
-<td>${order.quantity || ""}</td>
-<td>£${order.totalCost || ""}</td>
-<td>${order.deliveryType || ""}</td>
-<td>${new Date().toLocaleDateString()}</td>
-`;
-
-table.appendChild(row);
-
-});
-
+    orders.forEach(order => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${order.postcode || ""}</td>
+        <td>${order.quantity || ""}</td>
+        <td>£${order.totalCost || ""}</td>
+        <td>${order.deliveryType || ""}</td>
+        <td>${order.date || new Date().toLocaleDateString()}</td>
+      `;
+      table.appendChild(row);
+    });
+  } catch (error) {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="5">Unable to load orders</td>`;
+    table.appendChild(row);
+  }
 }
 
 loadOrders();
-
 </script>
-
-</body>
-</html>
