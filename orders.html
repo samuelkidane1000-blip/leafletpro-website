@@ -1,35 +1,231 @@
-<script>
-async function loadOrders() {
-  const table = document.querySelector("#ordersTable tbody");
-
-  try {
-    const res = await fetch("https://leafletpro-backend.onrender.com/orders");
-    const orders = await res.json();
-
-    if (!orders || orders.length === 0) {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td colspan="5">No orders yet</td>`;
-      table.appendChild(row);
-      return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafletPro Admin Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1730;
+      color: white;
     }
 
-    orders.forEach(order => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${order.postcode || ""}</td>
-        <td>${order.quantity || ""}</td>
-        <td>£${order.totalCost || ""}</td>
-        <td>${order.deliveryType || ""}</td>
-        <td>${order.date || new Date().toLocaleDateString()}</td>
-      `;
-      table.appendChild(row);
-    });
-  } catch (error) {
-    const row = document.createElement("tr");
-    row.innerHTML = `<td colspan="5">Unable to load orders</td>`;
-    table.appendChild(row);
-  }
-}
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
 
-loadOrders();
-</script>
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+
+    p {
+      color: #b8c2d8;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .card {
+      background: white;
+      color: #132033;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: #6a7587;
+      font-weight: 600;
+    }
+
+    .card strong {
+      font-size: 30px;
+    }
+
+    .table-wrap {
+      background: white;
+      color: #132033;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e8edf5;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f5f7fb;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tr:hover td {
+      background: #f9fbff;
+    }
+
+    .empty {
+      padding: 24px 16px;
+      color: #6a7587;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      background: #d9ab45;
+      color: #111;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .muted-btn {
+      background: #21314f;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      th, td {
+        font-size: 12px;
+        padding: 10px 12px;
+      }
+
+      .card strong {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <h1>LeafletPro Admin Dashboard</h1>
+        <p>Track saved quote requests and campaign orders.</p>
+      </div>
+      <button class="btn muted-btn" onclick="loadOrders()">Refresh</button>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <h3>Total Orders</h3>
+        <strong id="totalOrders">0</strong>
+      </div>
+      <div class="card">
+        <h3>Total Revenue</h3>
+        <strong id="totalRevenue">£0</strong>
+      </div>
+      <div class="card">
+        <h3>Average Order</h3>
+        <strong id="averageOrder">£0</strong>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="ordersTable">
+        <thead>
+          <tr>
+            <th>Postcode</th>
+            <th>Quantity</th>
+            <th>Total (£)</th>
+            <th>Delivery</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    async function loadOrders() {
+      const table = document.querySelector("#ordersTable tbody");
+      table.innerHTML = "";
+
+      try {
+        const res = await fetch("https://leafletpro-backend.onrender.com/orders");
+        const orders = await res.json();
+
+        if (!orders || orders.length === 0) {
+          const row = document.createElement("tr");
+          row.innerHTML = `<td colspan="6" class="empty">No orders yet</td>`;
+          table.appendChild(row);
+
+          document.getElementById("totalOrders").textContent = "0";
+          document.getElementById("totalRevenue").textContent = "£0";
+          document.getElementById("averageOrder").textContent = "£0";
+          return;
+        }
+
+        let totalRevenue = 0;
+
+        orders.forEach(order => {
+          const total = Number(order.totalCost || 0);
+          totalRevenue += total;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${order.postcode || ""}</td>
+            <td>${order.quantity || ""}</td>
+            <td>£${total.toFixed(2)}</td>
+            <td>${order.deliveryType || ""}</td>
+            <td>${order.email || ""}</td>
+            <td>${order.phone || ""}</td>
+          `;
+          table.appendChild(row);
+        });
+
+        document.getElementById("totalOrders").textContent = orders.length;
+        document.getElementById("totalRevenue").textContent = "£" + totalRevenue.toFixed(2);
+        document.getElementById("averageOrder").textContent = "£" + (totalRevenue / orders.length).toFixed(2);
+
+      } catch (error) {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td colspan="6" class="empty">Unable to load orders</td>`;
+        table.appendChild(row);
+      }
+    }
+
+    loadOrders();
+  </script>
+</body>
+</html>
