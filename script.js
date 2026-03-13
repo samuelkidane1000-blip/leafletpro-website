@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const response = await fetch("https://leafletpro-backend.onrender.com/create-checkout",
+    const response = await fetch("https://leafletpro-backend.onrender.com/api/checkout"
       method: "POST",
       headers: {
         "Content-Type": "application/json"
