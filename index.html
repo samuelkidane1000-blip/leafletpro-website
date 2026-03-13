@@ -1,260 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LeafletPro UK | Premium Leaflet Distribution</title>
-  <meta name="description" content="Premium leaflet distribution and print ordering website starter for UK businesses." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <title>LeafletPro UK</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #07153d 0%, #081033 100%);
+      color: white;
+    }
+
+    .header {
+      background: rgba(255,255,255,0.08);
+      padding: 24px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    .card {
+      background: #f4f4f4;
+      color: #1c2541;
+      border-radius: 28px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 34px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 8px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid #d8dce5;
+      font-size: 18px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0 20px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin: 0;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 18px;
+      padding: 18px 28px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #13224f;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #25345f;
+      color: white;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid #dfe3ea;
+      font-size: 18px;
+    }
+
+    .summary-row strong {
+      font-size: 19px;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #ececf2;
+      color: #1c2541;
+      font-size: 18px;
+    }
+
+    .contact-box {
+      margin-top: 26px;
+      background: #fbfbfb;
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .contact-box div {
+      padding: 12px 0;
+      border-bottom: 1px solid #dfe3ea;
+      font-size: 18px;
+    }
+
+    .contact-box div:last-child {
+      border-bottom: none;
+    }
+
+    .admin-btn {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #13224f;
+      color: white;
+      padding: 18px 28px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-row">
-      <a class="brand" href="#top">LeafletPro UK</a>
-      <nav class="main-nav">
-        <a href="#services">Services</a>
-        <a href="#calculator">Quote</a>
-        <a href="#coverage">Coverage</a>
-        <a href="#process">How it works</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="/admin/">Admin</a>
-      </nav>
-    </div>
-  </header>
+  <div class="header">LeafletPro UK</div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Premium UK leaflet distribution</div>
-          <h1>Professional leaflet delivery, print and booking in one polished platform.</h1>
-          <p class="hero-text">A stronger, cleaner version of your website with a better hero section, live pricing, postcode targeting, Stripe-ready checkout and an admin dashboard to manage orders.</p>
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="#calculator">Get instant quote</a>
-            <a class="btn btn-dark" href="#contact">Talk to us</a>
-          </div>
-          <div class="hero-points">
-            <span>Trusted by local businesses</span>
-            <span>GPS-led targeting starter</span>
-            <span>Built to convert</span>
-          </div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="card">
+        <h2>Instant Quote</h2>
+
+        <label>
+          Postcode
+          <input id="postcodeInput" type="text" placeholder="e.g. N1 6RB" />
+        </label>
+
+        <label>
+          Leaflet quantity
+          <select id="quantitySelect">
+            <option value="1000">1,000</option>
+            <option value="5000">5,000</option>
+            <option value="10000">10,000</option>
+            <option value="20000">20,000</option>
+            <option value="50000">50,000</option>
+            <option value="75000">75,000</option>
+            <option value="100000">100,000</option>
+            <option value="150000">150,000</option>
+            <option value="250000">250,000</option>
+          </select>
+        </label>
+
+        <label>
+          Delivery type
+          <select id="deliveryTypeSelect">
+            <option value="solus">Solus distribution</option>
+            <option value="shared">Shared distribution</option>
+          </select>
+        </label>
+
+        <label>
+          Print bundles
+          <select id="printIncludedSelect">
+            <option value="false">No printing</option>
+            <option value="true">Include printing</option>
+          </select>
+        </label>
+
+        <div class="checkbox-row">
+          <input id="trackedDistribution" type="checkbox" />
+          <span>Tracked distribution</span>
         </div>
-        <aside class="hero-card">
-          <h2>Quick booking</h2>
-          <p>Pick your leaflet quantity and get a fast estimate.</p>
-          <div class="mini-stat"><strong>100,000+</strong><span>Leaflets supported</span></div>
-          <div class="mini-stat"><strong>£39–£55</strong><span>From per 1,000 delivery</span></div>
-          <div class="mini-stat"><strong>Stripe</strong><span>Ready for online payment</span></div>
-          <a class="btn btn-full" href="#calculator">Start now</a>
-        </aside>
-      </div>
-    </section>
 
-    <section class="trust-bar">
-      <div class="container trust-grid">
-        <div><strong>500+</strong><span>Campaigns delivered</span></div>
-        <div><strong>Postcode</strong><span>Coverage lookup</span></div>
-        <div><strong>Live</strong><span>Quote calculator</span></div>
-        <div><strong>Admin</strong><span>Order management</span></div>
-      </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow dark">Tracked leaflet campaigns across London</span>
-          <h2>Leaflet distribution that looks premium, books online and converts like a real sales machine.</h2>
-        </div>
-        <div class="cards three-up">
-          <article class="feature-card">
-            <h3>GPS tracked delivery</h3>
-            <p>Door-to-door leaflet campaigns across London with tracked coverage and clear reporting.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Print & design service</h3>
-            <p>Add print bundles and design support so your campaign is ready to launch fast.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Instant online booking</h3>
-            <p>Let customers request quotes, book campaigns, and pay online in one smooth flow.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="calculator" class="section section-dark">
-  <div class="container calculator-grid">
-    <div>
-      <div class="section-heading left light">
-        <span class="eyebrow">Instant pricing</span>
-        <h2>Live quote calculator</h2>
-        <p>Use this section as the core conversion area of the website.</p>
-      </div>
-
-      <form id="quoteForm" class="quote-form">
-        <div class="field-grid">
-          <label>
-            <span>Customer name</span>
-            <input name="customerName" placeholder="Your name" required>
-          </label>
-
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" placeholder="your@email.com" required>
-          </label>
-
-          <label>
-            <span>Phone</span>
-            <input name="phone" placeholder="Mobile or office number">
-          </label>
-
-          <label>
-            <span>Postcode</span>
-            <input id="postcodeInput" name="postcode" placeholder="e.g. N1 6RB" required>
-          </label>
-
-          <label>
-            <span>Leaflet quantity</span>
-            <select name="quantity" id="quantitySelect">
-              <option value="1000">1,000</option>
-              <option value="5000">5,000</option>
-              <option value="10000">10,000</option>
-              <option value="20000">20,000</option>
-              <option value="50000">50,000</option>
-              <option value="75000">75,000</option>
-              <option value="100000">100,000</option>
-              <option value="150000">150,000</option>
-              <option value="250000">250,000</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Delivery type</span>
-            <select name="deliveryType" id="deliveryTypeSelect">
-              <option value="solus">Solus distribution</option>
-              <option value="shared">Shared distribution</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Print bundles (per 1,000)</span>
-            <select name="printBundles" id="printBundlesSelect">
-              <option value="0">No printing</option>
-              <option value="1">1,000 print</option>
-              <option value="5">5,000 print</option>
-              <option value="10">10,000 print</option>
-              <option value="20">20,000 print</option>
-            </select>
-          </label>
-
-          <label class="checkbox-row">
-            <input type="checkbox" name="designNeeded" id="designNeeded">
-            <span>Add design service (+£95)</span>
-          </label>
+        <div class="checkbox-row">
+          <input id="designNeeded" type="checkbox" />
+          <span>Add design service (+£65)</span>
         </div>
 
         <label>
-          <span>Project notes</span>
-          <textarea name="notes" placeholder="Tell us about your area, dates or campaign goals"></textarea>
+          Email
+          <input id="emailInput" type="email" placeholder="you@example.com" />
         </label>
 
-        <div class="form-actions">
-          <button type="button" id="saveOrderBtn" class="btn btn-gold">Save order</button>
-          <button type="button" id="checkoutBtn" class="btn btn-dark btn-full">Pay with Stripe</button>
+        <label>
+          Phone
+          <input id="phoneInput" type="text" placeholder="Your phone number" />
+        </label>
+
+        <label>
+          Notes
+          <textarea id="notesInput" placeholder="Tell us about your campaign"></textarea>
+        </label>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="generateQuote()">Generate quote</button>
+          <button class="btn btn-secondary" onclick="saveOrder()">Save order</button>
         </div>
 
-        <p class="fine-print">Stripe checkout works once you add your real keys in the .env file.</p>
-      </form>
-    </div>
-
-    <aside class="quote-summary">
-      <h3>Quote summary</h3>
-      <div class="summary-row"><span>Distribution</span><strong id="distributionCost">£0</strong></div>
-      <div class="summary-row"><span>Print</span><strong id="printCost">£0</strong></div>
-      <div class="summary-row"><span>Tracking</span><strong id="trackingCost">£0</strong></div>
-      <div class="summary-row"><span>Design</span><strong id="designCost">£0</strong></div>
-      <div class="summary-row"><span>Setup</span><strong id="setupCost">£0</strong></div>
-      <div class="summary-row"><span>Priority</span><strong id="priorityCost">£0</strong></div>
-      <div class="summary-row"><span>Subtotal</span><strong id="subtotalCost">£0</strong></div>
-      <div class="summary-row"><span>VAT</span><strong id="vatCost">£0</strong></div>
-      <div class="summary-row total"><span>Total</span><strong id="totalCost">£0</strong></div>
-      <div class="summary-row"><span>Estimated homes</span><strong id="estimatedHomes">0</strong></div>
-      <div class="summary-row"><span>Estimated days</span><strong id="estimatedDays">-</strong></div>
-      <div class="summary-row"><span>Rate / 1,000</span><strong id="ratePerThousand">£0</strong></div>
-      <div class="summary-row"><span>Zone</span><strong id="summaryZone">-</strong></div>
-      <div class="summary-row"><span>Insight</span><strong id="summaryInsight">-</strong></div>
-      <div id="statusMessage" class="status-message"></div>
-    </aside>
-  </div>
-</section>
-
-    <section id="coverage" class="section">
-  <div class="container">
-    <div class="section-heading">
-      <span class="eyebrow dark">Coverage</span>
-      <h2>Postcode coverage map</h2>
-      <p>Enter a postcode to centre the map on your target area.</p>
-    </div>
-
-    <div class="map-tools">
-      <input id="mapPostcode" placeholder="Enter postcode" />
-      <button id="mapLookupBtn" class="btn btn-gold">Check postcode</button>
-    </div>
-
-    <div class="map-card">
-      <div id="map"></div>
-    </div>
-
-    <p class="fine-print">Use any UK postcode to centre the map.</p>
-  </div>
-</section>
-
-    <section id="process" class="section section-soft">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow dark">How it works</span>
-          <h2>Simple flow for customers, cleaner workflow for your business.</h2>
-        </div>
-        <div class="cards four-up">
-          <article class="step-card"><span>01</span><h3>Check postcode</h3><p>Customer enters a postcode and sees the target area.</p></article>
-          <article class="step-card"><span>02</span><h3>Get live price</h3><p>Quote updates instantly with quantity, print and design extras.</p></article>
-          <article class="step-card"><span>03</span><h3>Pay or submit</h3><p>Customer can save an order or go to Stripe checkout.</p></article>
-          <article class="step-card"><span>04</span><h3>Manage in admin</h3><p>You review every order from the built-in dashboard.</p></article>
-        </div>
+        <div id="statusMessage" class="status">Generate a quote to begin.</div>
       </div>
-    </section>
 
-    <section id="contact" class="section">
-      <div class="container contact-panel">
-        <div>
-          <span class="eyebrow dark">Contact</span>
-          <h2>Ready to launch this website?</h2>
-          <p>This starter is designed so you can improve it further with a database, real authentication, customer order tracking and invoice emails.</p>
-        </div>
+      <div class="card">
+        <h2>Quote Summary</h2>
+
+        <div class="summary-row"><span>Distribution</span><strong id="distributionCost">£0.00</strong></div>
+        <div class="summary-row"><span>Print</span><strong id="printCost">£0.00</strong></div>
+        <div class="summary-row"><span>Tracking</span><strong id="trackingCost">£0.00</strong></div>
+        <div class="summary-row"><span>Design</span><strong id="designCost">£0.00</strong></div>
+        <div class="summary-row"><span>Setup</span><strong id="setupCost">£0.00</strong></div>
+        <div class="summary-row"><span>Priority</span><strong id="priorityCost">£0.00</strong></div>
+        <div class="summary-row"><span>Subtotal</span><strong id="subtotalCost">£0.00</strong></div>
+        <div class="summary-row"><span>VAT</span><strong id="vatCost">£0.00</strong></div>
+        <div class="summary-row"><span>Total</span><strong id="totalCost">£0.00</strong></div>
+        <div class="summary-row"><span>Estimated homes</span><strong id="estimatedHomes">0</strong></div>
+        <div class="summary-row"><span>Estimated days</span><strong id="estimatedDays">-</strong></div>
+        <div class="summary-row"><span>Rate / 1,000</span><strong id="ratePerThousand">£0.00</strong></div>
+        <div class="summary-row"><span>Zone</span><strong id="summaryZone">-</strong></div>
+        <div class="summary-row"><span>Insight</span><strong id="summaryInsight">-</strong></div>
+
         <div class="contact-box">
-          <div><strong>Email</strong><span id="businessEmail">info@leafletprouk.com</span></div>
-          <div><strong>Phone</strong><span id="businessPhone">020 8103 5100</span></div>
-          <a class="btn btn-dark btn-full" href="/admin/">Open admin dashboard</a>
+          <div><strong>Email</strong><br>info@leafletprouk.com</div>
+          <div><strong>Phone</strong><br>020 8103 5100</div>
+          <a class="admin-btn" href="/orders.html">Open admin dashboard</a>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <span>© 2026 LeafletPro UK</span>
-      <span>Premium starter website package</span>
     </div>
-  </footer>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
-<script src="script.js"></script>
+  </div>
 
+  <script>
+    const BACKEND_URL = "https://leafletpro-backend.onrender.com";
+    let latestQuote = null;
+
+    function money(value) {
+      return "£" + Number(value || 0).toFixed(2);
+    }
+
+    async function generateQuote() {
+      const postcode = document.getElementById("postcodeInput").value.trim();
+      const quantity = Number(document.getElementById("quantitySelect").value);
+      const deliveryType = document.getElementById("deliveryTypeSelect").value;
+      const trackedDistribution = document.getElementById("trackedDistribution").checked;
+      const printIncluded = document.getElementById("printIncludedSelect").value === "true";
+      const designNeeded = document.getElementById("designNeeded").checked;
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/quote`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            postcode,
+            quantity,
+            deliveryType,
+            trackedDistribution,
+            printIncluded,
+            designNeeded
+          })
+        });
+
+        const data = await response.json();
+        latestQuote = data;
+
+        document.getElementById("distributionCost").textContent = money(data.distributionCost);
+        document.getElementById("printCost").textContent = money(data.printCost);
+        document.getElementById("trackingCost").textContent = money(data.trackingCost);
+        document.getElementById("designCost").textContent = money(data.designCost);
+        document.getElementById("setupCost").textContent = money(data.setupCost);
+        document.getElementById("priorityCost").textContent = money(data.priorityCost);
+        document.getElementById("subtotalCost").textContent = money(data.subtotalCost);
+        document.getElementById("vatCost").textContent = money(data.vatCost);
+        document.getElementById("totalCost").textContent = money(data.totalCost);
+        document.getElementById("estimatedHomes").textContent = data.estimatedHomes || 0;
+        document.getElementById("estimatedDays").textContent = data.estimatedDays || "-";
+        document.getElementById("ratePerThousand").textContent = money(data.ratePerThousand);
+        document.getElementById("summaryZone").textContent = data.summaryZone || "-";
+        document.getElementById("summaryInsight").textContent = data.summaryInsight || "-";
+        document.getElementById("statusMessage").textContent = "Quote generated successfully.";
+      } catch (error) {
+        document.getElementById("statusMessage").textContent = "Unable to generate quote.";
+        console.error(error);
+      }
+    }
+
+    async function saveOrder() {
+      if (!latestQuote) {
+        document.getElementById("statusMessage").textContent = "Generate a quote first.";
+        return;
+      }
+
+      const order = {
+        postcode: document.getElementById("postcodeInput").value.trim(),
+        quantity: Number(document.getElementById("quantitySelect").value),
+        deliveryType: document.getElementById("deliveryTypeSelect").value,
+        trackedDistribution: document.getElementById("trackedDistribution").checked,
+        printIncluded: document.getElementById("printIncludedSelect").value === "true",
+        designNeeded: document.getElementById("designNeeded").checked,
+        email: document.getElementById("emailInput").value.trim(),
+        phone: document.getElementById("phoneInput").value.trim(),
+        notes: document.getElementById("notesInput").value.trim(),
+        totalCost: Number(latestQuote.totalCost || 0),
+        subtotalCost: Number(latestQuote.subtotalCost || 0),
+        vatCost: Number(latestQuote.vatCost || 0),
+        ratePerThousand: Number(latestQuote.ratePerThousand || 0),
+        estimatedHomes: Number(latestQuote.estimatedHomes || 0),
+        estimatedDays: latestQuote.estimatedDays || "",
+        summaryZone: latestQuote.summaryZone || "",
+        summaryInsight: latestQuote.summaryInsight || ""
+      };
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/order`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(order)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          document.getElementById("statusMessage").textContent = "Order saved successfully.";
+        } else {
+          document.getElementById("statusMessage").textContent = "Unable to save order.";
+        }
+      } catch (error) {
+        document.getElementById("statusMessage").textContent = "Unable to save order.";
+        console.error(error);
+      }
+    }
+  </script>
 </body>
 </html>
