@@ -142,6 +142,9 @@
         <p>Track saved quote requests and campaign orders.</p>
       </div>
       <button class="btn muted-btn" onclick="loadOrders()">Refresh</button>
+      <button class="btn muted-btn" onclick="exportCSV()" style="margin-left:10px;">
+Export CSV
+</button>
     </div>
 
     <div class="stats">
@@ -251,6 +254,31 @@ async function loadOrders() {
     table.appendChild(row);
   }
 }
+function exportCSV() {
+  fetch("https://leafletpro-backend.onrender.com/orders")
+    .then(res => res.json())
+    .then(orders => {
+      let csv = "Postcode,Quantity,Total,Delivery,Email,Phone\n";
 
+      orders.forEach(order => {
+        csv +=
+          (order.postcode || "") + "," +
+          (order.quantity || "") + "," +
+          (order.totalCost || "") + "," +
+          (order.deliveryType || "") + "," +
+          (order.email || "") + "," +
+          (order.phone || "") +
+          "\n";
+      });
+
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "leafletpro_orders.csv";
+      a.click();
+    });
+}
 loadOrders();
 </script>
