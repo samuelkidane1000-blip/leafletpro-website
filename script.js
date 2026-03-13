@@ -249,76 +249,57 @@ if (quoteForm) {
 }
 document.addEventListener('DOMContentLoaded', initMap);
 document.addEventListener("DOMContentLoaded", () => {
-
-  const mapLookupBtn = document.getElementById("mapLookupBtn");
-  const mapPostcode = document.getElementById("mapPostcode");
-
-  if (mapLookupBtn && mapPostcode) {
-    mapLookupBtn.addEventListener("click", async () => {
-
-      const postcode = mapPostcode.value.trim();
-
-      if (!postcode) return;
-
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&countrycodes=gb&q=${encodeURIComponent(postcode)}`
-      );
-
-      const data = await res.json();
-
-      if (!data.length) {
-        alert("Postcode not found");
-        return;
-      }
-
-      const lat = parseFloat(data[0].lat);
-      const lon = parseFloat(data[0].lon);
-
-      map.setView([lat, lon], 13);
-
-      if (marker) {
-        marker.setLatLng([lat, lon]);
-      } else {
-        marker = L.marker([lat, lon]).addTo(map);
-      }
-
-    });
-  }
-
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
   const checkoutBtn = document.getElementById("checkoutBtn");
 
-  if (!checkoutBtn) return;
+  if (!checkoutBtn) {
+    alert("Checkout button not found");
+    return;
+  }
 
   checkoutBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    const totalEl = document.getElementById("totalCost");
-    const totalText = totalEl ? totalEl.textContent : "£0";
-    const amount = Math.round(Number(totalText.replace(/[^\d.]/g, "")) * 100);
+    try {
+      alert("Button clicked");
 
-    if (!amount || amount < 50) {
-      alert("Please generate a quote first.");
-      return;
-    }
+      const totalEl = document.getElementById("totalCost");
+      const totalText = totalEl ? totalEl.textContent : "£0";
+      const amount = Math.round(Number(totalText.replace(/[^\d.]/g, "")) * 100);
 
-    const response = await fetch("https://leafletpro-backend.onrender.com/api/checkout"
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ amount })
-    });
+      if (!amount || amount < 50) {
+        alert("Please generate a quote first.");
+        return;
+      }
 
-    const session = await response.json();
+      alert("Sending checkout request");
 
-    if (session.id) {
-      stripe.redirectToCheckout({ sessionId: session.id });
-    } else {
-      alert("Unable to start checkout.");
+      const response = await fetch("https://leafletpro-backend.onrender.com/create-checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ amount })
+      });
+
+      const session = await response.json();
+
+      if (!session.id) {
+        alert("No Stripe session id returned");
+        return;
+      }
+
+      alert("Redirecting to Stripe");
+
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id
+      });
+
+      if (result && result.error) {
+        alert(result.error.message);
+      }
+    } catch (error) {
+      alert("Checkout failed: " + error.message);
     }
   });
 });
+     
