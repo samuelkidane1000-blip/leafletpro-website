@@ -196,36 +196,61 @@
           return;
         }
 
-        let totalRevenue = 0;
+        
+    <script>
+async function loadOrders() {
+  const table = document.querySelector("#ordersTable tbody");
+  table.innerHTML = "";
 
-        orders.forEach(order => {
-          const total = Number(order.totalCost || 0);
-          totalRevenue += total;
+  try {
+    const res = await fetch("https://leafletpro-backend.onrender.com/orders");
+    const orders = await res.json();
 
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${order.postcode || ""}</td>
-            <td>${order.quantity || ""}</td>
-            <td>£${total.toFixed(2)}</td>
-            <td>${order.deliveryType || ""}</td>
-            <td>${order.email || ""}</td>
-            <td>${order.phone || ""}</td>
-          `;
-          table.appendChild(row);
-        });
+    if (!orders || orders.length === 0) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td colspan="6" class="empty">No orders yet</td>`;
+      table.appendChild(row);
 
-        document.getElementById("totalOrders").textContent = orders.length;
-        document.getElementById("totalRevenue").textContent = "£" + totalRevenue.toFixed(2);
-        document.getElementById("averageOrder").textContent = "£" + (totalRevenue / orders.length).toFixed(2);
-
-      } catch (error) {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td colspan="6" class="empty">Unable to load orders</td>`;
-        table.appendChild(row);
-      }
+      document.getElementById("totalOrders").textContent = "0";
+      document.getElementById("totalRevenue").textContent = "£0.00";
+      document.getElementById("averageOrder").textContent = "£0.00";
+      return;
     }
 
-    loadOrders();
-  </script>
-</body>
-</html>
+    let totalRevenue = 0;
+
+    orders.forEach(order => {
+      const total =
+        Number(order.totalCost) ||
+        Number(order.total) ||
+        Number(order.subtotalCost) ||
+        0;
+
+      totalRevenue += total;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${order.postcode || ""}</td>
+        <td>${order.quantity || ""}</td>
+        <td>£${total.toFixed(2)}</td>
+        <td>${order.deliveryType || ""}</td>
+        <td>${order.email || ""}</td>
+        <td>${order.phone || ""}</td>
+      `;
+      table.appendChild(row);
+    });
+
+    document.getElementById("totalOrders").textContent = orders.length;
+    document.getElementById("totalRevenue").textContent = "£" + totalRevenue.toFixed(2);
+    document.getElementById("averageOrder").textContent =
+      "£" + (totalRevenue / orders.length).toFixed(2);
+
+  } catch (error) {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="6" class="empty">Unable to load orders</td>`;
+    table.appendChild(row);
+  }
+}
+
+loadOrders();
+</script>
