@@ -1,3 +1,4 @@
+const stripe = Stripe("pk_test_51TAQkyPVjya8Qe1Zl1dMPsqC6vPozcMxb72Z2ccthCkZhTZWpvvM9p57k0WJs1TDtkDwYXFMcmqDsS4DBzOFPkBz00W5cpabW3");
 let map;
 let marker;
 
