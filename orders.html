@@ -8,57 +8,78 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b1730;
+      background: linear-gradient(180deg, #07153d 0%, #081033 100%);
       color: white;
     }
 
     .wrap {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
+      padding: 40px 24px 80px;
     }
 
     h1 {
-      margin: 0 0 10px;
-      font-size: 32px;
+      font-size: 56px;
+      line-height: 1;
+      margin: 0 0 20px;
     }
 
-    p {
-      color: #b8c2d8;
+    .subtext {
+      font-size: 18px;
+      color: #b9bfd3;
+      margin-bottom: 36px;
+      max-width: 700px;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 20px;
+      padding: 18px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #25345f;
+      color: white;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
+      gap: 28px;
+      margin-bottom: 32px;
     }
 
     .card {
-      background: white;
-      color: #132033;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      background: #f4f4f4;
+      color: #1c2541;
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
     }
 
     .card h3 {
-      margin: 0 0 8px;
-      font-size: 15px;
-      color: #6a7587;
-      font-weight: 600;
+      margin: 0 0 18px;
+      color: #7b8194;
+      font-size: 20px;
     }
 
     .card strong {
-      font-size: 30px;
+      font-size: 34px;
     }
 
-    .table-wrap {
-      background: white;
-      color: #132033;
-      border-radius: 18px;
+    .table-card {
+      background: #f4f4f4;
+      color: #1c2541;
+      border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
     }
 
     table {
@@ -67,84 +88,52 @@
     }
 
     th, td {
-      padding: 14px 16px;
+      padding: 22px 24px;
       text-align: left;
-      border-bottom: 1px solid #e8edf5;
-      font-size: 14px;
+      border-bottom: 1px solid #dfe3ea;
+      font-size: 18px;
     }
 
     th {
-      background: #f5f7fb;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    tr:hover td {
-      background: #f9fbff;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
     .empty {
-      padding: 24px 16px;
-      color: #6a7587;
+      text-align: center;
+      color: #7b8194;
+      padding: 40px 24px;
     }
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
+    @media (max-width: 900px) {
+      h1 {
+        font-size: 42px;
+      }
 
-    .btn {
-      display: inline-block;
-      border: none;
-      background: #d9ab45;
-      color: #111;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .muted-btn {
-      background: #21314f;
-      color: white;
-    }
-
-    @media (max-width: 768px) {
       .stats {
         grid-template-columns: 1fr;
       }
 
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       th, td {
-        font-size: 12px;
-        padding: 10px 12px;
+        padding: 16px 14px;
+        font-size: 15px;
       }
 
       .card strong {
-        font-size: 24px;
+        font-size: 28px;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <h1>LeafletPro Admin Dashboard</h1>
+    <p class="subtext">Track saved quote requests and campaign orders.</p>
+
     <div class="topbar">
-      <div>
-        <h1>LeafletPro Admin Dashboard</h1>
-        <p>Track saved quote requests and campaign orders.</p>
-      </div>
-      <button class="btn muted-btn" onclick="loadOrders()">Refresh</button>
-      <button class="btn muted-btn" onclick="exportCSV()" style="margin-left:10px;">
-Export CSV
-</button>
+      <button class="btn" onclick="loadOrders()">Refresh</button>
+      <button class="btn" onclick="exportCSV()">Export CSV</button>
     </div>
 
     <div class="stats">
@@ -154,24 +143,24 @@ Export CSV
       </div>
       <div class="card">
         <h3>Total Revenue</h3>
-        <strong id="totalRevenue">£0</strong>
+        <strong id="totalRevenue">£0.00</strong>
       </div>
       <div class="card">
         <h3>Average Order</h3>
-        <strong id="averageOrder">£0</strong>
+        <strong id="averageOrder">£0.00</strong>
       </div>
     </div>
 
-    <div class="table-wrap">
+    <div class="table-card">
       <table id="ordersTable">
         <thead>
           <tr>
-            <th>Postcode</th>
-            <th>Quantity</th>
-            <th>Total (£)</th>
-            <th>Delivery</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>POSTCODE</th>
+            <th>QUANTITY</th>
+            <th>TOTAL (£)</th>
+            <th>DELIVERY</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -180,105 +169,100 @@ Export CSV
   </div>
 
   <script>
+    const BACKEND_URL = "https://leafletpro-backend.onrender.com";
+
     async function loadOrders() {
-      const table = document.querySelector("#ordersTable tbody");
-      table.innerHTML = "";
+      const tableBody = document.querySelector("#ordersTable tbody");
+      tableBody.innerHTML = "";
 
       try {
-        const res = await fetch("https://leafletpro-backend.onrender.com/orders");
-        const orders = await res.json();
+        const response = await fetch(`${BACKEND_URL}/orders`);
+        const orders = await response.json();
 
-        if (!orders || orders.length === 0) {
-          const row = document.createElement("tr");
-          row.innerHTML = `<td colspan="6" class="empty">No orders yet</td>`;
-          table.appendChild(row);
-
+        if (!Array.isArray(orders) || orders.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="6" class="empty">No orders yet</td></tr>`;
           document.getElementById("totalOrders").textContent = "0";
-          document.getElementById("totalRevenue").textContent = "£0";
-          document.getElementById("averageOrder").textContent = "£0";
+          document.getElementById("totalRevenue").textContent = "£0.00";
+          document.getElementById("averageOrder").textContent = "£0.00";
           return;
         }
 
-        
-    <script>
-async function loadOrders() {
-  const table = document.querySelector("#ordersTable tbody");
-  table.innerHTML = "";
+        let totalRevenue = 0;
 
-  try {
-    const res = await fetch("https://leafletpro-backend.onrender.com/orders");
-    const orders = await res.json();
+        orders.forEach(order => {
+          const total =
+            Number(order.totalCost) ||
+            Number(order.total) ||
+            Number(order.subtotalCost) ||
+            0;
 
-    if (!orders || orders.length === 0) {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td colspan="6" class="empty">No orders yet</td>`;
-      table.appendChild(row);
+          totalRevenue += total;
 
-      document.getElementById("totalOrders").textContent = "0";
-      document.getElementById("totalRevenue").textContent = "£0.00";
-      document.getElementById("averageOrder").textContent = "£0.00";
-      return;
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${order.postcode || ""}</td>
+            <td>${order.quantity || ""}</td>
+            <td>£${total.toFixed(2)}</td>
+            <td>${order.deliveryType || ""}</td>
+            <td>${order.email || ""}</td>
+            <td>${order.phone || ""}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+
+        document.getElementById("totalOrders").textContent = orders.length;
+        document.getElementById("totalRevenue").textContent = `£${totalRevenue.toFixed(2)}`;
+        document.getElementById("averageOrder").textContent =
+          `£${(totalRevenue / orders.length).toFixed(2)}`;
+      } catch (error) {
+        tableBody.innerHTML = `<tr><td colspan="6" class="empty">Unable to load orders</td></tr>`;
+        console.error("Dashboard load error:", error);
+      }
     }
 
-    let totalRevenue = 0;
+    async function exportCSV() {
+      try {
+        const response = await fetch(`${BACKEND_URL}/orders`);
+        const orders = await response.json();
 
-    orders.forEach(order => {
-      const total =
-        Number(order.totalCost) ||
-        Number(order.total) ||
-        Number(order.subtotalCost) ||
-        0;
+        if (!Array.isArray(orders) || orders.length === 0) {
+          alert("No orders to export yet.");
+          return;
+        }
 
-      totalRevenue += total;
+        let csv = "Postcode,Quantity,Total,Delivery,Email,Phone\n";
 
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${order.postcode || ""}</td>
-        <td>${order.quantity || ""}</td>
-        <td>£${total.toFixed(2)}</td>
-        <td>${order.deliveryType || ""}</td>
-        <td>${order.email || ""}</td>
-        <td>${order.phone || ""}</td>
-      `;
-      table.appendChild(row);
-    });
+        orders.forEach(order => {
+          const total =
+            Number(order.totalCost) ||
+            Number(order.total) ||
+            Number(order.subtotalCost) ||
+            0;
 
-    document.getElementById("totalOrders").textContent = orders.length;
-    document.getElementById("totalRevenue").textContent = "£" + totalRevenue.toFixed(2);
-    document.getElementById("averageOrder").textContent =
-      "£" + (totalRevenue / orders.length).toFixed(2);
+          csv +=
+            `"${order.postcode || ""}",` +
+            `"${order.quantity || ""}",` +
+            `"${total.toFixed(2)}",` +
+            `"${order.deliveryType || ""}",` +
+            `"${order.email || ""}",` +
+            `"${order.phone || ""}"\n`;
+        });
 
-  } catch (error) {
-    const row = document.createElement("tr");
-    row.innerHTML = `<td colspan="6" class="empty">Unable to load orders</td>`;
-    table.appendChild(row);
-  }
-}
-function exportCSV() {
-  fetch("https://leafletpro-backend.onrender.com/orders")
-    .then(res => res.json())
-    .then(orders => {
-      let csv = "Postcode,Quantity,Total,Delivery,Email,Phone\n";
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "leafletpro_orders.csv";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (error) {
+        alert("CSV export failed.");
+        console.error("CSV export error:", error);
+      }
+    }
 
-      orders.forEach(order => {
-        csv +=
-          (order.postcode || "") + "," +
-          (order.quantity || "") + "," +
-          (order.totalCost || "") + "," +
-          (order.deliveryType || "") + "," +
-          (order.email || "") + "," +
-          (order.phone || "") +
-          "\n";
-      });
-
-      const blob = new Blob([csv], { type: "text/csv" });
-      const url = window.URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "leafletpro_orders.csv";
-      a.click();
-    });
-}
-loadOrders();
-</script>
+    loadOrders();
+  </script>
+</body>
+</html>
