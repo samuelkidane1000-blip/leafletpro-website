@@ -261,10 +261,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       alert("Button clicked");
+const totalEl = document.getElementById("totalCost");
+alert("Found total element: " + !!totalEl);
 
-      const totalEl = document.getElementById("totalCost");
-      const totalText = totalEl ? totalEl.textContent : "£0";
-      const amount = Math.round(Number(totalText.replace(/[^\d.]/g, "")) * 100);
+const totalText = totalEl ? totalEl.textContent : "£0";
+alert("Total text is: " + totalText);
+
+const amount = Math.round(Number(totalText.replace(/[^\d.]/g, "")) * 100);
+alert("Amount is: " + amount);
 
       if (!amount || amount < 50) {
         alert("Please generate a quote first.");
