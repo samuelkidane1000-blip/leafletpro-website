@@ -595,13 +595,15 @@
 
           const row = document.createElement("tr");
           row.innerHTML = `
-            <td>${order.postcode || ""}</td>
-            <td>${quantity || ""}</td>
-            <td>${formatMoney(total)}</td>
-            <td><span class="tag ${deliveryType}">${order.deliveryType || ""}</span></td>
-            <td>${order.email || ""}</td>
-            <td>${order.phone || ""}</td>
-          `;
+  <td>${order.postcode || ""}</td>
+  <td>${quantity || ""}</td>
+  <td>${formatMoney(total)}</td>
+  <td><span class="tag ${deliveryType}">${order.deliveryType || ""}</span></td>
+  <td>${order.email || ""}</td>
+  <td>${order.phone || ""}</td>
+  <td>${order.notes || ""}</td>
+`;
+    
           tableBody.appendChild(row);
 
           if (index < 5) {
