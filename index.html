@@ -1066,6 +1066,18 @@
         });
       }
     });
+    function calculateLeads() {
+  const leaflets = Number(document.getElementById("leadLeaflets").value || 0);
+  const responseRate = Number(document.getElementById("responseRate").value || 0);
+  const conversionRate = Number(document.getElementById("conversionRate").value || 0);
+
+  const enquiries = Math.round(leaflets * (responseRate / 100));
+  const customers = Math.round(enquiries * (conversionRate / 100));
+
+  document.getElementById("estimatedEnquiries").textContent = enquiries;
+  document.getElementById("estimatedCustomers").textContent = customers;
+}
+  calculateLeads();
   </script>
 </body>
 </html>
