@@ -623,42 +623,45 @@
 
   <!-- Lead Calculator -->
 
-<section class="lead-calc">
-<form onsubmit="saveOrder(); return false;">
-  <input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New LeafletPro Quote">
-  <p style="font-weight:600;color:#d9ab45;margin-bottom:10px;">
-From £55 per 1,000 leaflets
-</p>
-  <h2>How many customers could your campaign bring?</h2>
-  <p>Estimate the potential response from your leaflet distribution campaign.</p>
+<section class="lead-calc section">
+  <div class="container">
+    <div class="light-card" style="color:#111827;">
+      <p style="font-weight:600;color:#d9ab45;margin:0 0 10px;">
+        From £55 per 1,000 leaflets
+      </p>
 
-  <div class="lead-grid">
-    <label>
-      Leaflets distributed
-      <input id="leadLeaflets" name="leaflets" type="number" value="10000" />
-    </label>
+      <h2 style="margin:0 0 10px;color:#111827;">How many customers could your campaign bring?</h2>
+      <p style="margin:0 0 20px;color:#6b7280;">Estimate the potential response from your leaflet distribution campaign.</p>
 
-    <label>
-      Expected response rate (%)
-      <input id="responseRate" name="response_rate" type="number" value="0.5" step="0.1" />
-    </label>
+      <div class="field-grid">
+        <label>
+          Leaflets distributed
+          <input id="leadLeaflets" name="leaflets" type="number" value="10000" />
+        </label>
 
-    <label>
-      Conversion rate (%)
-      <input id="conversionRate" name="conversion_rate" type="number" value="20" step="1" />
-    </label>
+        <label>
+          Expected response rate (%)
+          <input id="responseRate" name="response_rate" type="number" value="0.5" step="0.1" />
+        </label>
+
+        <label>
+          Conversion rate (%)
+          <input id="conversionRate" name="conversion_rate" type="number" value="20" step="1" />
+        </label>
+      </div>
+
+      <div style="margin-top:18px;">
+        <button type="button" class="btn btn-gold" onclick="calculateLeads()">
+          Estimate Results
+        </button>
+      </div>
+
+      <div class="lead-results" style="margin-top:20px;color:#111827;">
+        <p>Estimated enquiries: <strong id="estimatedEnquiries">0</strong></p>
+        <p>Estimated customers: <strong id="estimatedCustomers">0</strong></p>
+      </div>
+    </div>
   </div>
-
-  <button type="button" onclick="calculateLeads(); saveOrder();">
-Estimate Results
-</button>
-
-  <div class="lead-results">
-    <p>Estimated enquiries: <strong id="estimatedEnquiries">0</strong></p>
-    <p>Estimated customers: <strong id="estimatedCustomers">0</strong></p>
-  </div>
-    </form>
 </section>
 
  <section id="services" class="section">
@@ -795,35 +798,37 @@ Estimate Results
   </section>
 
   <section id="coverage" class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Postcode coverage map.</h2>
-        <p>Use your live coverage section as a premium visual proof point for local targeting.</p>
-      </div>
+  <div class="container">
+    <div class="section-heading">
+      <h2>Postcode coverage map.</h2>
+      <p>Use your live coverage section as a premium visual proof point for local targeting.</p>
+    </div>
 
-      <div class="light-card">
-        <div class="coverage-grid">
-          <div>
-            <h3 style="margin-top:0;color:#111;font-size:28px;">Check postcode targeting</h3>
-            <p style="color:#6b7280;line-height:1.7;font-size:16px;">This section makes the site feel more advanced and more trustworthy, even before you add future heatmap features.</p>
+    <div class="light-card">
+      <div class="coverage-grid">
+        <div>
+          <h3 style="margin-top:0;color:#111;font-size:28px;">Check postcode targeting</h3>
+          <p style="color:#6b7280;line-height:1.7;font-size:16px;">
+            This section makes the site feel more advanced and more trustworthy, even before you add future heatmap features.
+          </p>
 
-            <div class="map-tools">
-              <input id="mapPostcode" type="text" placeholder="Enter postcode">
-              <button class="btn btn-gold" id="mapLookupBtn" type="button">Check postcode</button>
-            </div>
-
-            <div style="margin-top:18px;color:#6b7280;font-size:16px;line-height:1.7;">
-              Enter a postcode to centre the map on your target area.
-            </div>
+          <div class="map-tools">
+            <input id="mapPostcode" type="text" placeholder="Enter postcode">
+            <button class="btn btn-gold" id="mapLookupBtn" type="button">Check postcode</button>
           </div>
 
-          <div>
-            <div id="map"></div>
+          <div style="margin-top:18px;color:#6b7280;font-size:16px;line-height:1.7;">
+            Enter a postcode to centre the map on your target area.
           </div>
+        </div>
+
+        <div>
+          <div id="map"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="section">
     <div class="container">
@@ -1109,50 +1114,52 @@ Estimate Results
       }
     }
 
-    async function saveOrder() {
-      if (!latestQuote) {
-        document.getElementById("statusMessage").textContent = "Generate a quote first.";
-        return;
-      }
+   async function saveOrder() {
+  if (!latestQuote) {
+    document.getElementById("statusMessage").textContent = "Generate a quote first.";
+    return;
+  }
 
-      const order = {
-        postcode: document.getElementById("postcodeInput").value.trim(),
-        quantity: Number(document.getElementById("quantitySelect").value),
-        deliveryType: document.getElementById("deliveryTypeSelect").value,
-        trackedDistribution: document.getElementById("trackedDistribution").checked,
-        printIncluded: document.getElementById("printIncludedSelect").value === "true",
-        designNeeded: document.getElementById("designNeeded").checked,
-        email: document.getElementById("emailInput").value.trim(),
-        phone: document.getElementById("phoneInput").value.trim(),
-        notes: document.getElementById("notesInput").value.trim(),
-        totalCost: Number(latestQuote.totalCost || 0),
-        subtotalCost: Number(latestQuote.subtotalCost || 0),
-        vatCost: Number(latestQuote.vatCost || 0),
-        ratePerThousand: Number(latestQuote.ratePerThousand || 0),
-        estimatedHomes: Number(latestQuote.estimatedHomes || 0),
-        estimatedDays: latestQuote.estimatedDays || "",
-        summaryZone: latestQuote.summaryZone || "",
-        summaryInsight: latestQuote.summaryInsight || ""
-      };
+  const order = {
+    postcode: document.getElementById("postcodeInput").value.trim(),
+    quantity: Number(document.getElementById("quantitySelect").value),
+    deliveryType: document.getElementById("deliveryTypeSelect").value,
+    trackedDistribution: document.getElementById("trackedDistribution").checked,
+    printIncluded: document.getElementById("printIncludedSelect").value === "true",
+    designNeeded: document.getElementById("designNeeded").checked,
+    email: document.getElementById("emailInput").value.trim(),
+    phone: document.getElementById("phoneInput").value.trim(),
+    notes: document.getElementById("notesInput").value.trim(),
+    totalCost: Number(latestQuote.totalCost || 0),
+    subtotalCost: Number(latestQuote.subtotalCost || 0),
+    vatCost: Number(latestQuote.vatCost || 0),
+    ratePerThousand: Number(latestQuote.ratePerThousand || 0),
+    estimatedHomes: Number(latestQuote.estimatedHomes || 0),
+    estimatedDays: latestQuote.estimatedDays || "",
+    summaryZone: latestQuote.summaryZone || "",
+    summaryInsight: latestQuote.summaryInsight || ""
+  };
 
-      try {
-        const response = await fetch(`${BACKEND_URL}/order`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(order)
-});
+  try {
+    const response = await fetch(`${BACKEND_URL}/order`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order)
+    });
 
-const text = await response.text();
-console.log("SAVE ORDER RESPONSE:", text);
+    const result = await response.json();
 
-let result = {};
-try {
-  result = JSON.parse(text);
-} catch (e) {
-  document.getElementById("statusMessage").textContent = "Server returned invalid response.";
-  return;
+    if (result.success) {
+      document.getElementById("statusMessage").textContent = "Order saved successfully.";
+    } else {
+      document.getElementById("statusMessage").textContent = "Unable to save order.";
+    }
+  } catch (error) {
+    document.getElementById("statusMessage").textContent = "Unable to save order.";
+    console.error(error);
+  }
 }
 
 if (result.success) {
@@ -1167,18 +1174,19 @@ if (result.success) {
       }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      initMap();
+   document.addEventListener("DOMContentLoaded", () => {
+  initMap();
+  calculateLeads();
 
-      const mapLookupBtn = document.getElementById("mapLookupBtn");
-      const mapPostcode = document.getElementById("mapPostcode");
+  const mapLookupBtn = document.getElementById("mapLookupBtn");
+  const mapPostcode = document.getElementById("mapPostcode");
 
-      if (mapLookupBtn && mapPostcode) {
-        mapLookupBtn.addEventListener("click", () => {
-          lookupPostcode(mapPostcode.value.trim());
-        });
-      }
+  if (mapLookupBtn && mapPostcode) {
+    mapLookupBtn.addEventListener("click", () => {
+      lookupPostcode(mapPostcode.value.trim());
     });
+  }
+});
     function calculateLeads() {
   const leaflets = Number(document.getElementById("leadLeaflets").value || 0);
   const responseRate = Number(document.getElementById("responseRate").value || 0);
