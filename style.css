@@ -190,7 +190,8 @@ button, input, select, textarea { font: inherit; }
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.15); }
 .btn-gold { background: var(--gold); color: #111; }
-.btn-dark { background: #142039; color: #fff; }
+.btn-dark { background:#142039; color:#ffffff; }
+.send-enquiry-btn{color:#ffffff !important; opacity:1 !important;}
 .btn-full { width: 100%; margin-top: 18px; }
 
 .trust-bar {
