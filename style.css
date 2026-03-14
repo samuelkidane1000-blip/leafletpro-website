@@ -373,3 +373,39 @@ textarea { min-height: 130px; resize: vertical; }
   border-radius: 12px;
   overflow: hidden;
 }
+.mini-card{
+  background:#fff;
+  border:1px solid #eceef4;
+  border-radius:22px;
+  padding:20px;
+  color:#111827;
+}
+
+.mini-card small{
+  display:block;
+  margin-bottom:8px;
+  color:#6b7280;
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.mini-card strong{
+  display:block;
+  font-size:28px;
+  line-height:1;
+  margin-bottom:6px;
+}
+
+.mini-card span{
+  color:#6b7280;
+  font-size:14px;
+  line-height:1.5;
+}
+
+@media (max-width: 980px){
+  #london-zones .light-card > div:last-child{
+    grid-template-columns:1fr !important;
+  }
+}
