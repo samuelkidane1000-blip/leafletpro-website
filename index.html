@@ -1136,20 +1136,30 @@ Estimate Results
       };
 
       try {
-        const response = await fetch(`${BACKEND_URL}/api/order`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(order)
-        });
+        const response = await fetch(`${BACKEND_URL}/order`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(order)
+});
 
-        const result = await response.json();
+const text = await response.text();
+console.log("SAVE ORDER RESPONSE:", text);
 
-        if (result.success) {
-          document.getElementById("statusMessage").textContent = "Order saved successfully.";
-        } else {
-          document.getElementById("statusMessage").textContent = "Unable to save order.";
+let result = {};
+try {
+  result = JSON.parse(text);
+} catch (e) {
+  document.getElementById("statusMessage").textContent = "Server returned invalid response.";
+  return;
+}
+
+if (result.success) {
+  document.getElementById("statusMessage").textContent = "Order saved successfully.";
+} else {
+  document.getElementById("statusMessage").textContent = "Unable to save order.";
+}
         }
       } catch (error) {
         document.getElementById("statusMessage").textContent = "Unable to save order.";
