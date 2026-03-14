@@ -427,3 +427,59 @@ textarea { min-height: 130px; resize: vertical; }
     grid-template-columns:1fr;
   }
 }
+.zone-mini-list{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.zone-mini-list .mini-card{
+  background:#fff;
+  border:1px solid #eceef4;
+  .zone-mini-list{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+@media (max-width:640px){
+  .zone-mini-list{
+    grid-template-columns:1fr;
+  }
+}
+
+.zone-mini-list .mini-card{
+  background:#fff;
+  border:1px solid #eceef4;
+  border-radius:22px;
+  padding:18px;
+  color:#111827;
+}
+  padding:18px;
+  color:#111827;
+}
+
+.zone-mini-list .mini-card small{
+  display:block;
+  margin-bottom:8px;
+  color:#6b7280;
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.zone-mini-list .mini-card strong{
+  display:block;
+  font-size:28px;
+  line-height:1;
+  margin-bottom:6px;
+}
+
+.zone-mini-list .mini-card span{
+  color:#6b7280;
+  font-size:14px;
+  line-height:1.5;
+}
