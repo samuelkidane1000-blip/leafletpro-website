@@ -1155,12 +1155,13 @@
       const result = await response.json();
 
       if (result.success) {
-        document.getElementById("statusMessage").textContent = "Order saved successfully.";
-      } else {
-        document.getElementById("statusMessage").textContent = "Unable to save order.";
-      }
+  document.getElementById("statusMessage").textContent = "Enquiry sent successfully.";
+} else {
+  document.getElementById("statusMessage").textContent = "Unable to send enquiry.";
+}
+      
     } catch (error) {
-      document.getElementById("statusMessage").textContent = "Unable to save order.";
+      document.getElementById("statusMessage").textContent = "Unable to send enquiry.";
       console.error(error);
     }
   }
