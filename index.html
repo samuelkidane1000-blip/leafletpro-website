@@ -619,7 +619,40 @@
       </div>
     </div>
   </section>
+  621 </section>
 
+622  <!-- Lead Calculator -->
+
+<section class="lead-calc">
+  <h2>How many customers could your campaign bring?</h2>
+  <p>Estimate the potential response from your leaflet distribution campaign.</p>
+
+  <div class="lead-grid">
+    <label>
+      Leaflets distributed
+      <input id="leadLeaflets" type="number" value="10000" />
+    </label>
+
+    <label>
+      Expected response rate (%)
+      <input id="responseRate" type="number" value="0.5" step="0.1" />
+    </label>
+
+    <label>
+      Conversion rate (%)
+      <input id="conversionRate" type="number" value="20" step="1" />
+    </label>
+  </div>
+
+  <button type="button" onclick="calculateLeads()">Estimate Results</button>
+
+  <div class="lead-results">
+    <p>Estimated enquiries: <strong id="estimatedEnquiries">0</strong></p>
+    <p>Estimated customers: <strong id="estimatedCustomers">0</strong></p>
+  </div>
+</section>
+
+623 <section id="services" class="section">
   <section id="services" class="section">
     <div class="container">
       <div class="section-heading">
