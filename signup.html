@@ -280,36 +280,36 @@
         <h2>Create your account</h2>
         <p>Start your LeafletPro CRM free trial.</p>
 
-        <form>
+        <form id="signupForm">
           <div class="grid">
             <label>
               First name
-              <input type="text" placeholder="John" />
+              <input type="text" name="firstName" placeholder="John" />
             </label>
 
             <label>
               Last name
-              <input type="text" placeholder="Smith" />
+              <input type="text" name="lastName" placeholder="Smith" />
             </label>
 
             <label class="full">
               Company name
-              <input type="text" placeholder="Your leaflet business name" />
+              <input type="text" name="company" placeholder="Your leaflet business name" />
             </label>
 
             <label>
               Work email
-              <input type="email" placeholder="you@company.com" />
+              <input type="email" name="email" placeholder="you@company.com" />
             </label>
 
             <label>
               Phone number
-              <input type="text" placeholder="07..." />
+              <input type="text" name="phone" placeholder="07..." />
             </label>
 
             <label class="full">
               Business type
-              <select>
+              <select name="businessType">
                 <option>Leaflet distribution company</option>
                 <option>Printing + distribution</option>
                 <option>Direct mail business</option>
@@ -319,13 +319,11 @@
 
             <label>
               Password
-              <input type="password" placeholder="Create password" />
+              <input type="password" name="password" placeholder="Create password" />
             </label>
 
             <label>
-              Confirm password
-              <input type="password" placeholder="Confirm password" />
-            </label>
+              <input type="password" name="confirmPassword" placeholder="Confirm password" />
           </div>
 
           <div class="agree">
@@ -344,5 +342,53 @@
       </div>
     </div>
   </div>
+  <script>
+
+const BACKEND_URL = "https://leafletpro-backend.onrender.com";
+
+document.getElementById("signupForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const formData = new FormData(this);
+
+const password = formData.get("password");
+const confirmPassword = formData.get("confirmPassword");
+
+if(password !== confirmPassword){
+alert("Passwords do not match");
+return;
+}
+
+const data = {
+firstName: formData.get("firstName"),
+lastName: formData.get("lastName"),
+company: formData.get("company"),
+email: formData.get("email"),
+phone: formData.get("phone"),
+businessType: formData.get("businessType"),
+password: password
+};
+
+const response = await fetch(`${BACKEND_URL}/signup`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(data)
+});
+
+const result = await response.json();
+
+if(result.success){
+alert("Account created successfully");
+window.location.href="login.html";
+}else{
+alert("Signup failed");
+}
+
+});
+
+</script>
 </body>
 </html>
