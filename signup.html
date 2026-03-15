@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Free Trial | LeafletPro CRM</title>
+  <style>
+    :root{
+      --bg:#07122f;
+      --bg2:#0c1b45;
+      --panel:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --gold:#d7a645;
+      --white:#ffffff;
+      --shadow:0 20px 50px rgba(0,0,0,0.18);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(180deg,var(--bg) 0%, var(--bg2) 100%);
+      color:#fff;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .shell{
+      width:min(1120px, 100%);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+
+    .left{
+      padding:48px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+
+    .brand{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      margin-bottom:20px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:16px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      color:#dbe5ff;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .left h1{
+      margin:0 0 16px;
+      font-size:44px;
+      line-height:.98;
+      letter-spacing:-0.04em;
+    }
+
+    .left p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,0.78);
+      font-size:17px;
+      line-height:1.7;
+    }
+
+    .price-box{
+      padding:18px 20px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      margin-bottom:20px;
+    }
+
+    .price-box strong{
+      display:block;
+      font-size:32px;
+      color:#ffd98b;
+      margin-bottom:6px;
+    }
+
+    .price-box span{
+      color:rgba(255,255,255,0.74);
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .benefits{
+      display:grid;
+      gap:14px;
+    }
+
+    .benefit{
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .benefit strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:16px;
+    }
+
+    .benefit span{
+      color:rgba(255,255,255,0.72);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .right{
+      background:#fff;
+      color:#111827;
+      padding:48px;
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:34px;
+      letter-spacing:-0.03em;
+    }
+
+    .card p{
+      margin:0 0 24px;
+      color:#6b7280;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    label{
+      display:block;
+      font-weight:700;
+      font-size:14px;
+      color:#344054;
+      margin-bottom:14px;
+    }
+
+    input, select{
+      width:100%;
+      margin-top:8px;
+      padding:16px;
+      border-radius:16px;
+      border:1px solid #dbe0ea;
+      font-size:16px;
+      outline:none;
+    }
+
+    .full{
+      grid-column:1 / -1;
+    }
+
+    .agree{
+      margin:10px 0 22px;
+      color:#6b7280;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .agree label{
+      margin:0;
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-weight:600;
+      color:#6b7280;
+    }
+
+    .agree input{
+      width:auto;
+      margin:2px 0 0;
+    }
+
+    .btn{
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none;
+      border-radius:18px;
+      padding:16px 20px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      background:var(--gold);
+      color:#111;
+      box-shadow:0 12px 30px rgba(0,0,0,0.14);
+    }
+
+    .bottom{
+      margin-top:20px;
+      text-align:center;
+      color:#6b7280;
+      font-size:14px;
+    }
+
+    .bottom a{
+      color:#1d4ed8;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    @media (max-width: 900px){
+      .shell{
+        grid-template-columns:1fr;
+      }
+
+      .left, .right{
+        padding:28px;
+      }
+
+      .left h1{
+        font-size:34px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .full{
+        grid-column:auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="left">
+      <div class="brand">LeafletPro CRM</div>
+      <span class="eyebrow">Start your free trial</span>
+      <h1>Launch your leaflet business on a real CRM.</h1>
+      <p>Set up your company account, capture campaign enquiries, track client notes and run your business like modern software.</p>
+
+      <div class="price-box">
+        <strong>£49/month</strong>
+        <span>Simple SaaS pricing for leaflet distribution companies. No setup fee.</span>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit">
+          <strong>Instant quote calculator</strong>
+          <span>Let customers generate campaign prices online.</span>
+        </div>
+        <div class="benefit">
+          <strong>CRM dashboard</strong>
+          <span>Manage enquiries, notes, revenue and campaign data.</span>
+        </div>
+        <div class="benefit">
+          <strong>Professional workflow</strong>
+          <span>Replace scattered emails and spreadsheets with one system.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card">
+        <h2>Create your account</h2>
+        <p>Start your LeafletPro CRM free trial.</p>
+
+        <form>
+          <div class="grid">
+            <label>
+              First name
+              <input type="text" placeholder="John" />
+            </label>
+
+            <label>
+              Last name
+              <input type="text" placeholder="Smith" />
+            </label>
+
+            <label class="full">
+              Company name
+              <input type="text" placeholder="Your leaflet business name" />
+            </label>
+
+            <label>
+              Work email
+              <input type="email" placeholder="you@company.com" />
+            </label>
+
+            <label>
+              Phone number
+              <input type="text" placeholder="07..." />
+            </label>
+
+            <label class="full">
+              Business type
+              <select>
+                <option>Leaflet distribution company</option>
+                <option>Printing + distribution</option>
+                <option>Direct mail business</option>
+                <option>Marketing agency</option>
+              </select>
+            </label>
+
+            <label>
+              Password
+              <input type="password" placeholder="Create password" />
+            </label>
+
+            <label>
+              Confirm password
+              <input type="password" placeholder="Confirm password" />
+            </label>
+          </div>
+
+          <div class="agree">
+            <label>
+              <input type="checkbox" />
+              <span>I agree to the terms and understand that after the trial the plan is £49/month.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn">Start Free Trial</button>
+        </form>
+
+        <div class="bottom">
+          Already have an account? <a href="login.html">Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
