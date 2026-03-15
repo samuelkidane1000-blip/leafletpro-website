@@ -105,7 +105,7 @@
 
       if(email === ADMIN_EMAIL && password === ADMIN_PASSWORD){
         localStorage.setItem("leafletpro_admin_logged_in", "true");
-        window.location.href = "/orders.html";
+        window.location.href = "/admin-dashboard.html";
       } else {
         msg.textContent = "Wrong email or password.";
       }
