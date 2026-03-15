@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LeafletPro CRM</title>
+<style>
+body{
+font-family:Arial;
+background:#0b1736;
+color:white;
+padding:40px;
+}
+.card{
+background:white;
+color:#111;
+padding:30px;
+border-radius:12px;
+max-width:600px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>LeafletPro CRM</h1>
+
+<div class="card">
+
+<h2 id="company"></h2>
+
+<p>Email: <span id="email"></span></p>
+
+<p>Plan: Starter (£49/month)</p>
+
+<button onclick="logout()">Logout</button>
+
+</div>
+
+<script>
+
+const user = JSON.parse(localStorage.getItem("leafletUser"));
+
+if(!user){
+window.location.href="login.html";
+}
+
+document.getElementById("company").innerText = user.company;
+document.getElementById("email").innerText = user.email;
+
+function logout(){
+localStorage.removeItem("leafletUser");
+window.location.href="login.html";
+}
+
+</script>
+
+</body>
+</html>
