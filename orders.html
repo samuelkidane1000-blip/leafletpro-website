@@ -1094,5 +1094,10 @@
 
     loadOrders();
   </script>
+  <script>
+  if (localStorage.getItem("leafletpro_admin_logged_in") !== "true") {
+    window.location.href = "/login.html";
+  }
+</script>
 </body>
 </html>
