@@ -688,3 +688,41 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+.footer-contact-list{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.footer-contact-item{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.footer-icon{
+  font-size:20px;
+  margin-top:4px;
+}
+
+.footer-contact-item strong{
+  display:block;
+  color:#ffffff;
+  font-weight:700;
+  margin-bottom:4px;
+}
+
+.footer-contact-item p{
+  margin:0;
+  color:rgba(255,255,255,0.75);
+  line-height:1.6;
+}
+
+.footer-contact-item a{
+  color:rgba(255,255,255,0.75);
+  text-decoration:none;
+}
+
+.footer-contact-item a:hover{
+  color:#ffffff;
+}
