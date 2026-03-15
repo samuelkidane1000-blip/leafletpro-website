@@ -260,5 +260,41 @@
       </div>
     </div>
   </div>
+  <script>
+
+const BACKEND_URL = "https://leafletpro-backend.onrender.com";
+
+document.querySelector("form").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const email = document.querySelector('input[type="email"]').value;
+const password = document.querySelector('input[type="password"]').value;
+
+const response = await fetch(`${BACKEND_URL}/login`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({ email,password })
+});
+
+const result = await response.json();
+
+if(result.success){
+
+localStorage.setItem("leafletUser", JSON.stringify(result.user));
+
+window.location.href="client-dashboard.html";
+
+}else{
+
+alert("Login failed");
+
+}
+
+});
+
+</script>
 </body>
 </html>
