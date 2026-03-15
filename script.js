@@ -113,20 +113,14 @@ async function refreshQuote() {
 
   const quote = await response.json();
 
-  setText('distributionCost', money(quote.distributionCost));
-  setText('printCost', money(quote.printCost));
-  setText('trackingCost', money(quote.trackingCost));
-  setText('designCost', money(quote.designCost));
-  setText('setupCost', money(quote.setupCost));
-  setText('priorityCost', money(quote.priorityCost));
-  setText('subtotalCost', money(quote.subtotalCost));
-  setText('vatCost', money(quote.vatCost));
-  setText('totalCost', money(quote.totalCost));
-  setText('estimatedHomes', quote.estimatedHomes || 0);
-  setText('estimatedDays', quote.estimatedDays || '-');
-  setText('ratePerThousand', money(quote.ratePerThousand));
-  setText('summaryZone', quote.zoneName || '-');
-  setText('summaryInsight', quote.summaryInsight || '-');
+  tText('distributionCost', money(quote.distributionCost));
+tText('printCost', money(quote.printCost));
+tText('designCost', money(quote.designCost));
+tText('totalCost', money(quote.totalCost));
+tText('estimatedHomes', quote.estimatedHomes || 0);
+tText('estimatedDays', quote.estimatedDays || '-');
+tText('summaryZone', quote.zoneName || '-');
+tText('summaryInsight', 'Up to 2,000 leaflets a day');
 
   if (statusMessage) statusMessage.textContent = 'Quote updated.';
   return quote;
