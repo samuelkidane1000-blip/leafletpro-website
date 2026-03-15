@@ -116,7 +116,13 @@ async function refreshQuote() {
   tText('distributionCost', money(quote.distributionCost));
 tText('printCost', money(quote.printCost));
 tText('designCost', money(quote.designCost));
-tText('totalCost', money(quote.totalCost));
+
+const cleanTotal =
+  Number(quote.distributionCost || 0) +
+  Number(quote.printCost || 0) +
+  Number(quote.designCost || 0);
+
+tText('totalCost', money(cleanTotal));
 tText('estimatedHomes', quote.estimatedHomes || 0);
 tText('estimatedDays', quote.estimatedDays || '-');
 tText('summaryZone', quote.zoneName || '-');
