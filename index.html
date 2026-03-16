@@ -764,6 +764,7 @@
               </label>
 
               <label>
+                https://formspree.io/f/xojkkejz
                 Print included
                 <select id="printIncludedSelect">
                   <option value="false">No print bundle</option>
@@ -773,12 +774,11 @@
 
               <label>
                 Email
-                <input id="emailInput" type="email" placeholder="Smith1000@gmail.com">
-              </label>
+                <input id="emailInput" name="email" type="email" placeholder="Your email" required>
 
               <label>
                 Phone
-                <input id="phoneInput" type="text" placeholder="Your phone number">
+                <input id="phoneInput" name="phone" type="text" placeholder="Phone number">
               </label>
             </div>
 
@@ -804,6 +804,7 @@
 
             <div id="statusMessage" class="status-message">Generate a quote to begin.</div>
           </div>
+          </form>
 
           <div class="quote-summary-card">
             <h3>Quote summary</h3>
