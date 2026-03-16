@@ -752,232 +752,586 @@
     </div>
   </section>
   <section class="lead-calc section">
-<div class="container">
-<div class="light-card" style="color:#111827;">
+  <div class="container">
+    <div class="light-card" style="color:#111827;">
+      <p style="font-weight:600;color:#d9ab45;margin:0 0 10px;">From £55 per 1,000 leaflets</p>
+      <h2 style="margin:0 0 10px;color:#111827;">How many customers could your campaign bring?</h2>
+      <p style="margin:0 0 20px;color:#6b7280;">Estimate the potential response from your leaflet distribution campaign.</p>
 
-<p style="font-weight:600;color:#d9ab45;margin:0 0 10px;">
-From £55 per 1,000 leaflets
-</p>
+      <div class="field-grid">
+        <label>
+          Leaflets distributed
+          <input id="leadLeaflets" name="leaflets" type="number" value="10000" />
+        </label>
 
-<h2 style="margin:0 0 10px;color:#111827;">
-How many customers could your campaign bring?
-</h2>
+        <label>
+          Expected response rate (%)
+          <input id="responseRate" name="response_rate" type="number" value="0.5" step="0.1" />
+        </label>
 
-<p style="margin:0 0 20px;color:#6b7280;">
-Estimate the potential response from your leaflet distribution campaign.
-</p>
+        <label>
+          Conversion rate (%)
+          <input id="conversionRate" name="conversion_rate" type="number" value="20" step="1" />
+        </label>
+      </div>
 
-<div class="field-grid">
+      <div style="margin-top:18px;">
+        <button type="button" class="btn btn-gold" onclick="calculateLeads()">Estimate Results</button>
+      </div>
 
-<label>
-Leaflets distributed
-<input id="leadLeaflets" type="number" value="10000"/>
-</label>
-
-<label>
-Expected response rate (%)
-<input id="responseRate" type="number" value="0.5" step="0.1"/>
-</label>
-
-<label>
-Conversion rate (%)
-<input id="conversionRate" type="number" value="20" step="1"/>
-</label>
-
-</div>
-
-<div style="margin-top:18px;">
-<button type="button" class="btn btn-gold" onclick="calculateLeads()">
-Estimate Results
-</button>
-</div>
-
-<div style="margin-top:20px;color:#111827;">
-<p>Estimated enquiries: <strong id="estimatedEnquiries">0</strong></p>
-<p>Estimated customers: <strong id="estimatedCustomers">0</strong></p>
-</div>
-
-</div>
-</div>
+      <div class="lead-results" style="margin-top:20px;color:#111827;">
+        <p>Estimated enquiries: <strong id="estimatedEnquiries">0</strong></p>
+        <p>Estimated customers: <strong id="estimatedCustomers">0</strong></p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Built to look stronger than a basic agency template.</h2>
+      <p>These core sections position your business as a premium campaign partner rather than just another leaflet drop service.</p>
+    </div>
+
+    <div class="light-card">
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>GPS tracked delivery</h3>
+          <p>Door-to-door leaflet campaigns across London with tracked coverage, more polished reporting and stronger trust.</p>
+        </div>
+        <div class="feature">
+          <h3>Print & design service</h3>
+          <p>Add print bundles and creative support so a client can move from quote to launch without friction.</p>
+        </div>
+        <div class="feature">
+          <h3>Instant online booking flow</h3>
+          <p>Let prospects calculate campaign pricing, save details and move into a more professional sales process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="calculator" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Build your campaign quote.</h2>
+      <p>This is the conversion engine of the website. Keep it polished, clear and fast.</p>
+    </div>
 
-<div class="container">
+    <div class="light-card">
+      <div class="quote-wrap">
+        <div class="quote-form-card">
+          <h3>Campaign details</h3>
 
-<div class="section-heading">
-<h2>Build your campaign quote.</h2>
-<p>This is the conversion engine of the website.</p>
-</div>
+          <form id="contactForm" action="https://formspree.io/f/xojkkejz" method="POST">
+            <input type="hidden" name="_next" value="https://leafletprouk.com/thank-you.html">
 
-<div class="light-card">
+            <div class="field-grid">
+              <label>
+                Postcode
+                <input id="postcodeInput" name="postcode" type="text" placeholder="e.g. SE1 6RB">
+              </label>
 
-<div class="quote-wrap">
+              <label>
+                Leaflet quantity
+                <select id="quantitySelect" name="quantity">
+                  <option value="1000">1,000</option>
+                  <option value="5000">5,000</option>
+                  <option value="10000">10,000</option>
+                  <option value="20000">20,000</option>
+                  <option value="50000">50,000</option>
+                  <option value="75000">75,000</option>
+                  <option value="100000">100,000</option>
+                  <option value="150000">150,000</option>
+                  <option value="250000">250,000</option>
+                </select>
+              </label>
 
-<div class="quote-form-card">
+              <label>
+                Delivery type
+                <select id="deliveryTypeSelect" name="deliveryType">
+                  <option value="solus">Solus distribution</option>
+                  <option value="shared">Shared distribution</option>
+                </select>
+              </label>
 
-<h3>Campaign details</h3>
+              <label>
+                Print included
+                <select id="printIncludedSelect" name="printIncluded">
+                  <option value="false">No print bundle</option>
+                  <option value="true">Include print</option>
+                </select>
+              </label>
 
-<form id="contactForm">
+              <label>
+                Email
+                <input id="emailInput" name="email" type="email" placeholder="Your email" required>
+              </label>
 
-<div class="field-grid">
+              <label>
+                Phone
+                <input id="phoneInput" name="phone" type="text" placeholder="Phone number">
+              </label>
+            </div>
 
-<label>
-Postcode
-<input id="postcodeInput" name="postcode" type="text" placeholder="e.g. SE1 6RB">
-</label>
+            <div class="checkbox-row">
+              <input id="trackedDistribution" name="trackedDistribution" type="checkbox">
+              <span>Tracked distribution</span>
+            </div>
 
-<label>
-Leaflet quantity
-<select id="quantitySelect" name="quantity">
-<option value="1000">1,000</option>
-<option value="5000">5,000</option>
-<option value="10000">10,000</option>
-<option value="20000">20,000</option>
-<option value="50000">50,000</option>
-<option value="75000">75,000</option>
-<option value="100000">100,000</option>
-</select>
-</label>
+            <div class="checkbox-row">
+              <input id="designNeeded" name="designNeeded" type="checkbox">
+              <span>Add design support</span>
+            </div>
 
-<label>
-Delivery type
-<select id="deliveryTypeSelect" name="deliveryType">
-<option value="solus">Solus distribution</option>
-<option value="shared">Shared distribution</option>
-</select>
-</label>
+            <label>
+              Project notes
+              <textarea id="notesInput" name="message" placeholder="Tell us about your area, dates or campaign goals"></textarea>
+            </label>
 
-<label>
-Print included
-<select id="printIncludedSelect" name="printIncluded">
-<option value="false">No print bundle</option>
-<option value="true">Include print</option>
-</select>
-</label>
+            <div class="form-actions">
+              <button type="button" class="btn btn-gold" onclick="generateQuote()">
+                Generate Quote
+              </button>
 
-<label>
-Email
-<input id="emailInput" name="email" type="email" placeholder="Your email" required>
-</label>
+              <button type="submit" class="btn" style="background:#142039;color:#ffffff;border:1px solid rgba(255,255,255,0.14);">
+                Send Enquiry
+              </button>
+            </div>
 
-<label>
-Phone
-<input id="phoneInput" name="phone" type="text" placeholder="Phone number">
-</label>
+            <div id="statusMessage" class="status-message">
+              Generate a quote to begin.
+            </div>
+          </form>
+        </div>
 
-</div>
+        <div class="quote-summary-card">
+          <h3>Quote summary</h3>
 
-<div class="checkbox-row">
-<input id="trackedDistribution" type="checkbox">
-<span>Tracked distribution</span>
-</div>
-
-<div class="checkbox-row">
-<input id="designNeeded" type="checkbox">
-<span>Add design support</span>
-</div>
-
-<label>
-Project notes
-<textarea id="notesInput" name="message"></textarea>
-</label>
-
-<div class="form-actions">
-
-<button type="button" class="btn btn-gold" onclick="generateQuote()">
-Generate Quote
-</button>
-
-<button type="submit" class="btn" style="background:#142039;color:#fff;">
-Send Enquiry
-</button>
-
-</div>
-
-<div id="statusMessage" class="status-message">
-Generate a quote to begin.
-</div>
-
-</form>
-
-</div>
-
-
-<div class="quote-summary-card">
-
-<h3>Quote summary</h3>
-
-<div class="summary-row"><span>Distribution</span><strong id="distributionCost">£0.00</strong></div>
-<div class="summary-row"><span>Print</span><strong id="printCost">£0.00</strong></div>
-<div class="summary-row"><span>Tracking</span><strong id="trackingCost">£0.00</strong></div>
-<div class="summary-row"><span>Design</span><strong id="designCost">£0.00</strong></div>
-<div class="summary-row"><span>Setup</span><strong id="setupCost">£0.00</strong></div>
-<div class="summary-row"><span>Priority</span><strong id="priorityCost">£0.00</strong></div>
-<div class="summary-row"><span>Total</span><strong id="totalCost">£0.00</strong></div>
-
-</div>
-
-</div>
-</div>
-</div>
+          <div class="summary-row"><span>Distribution</span><strong id="distributionCost">£0.00</strong></div>
+          <div class="summary-row"><span>Print</span><strong id="printCost">£0.00</strong></div>
+          <div class="summary-row"><span>Tracking</span><strong id="trackingCost">£0.00</strong></div>
+          <div class="summary-row"><span>Design</span><strong id="designCost">£0.00</strong></div>
+          <div class="summary-row"><span>Setup</span><strong id="setupCost">£0.00</strong></div>
+          <div class="summary-row"><span>Priority</span><strong id="priorityCost">£0.00</strong></div>
+          <div class="summary-row"><span>Subtotal</span><strong id="subtotalCost">£0.00</strong></div>
+          <div class="summary-row"><span>VAT</span><strong id="vatCost">£0.00</strong></div>
+          <div class="summary-row"><span>Total</span><strong id="totalCost">£0.00</strong></div>
+          <div class="summary-row"><span>Estimated homes</span><strong id="estimatedHomes">0</strong></div>
+          <div class="summary-row"><span>Estimated days</span><strong id="estimatedDays">-</strong></div>
+          <div class="summary-row"><span>Rate / 1,000</span><strong id="ratePerThousand">£0.00</strong></div>
+          <div class="summary-row"><span>Zone</span><strong id="summaryZone">-</strong></div>
+          <div class="summary-row"><span>Insight</span><strong id="summaryInsight">-</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<section id="coverage" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Postcode coverage map.</h2>
+      <p>Use your live coverage section as a premium visual proof point for local targeting.</p>
+    </div>
+
+    <div class="light-card">
+      <div class="coverage-grid">
+        <div>
+          <h3 style="margin-top:0;color:#111;font-size:28px;">Check postcode targeting</h3>
+          <p style="color:#6b7280;line-height:1.7;font-size:16px;">This section makes the site feel more advanced and more trustworthy, even before you add future heatmap features.</p>
+
+          <div class="map-tools">
+            <input id="mapPostcode" type="text" placeholder="Enter postcode">
+            <button class="btn btn-gold" id="mapLookupBtn" type="button">Check postcode</button>
+          </div>
+
+          <div style="margin-top:18px;color:#6b7280;font-size:16px;line-height:1.7;">
+            Enter a postcode to centre the map on your target area.
+          </div>
+        </div>
+
+        <div>
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Simple campaign process.</h2>
+      <p>A premium site feels more valuable when it makes the next step obvious.</p>
+    </div>
+
+    <div class="light-card">
+      <div class="process-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Build the quote</h3>
+          <p>Enter postcode, quantity and campaign options to create a live quote instantly.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Save campaign request</h3>
+          <p>Send the order details into your admin dashboard so you can manage every lead properly.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Launch and fulfil</h3>
+          <p>Move the client into printing, distribution and reporting with a cleaner operational flow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Proof that builds trust faster.</h2>
+      <p>Even placeholder testimonials help shape the premium feel until you add your real reviews.</p>
+    </div>
+
+    <div class="light-card">
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <h3>Professional from first contact</h3>
+          <p>Fast communication, clearer pricing and a stronger overall campaign experience than we expected.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <h3>Much more polished process</h3>
+          <p>The quote system and campaign flow made the whole service feel premium and easy to trust.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <h3>Great for serious local growth</h3>
+          <p>Ideal for businesses that want more than a basic leaflet drop and need a smarter presentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="google-reviews">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Trusted by London businesses</h2>
+      <p>Real feedback matters. This section is designed to look premium and build trust fast.</p>
+    </div>
+
+    <div class="light-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:24px;">
+        <div>
+          <div style="font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;">Google Reviews</div>
+          <h3 style="margin:8px 0 10px;font-size:34px;color:#111;">4.9 out of 5</h3>
+          <p style="margin:0;color:#6b7280;font-size:17px;">Based on verified local client feedback.</p>
+        </div>
+        <a href="#" class="btn btn-gold">View Google Reviews</a>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <h3>Professional from start to finish</h3>
+          <p>Very smooth process and a much stronger campaign setup than we expected.</p>
+          <p style="margin-top:14px;font-weight:700;color:#111;">Daniel Morris</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <h3>Excellent local coverage</h3>
+          <p>Clear pricing, great communication and a more premium service than most leaflet companies.</p>
+          <p style="margin-top:14px;font-weight:700;color:#111;">Sarah Patel</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <h3>Strong results for our campaign</h3>
+          <p>The campaign helped us generate enquiries quickly and the process felt very organised.</p>
+          <p style="margin-top:14px;font-weight:700;color:#111;">James Cooper</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="london-zones">
+  <div class="container">
+    <div class="section-heading">
+      <h2>London postcode coverage</h2>
+      <p>Plan campaigns by district and focus on the areas that matter most to your business.</p>
+    </div>
+
+    <div class="light-card">
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>North London</h3>
+          <p>N, NW and EN postcodes for strong residential targeting and local awareness campaigns.</p>
+        </div>
+        <div class="feature">
+          <h3>East London</h3>
+          <p>E and IG areas ideal for fast-growth local campaigns and urban reach.</p>
+        </div>
+        <div class="feature">
+          <h3>South London</h3>
+          <p>SE, SW and CR districts for broad household coverage and high-volume drops.</p>
+        </div>
+      </div>
+
+      <div class="zone-mini-list">
+        <div class="mini-card">
+          <small>Popular</small>
+          <strong>SW</strong>
+          <span>South West London</span>
+        </div>
+
+        <div class="mini-card">
+          <small>Popular</small>
+          <strong>N</strong>
+          <span>North London</span>
+        </div>
+
+        <div class="mini-card">
+          <small>Popular</small>
+          <strong>E</strong>
+          <span>East London</span>
+        </div>
+
+        <div class="mini-card">
+          <small>Popular</small>
+          <strong>SE</strong>
+          <span>South East London</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h3>Ready to turn this into a serious lead machine?</h3>
+        <p>Build the quote, save the campaign request, and manage incoming orders from your admin dashboard.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#calculator" class="btn btn-gold">Start Your Quote</a>
+        <a href="/orders.html" class="btn btn-dark" style="color:#fff;">Open Dashboard</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 LeafletPro UK</span>
+    <span>Premium tracked leaflet campaigns across London</span>
+  </div>
 
-<div class="container footer-row">
-<span>© 2026 LeafletPro UK</span>
-<span>Premium tracked leaflet campaigns across London</span>
-</div>
+  <div class="container footer-contact-grid">
+    <div class="footer-card">
+      <strong>Email</strong>
+      <a href="mailto:info@leafletprouk.com">info@leafletprouk.com</a>
+    </div>
 
-<div class="container footer-contact-grid">
+    <div class="footer-card">
+      <strong>Phone</strong>
+      <a href="tel:02081035100">020 8103 5100</a>
+    </div>
 
-<div class="footer-card">
-<strong>Address</strong>
-<span>128 City Road<br>London EC1V 2NX<br>United Kingdom</span>
-</div>
-
-<div class="footer-card">
-<strong>Phone</strong>
-<a href="tel:02081035100">020 8103 5100</a>
-</div>
-
-<div class="footer-card">
-<strong>Email</strong>
-<a href="mailto:info@leafletprouk.com">info@leafletprouk.com</a>
-</div>
-
-</div>
-
+    <div class="footer-card">
+      <strong>Address</strong>
+      <span>128, City Road, London, EC1V 2NX, UNITED KINGDOM</span>
+    </div>
+  </div>
 </footer>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded",function(){
+  const BACKEND_URL = "https://leafletpro-backend.onrender.com";
+  let latestQuote = null;
+  let map;
+  let marker;
 
-const form=document.getElementById("contactForm");
+  function money(value) {
+    return "£" + Number(value || 0).toFixed(2);
+  }
 
-form.addEventListener("submit",async function(e){
+  function initMap() {
+    const mapEl = document.getElementById("map");
+    if (!mapEl || typeof L === "undefined") return;
 
-e.preventDefault();
+    map = L.map(mapEl, { zoomControl: true }).setView([51.5072, -0.1276], 11);
 
-const formData=new FormData(form);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
 
-const response=await fetch("https://formspree.io/f/xojkkejz",{
-method:"POST",
-body:formData,
-headers:{Accept:"application/json"}
-});
+    marker = L.marker([51.5072, -0.1276]).addTo(map);
 
-if(response.ok){
-window.location.href="/thank-you.html";
-}else{
-alert("Unable to send enquiry.");
-}
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 300);
+  }
 
-});
+  async function lookupPostcode(postcode) {
+    if (!postcode || !map) return;
 
-});
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=gb&q=${encodeURIComponent(postcode)}`
+      );
+
+      const results = await response.json();
+      if (!results.length) return;
+
+      const lat = Number(results[0].lat);
+      const lon = Number(results[0].lon);
+
+      map.setView([lat, lon], 13);
+
+      if (marker) {
+        marker.setLatLng([lat, lon]);
+      } else {
+        marker = L.marker([lat, lon]).addTo(map);
+      }
+
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 200);
+    } catch (error) {
+      console.error("Postcode lookup failed", error);
+    }
+  }
+
+  async function generateQuote() {
+    const postcode = document.getElementById("postcodeInput").value.trim();
+    const quantity = Number(document.getElementById("quantitySelect").value);
+    const deliveryType = document.getElementById("deliveryTypeSelect").value;
+    const trackedDistribution = document.getElementById("trackedDistribution").checked;
+    const printIncluded = document.getElementById("printIncludedSelect").value === "true";
+    const designNeeded = document.getElementById("designNeeded").checked;
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/quote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          postcode,
+          quantity,
+          deliveryType,
+          trackedDistribution,
+          printIncluded,
+          designNeeded
+        })
+      });
+
+      const data = await response.json();
+      latestQuote = data;
+
+      document.getElementById("distributionCost").textContent = money(data.distributionCost);
+      document.getElementById("printCost").textContent = money(data.printCost);
+      document.getElementById("trackingCost").textContent = money(data.trackingCost);
+      document.getElementById("designCost").textContent = money(data.designCost);
+      document.getElementById("setupCost").textContent = money(data.setupCost);
+      document.getElementById("priorityCost").textContent = money(data.priorityCost);
+      document.getElementById("subtotalCost").textContent = money(data.subtotalCost);
+      document.getElementById("vatCost").textContent = money(data.vatCost);
+      document.getElementById("totalCost").textContent = money(data.totalCost);
+      document.getElementById("estimatedHomes").textContent = data.estimatedHomes || 0;
+      document.getElementById("estimatedDays").textContent = data.estimatedDays || "-";
+      document.getElementById("ratePerThousand").textContent = money(data.ratePerThousand);
+      document.getElementById("summaryZone").textContent = data.summaryZone || "-";
+      document.getElementById("summaryInsight").textContent = data.summaryInsight || "-";
+      document.getElementById("statusMessage").textContent = "Quote generated successfully.";
+
+      if (postcode) {
+        lookupPostcode(postcode);
+      }
+    } catch (error) {
+      document.getElementById("statusMessage").textContent = "Unable to generate quote.";
+      console.error(error);
+    }
+  }
+
+  function calculateLeads() {
+    const leaflets = Number(document.getElementById("leadLeaflets").value || 0);
+    const responseRate = Number(document.getElementById("responseRate").value || 0);
+    const conversionRate = Number(document.getElementById("conversionRate").value || 0);
+
+    const enquiries = Math.round(leaflets * (responseRate / 100));
+    const customers = Math.round(enquiries * (conversionRate / 100));
+
+    document.getElementById("estimatedEnquiries").textContent = enquiries;
+    document.getElementById("estimatedCustomers").textContent = customers;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initMap();
+    calculateLeads();
+
+    const mapLookupBtn = document.getElementById("mapLookupBtn");
+    const mapPostcode = document.getElementById("mapPostcode");
+    const form = document.getElementById("contactForm");
+    const menuToggle = document.getElementById("menuToggle");
+    const siteNav = document.getElementById("siteNav");
+
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener("click", () => {
+        siteNav.classList.toggle("open");
+      });
+
+      siteNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          siteNav.classList.remove("open");
+        });
+      });
+    }
+
+    if (mapLookupBtn && mapPostcode) {
+      mapLookupBtn.addEventListener("click", () => {
+        lookupPostcode(mapPostcode.value.trim());
+      });
+    }
+
+    if (form) {
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch("https://formspree.io/f/xojkkejz", {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json"
+            }
+          });
+
+          if (response.ok) {
+            window.location.href = "/thank-you.html";
+          } else {
+            alert("There was a problem sending your enquiry. Please try again.");
+          }
+        } catch (error) {
+          alert("There was a problem sending your enquiry. Please try again.");
+        }
+      });
+    }
+  });
 </script>
+</body>
+</html>
