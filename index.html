@@ -762,11 +762,10 @@
                   <option value="shared">Shared distribution</option>
                 </select>
               </label>
-
+              <form action="https://formspree.io/f/xojkkejz" method="POST">
               <label>
-                https://formspree.io/f/xojkkejz
                 Print included
-                <select id="printIncludedSelect">
+                <select id="printIncludedSelect" name="printIncluded">
                   <option value="false">No print bundle</option>
                   <option value="true">Include print</option>
                 </select>
@@ -798,13 +797,23 @@
             </label>
 
             <div class="form-actions">
-              <button type="button" class="btn btn-gold" onclick="generateQuote()">Generate Quote</button>
-              <button type="button" class="btn" onclick="saveOrder()" style="background:#142039;color:#ffffff;border:1px solid rgba(255,255,255,0.14);">Send Enquiry</button>
-            </div>
 
-            <div id="statusMessage" class="status-message">Generate a quote to begin.</div>
-          </div>
-          </form>
+<button type="button" class="btn btn-gold" onclick="generateQuote()">
+Generate Quote
+</button>
+
+<button type="submit" class="btn" style="background:#142039;color:#ffffff;border:1px solid rgba(255,255,255,0.14);">
+Send Enquiry
+</button>
+
+</div>
+
+<div id="statusMessage" class="status-message">
+Generate a quote to begin.
+</div>
+
+</div>
+</form>
 
           <div class="quote-summary-card">
             <h3>Quote summary</h3>
