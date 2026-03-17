@@ -13,15 +13,18 @@
 .brand {
   display: flex;
   align-items: center;
-  max-width: 220px;
 }
 
 .brand img {
-  height: 50px;
+  height: 56px;
   width: auto;
-  max-width: 100%;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .brand img {
+    height: 44px;
+  }
 }
 @media (max-width: 768px) {
   .brand img {
