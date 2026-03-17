@@ -11,8 +11,13 @@
   --radius: 20px;
 }
 .brand img {
-  height: 40px;
+  height: 50px;
   width: auto;
+  display: block;
+}
+.brand {
+  display: flex;
+  align-items: center;
 }
 @media (max-width: 768px) {
   .brand img {
