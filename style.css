@@ -10,7 +10,15 @@
   --shadow: 0 24px 60px rgba(7, 20, 44, 0.18);
   --radius: 20px;
 }
-
+.brand img {
+  height: 40px;
+  width: auto;
+}
+@media (max-width: 768px) {
+  .brand img {
+    height: 32px;
+  }
+}
 * {
   box-sizing: border-box;
 }
