@@ -769,14 +769,26 @@ textarea {
 }
 .seo-location {
   padding: 60px 20px;
-  background: #f5f7fb;
+  background: #ffffff;
+  border-radius: 20px;
+  margin: 40px 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
 }
 
 .seo-location h2 {
   margin-bottom: 15px;
+  font-size: 28px;
+  color: #111827;
+}
+
+.seo-location h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #111827;
 }
 
 .seo-location p {
   max-width: 800px;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #4b5563;
 }
