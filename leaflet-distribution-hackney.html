@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Distribution Hackney | LeafletPro UK</title>
+  <meta name="description" content="Professional leaflet distribution in Hackney with GPS tracked delivery, postcode targeting, print and design support. Covering Shoreditch, Dalston, Hackney Central and surrounding areas.">
+
+  <style>
+    :root{
+      --bg:#07122f;
+      --bg-2:#0c1b45;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --white:#ffffff;
+      --gold:#d7a645;
+      --line:rgba(255,255,255,0.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+      color:var(--white);
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      width:min(1100px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(7,18,47,0.82);
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+    }
+
+    .brand{
+      font-size:24px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      font-size:15px;
+    }
+
+    .nav a:hover{
+      color:var(--gold);
+    }
+
+    .hero{
+      padding:100px 0 50px;
+    }
+
+    .eyebrow{
+      margin-bottom:18px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    .hero h1{
+      margin:0 0 18px;
+      font-size:clamp(38px, 6vw, 64px);
+      line-height:1;
+    }
+
+    .hero p{
+      margin:0 0 20px;
+      font-size:20px;
+      color:rgba(255,255,255,0.82);
+      max-width:800px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 22px;
+      border-radius:18px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .btn-gold{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .btn-dark{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    .section{
+      padding:34px 0;
+    }
+
+    .section-heading h2{
+      font-size:40px;
+      margin-bottom:10px;
+    }
+
+    .section-heading p{
+      color:rgba(255,255,255,0.75);
+    }
+
+    .light-card{
+      background:#fff;
+      color:#111;
+      border-radius:28px;
+      padding:28px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      padding:20px;
+      border:1px solid #eceef4;
+    }
+
+    .card h3{
+      margin-bottom:8px;
+    }
+
+    .area-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .area{
+      background:#fff;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid #eceef4;
+      font-weight:700;
+    }
+
+    .seo-box{
+      background:#fff;
+      color:#111;
+      border-radius:20px;
+      padding:24px;
+    }
+
+    .seo-box a{
+      color:#0c1b45;
+      font-weight:700;
+    }
+
+    .cta{
+      background:linear-gradient(135deg,#fff 0%, #f7efe0 100%);
+      color:#111;
+      padding:28px;
+      border-radius:28px;
+    }
+
+    @media (max-width: 900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+      .area-list{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">LeafletPro UK</div>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/leaflet-distribution-london.html">London</a>
+      <a href="/leaflet-distribution-north-london.html">North London</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Leaflet Distribution Hackney</span>
+
+    <h1>Leaflet Distribution in Hackney That Drives Real Local Results</h1>
+
+    <p>
+      LeafletPro UK provides professional leaflet distribution in Hackney with GPS tracked delivery, postcode targeting and full campaign support.
+    </p>
+
+    <p>
+      Covering Shoreditch, Dalston, Hackney Central and surrounding areas, we help businesses reach the right audience with structured and effective campaigns.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/index.html#calculator" class="btn btn-gold">Get Your Quote</a>
+      <a href="https://leafletpro-website-1.onrender.com/login.html" class="btn btn-dark">Open Dashboard</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Why leaflet distribution works in Hackney</h2>
+      <p>
+        Hackney offers a strong mix of residential areas, local businesses and high footfall zones, making it ideal for targeted leaflet campaigns.
+      </p>
+    </div>
+
+    <div class="light-card">
+      <div class="grid">
+        <div class="card">
+          <h3>GPS tracked delivery</h3>
+          <p>Know exactly where your leaflets are delivered.</p>
+        </div>
+
+        <div class="card">
+          <h3>Postcode targeting</h3>
+          <p>Focus on areas like Shoreditch and Dalston.</p>
+        </div>
+
+        <div class="card">
+          <h3>Print & design</h3>
+          <p>Everything handled in one place.</p>
+        </div>
+
+        <div class="card">
+          <h3>Built for leads</h3>
+          <p>Designed to generate real enquiries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Areas we cover in Hackney</h2>
+    </div>
+
+    <div class="light-card">
+      <div class="area-list">
+        <div class="area">Shoreditch</div>
+        <div class="area">Dalston</div>
+        <div class="area">Hackney Central</div>
+        <div class="area">Homerton</div>
+        <div class="area">Clapton</div>
+        <div class="area">London Fields</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="seo-box">
+      <h2>Leaflet distribution Hackney</h2>
+      <p>
+        Our Hackney leaflet distribution service covers key local areas and helps businesses run targeted campaigns with GPS tracked delivery.
+      </p>
+
+      <p>
+        We also cover 
+        <a href="/leaflet-distribution-islington.html">Islington</a>, 
+        <a href="/leaflet-distribution-camden.html">Camden</a> and 
+        <a href="/leaflet-distribution-london.html">London-wide campaigns</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta">
+      <h2>Ready to launch your Hackney campaign?</h2>
+      <p>Use our quote system to get started today.</p>
+
+      <div class="hero-actions">
+        <a href="/index.html#calculator" class="btn btn-gold">Build Your Quote</a>
+        <a href="https://leafletpro-website-1.onrender.com/login.html" class="btn btn-dark">Dashboard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
