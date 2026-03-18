@@ -10,25 +10,20 @@
   --shadow: 0 24px 60px rgba(7, 20, 44, 0.18);
   --radius: 20px;
 }
-.brand {
-  display: flex;
-  align-items: center;
+.brand{
+  display:flex;
+  align-items:center;
 }
 
-.brand img {
-  height: 56px;
-  width: auto;
-  display: block;
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
 }
 
-@media (max-width: 768px) {
-  .brand img {
-    height: 44px;
-  }
-}
-@media (max-width: 768px) {
-  .brand img {
-    height: 32px;
+@media (max-width: 768px){
+  .brand img{
+    height:36px;
   }
 }
 * {
