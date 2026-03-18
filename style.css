@@ -112,7 +112,7 @@ textarea {
 }
 
 .hero {
-  padding: 28px 0 48px;
+  padding: 110px 0 48px;
   background: #0b1228;
 }
 
@@ -817,5 +817,10 @@ section[id] {
   .hero-actions .btn{
     width:100%;
     max-width:560px;
+  }
+}
+@media (max-width: 768px){
+  .hero {
+    padding: 125px 0 48px;
   }
 }
