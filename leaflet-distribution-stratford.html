@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaflet Distribution Stratford | LeafletPro UK</title>
+  <meta name="description" content="Professional leaflet distribution in Stratford with GPS tracked delivery, postcode targeting, print and design support. Covering Stratford, Maryland, West Ham and nearby areas." />
+
+  <style>
+    :root{
+      --bg:#07122f;
+      --bg-2:#0c1b45;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --white:#ffffff;
+      --gold:#d7a645;
+      --line:rgba(255,255,255,0.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+      color:var(--white);
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      width:min(1100px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(7,18,47,0.82);
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+    }
+
+    .brand{
+      font-size:24px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      font-size:15px;
+    }
+
+    .nav a:hover{
+      color:var(--gold);
+    }
+
+    .hero{
+      padding:100px 0 50px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    .hero h1{
+      margin:0 0 18px;
+      font-size:clamp(38px, 6vw, 64px);
+      line-height:1;
+      max-width:850px;
+    }
+
+    .hero p{
+      margin:0 0 20px;
+      font-size:20px;
+      color:rgba(255,255,255,0.82);
+      max-width:820px;
+      line-height:1.65;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 22px;
+      border-radius:18px;
+      font-weight:800;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .btn-gold{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .btn-dark{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:#fff;
+    }
+
+    .section{
+      padding:34px 0;
+    }
+
+    .section-heading h2{
+      font-size:40px;
+      margin:0 0 10px;
+    }
+
+    .section-heading p{
+      color:rgba(255,255,255,0.75);
+      line-height:1.7;
+      max-width:850px;
+      margin:0;
+    }
+
+    .light-card{
+      background:#fff;
+      color:#111;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.18);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      padding:20px;
+      border:1px solid #eceef4;
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      color:#111827;
+    }
+
+    .card p{
+      margin:0;
+      color:#6b7280;
+      line-height:1.7;
+    }
+
+    .area-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .area{
+      background:#fff;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid #eceef4;
+      font-weight:700;
+      color:#111827;
+    }
+
+    .seo-box{
+      background:#fff;
+      color:#111;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .seo-box h2{
+      margin:0 0 12px;
+    }
+
+    .seo-box p{
+      color:#4b5563;
+      line-height:1.7;
+    }
+
+    .seo-box a{
+      color:#0c1b45;
+      font-weight:700;
+      text-decoration:underline;
+    }
+
+    .cta{
+      background:linear-gradient(135deg,#fff 0%, #f7efe0 100%);
+      color:#111;
+      padding:28px;
+      border-radius:28px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.18);
+    }
+
+    .cta h2{
+      margin:0 0 10px;
+    }
+
+    .cta p{
+      color:#6b7280;
+      line-height:1.7;
+      max-width:760px;
+    }
+
+    @media (max-width: 900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .area-list{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        display:none;
+      }
+
+      .hero{
+        padding:120px 0 40px;
+      }
+
+      .hero h1{
+        font-size:44px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+        max-width:520px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">LeafletPro UK</div>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/leaflet-distribution-london.html">London</a>
+      <a href="/leaflet-distribution-east-london.html">East London</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Leaflet Distribution Stratford</span>
+
+    <h1>Leaflet Distribution in Stratford That Delivers Real Local Results</h1>
+
+    <p>
+      LeafletPro UK provides professional leaflet distribution in Stratford with GPS tracked delivery, postcode targeting and full campaign support for businesses that want stronger local visibility.
+    </p>
+
+    <p>
+      Covering Stratford, Maryland, West Ham and nearby areas, we help businesses reach the right households with a more organised and professional campaign setup.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/index.html#calculator" class="btn btn-gold">Get Your Quote</a>
+      <a href="https://leafletpro-website-1.onrender.com/login.html" class="btn btn-dark">Open Dashboard</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Why leaflet distribution works in Stratford</h2>
+      <p>
+        Stratford has strong residential density, major regeneration zones and busy local commerce, making it one of the strongest East London areas for targeted leaflet campaigns.
+      </p>
+    </div>
+
+    <div class="light-card">
+      <div class="grid">
+        <div class="card">
+          <h3>GPS tracked delivery</h3>
+          <p>Run your campaign with better accountability and delivery confidence.</p>
+        </div>
+
+        <div class="card">
+          <h3>Targeted postcode campaigns</h3>
+          <p>Focus on Stratford areas that best match your audience and service area.</p>
+        </div>
+
+        <div class="card">
+          <h3>Print & design support</h3>
+          <p>Keep everything under one roof with joined-up design, print and delivery support.</p>
+        </div>
+
+        <div class="card">
+          <h3>Built for enquiries</h3>
+          <p>We structure campaigns to support real local growth, not just basic leaflet drops.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Areas we cover in Stratford</h2>
+      <p>
+        We support leaflet distribution campaigns across Stratford and surrounding East London locations.
+      </p>
+    </div>
+
+    <div class="light-card">
+      <div class="area-list">
+        <div class="area">Stratford</div>
+        <div class="area">Maryland</div>
+        <div class="area">West Ham</div>
+        <div class="area">Plaistow</div>
+        <div class="area">Leyton</div>
+        <div class="area">Forest Gate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="seo-box">
+      <h2>Leaflet distribution Stratford</h2>
+      <p>
+        Our Stratford leaflet distribution service helps businesses run targeted campaigns across key local areas with GPS tracked delivery and stronger local visibility.
+      </p>
+
+      <p>
+        We also cover
+        <a href="/leaflet-distribution-east-london.html">East London</a>,
+        <a href="/leaflet-distribution-hackney.html">Hackney</a>
+        and
+        <a href="/leaflet-distribution-london.html">London-wide campaigns</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta">
+      <h2>Ready to launch your Stratford campaign?</h2>
+      <p>
+        Use our quote system to price your campaign, choose your quantity and move into a more professional local growth campaign with LeafletPro UK.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/index.html#calculator" class="btn btn-gold">Build Your Quote</a>
+        <a href="https://leafletpro-website-1.onrender.com/login.html" class="btn btn-dark">Dashboard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
