@@ -13,24 +13,16 @@
 .brand{
   display:flex;
   align-items:center;
-}
-
-.brand img{
-  height:40px;
-  width:auto;
-  max-width:160px;
-  object-fit:contain;
-  object-position:left center;
-  display:block;
-}
-.brand{
-  max-width:160px;
-  overflow:hidden;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:.02em;
+  color:var(--white);
+  white-space:nowrap;
 }
 
 @media (max-width: 768px){
-  .brand img{
-    height:36px;
+  .brand{
+    font-size:20px;
   }
 }
 * {
