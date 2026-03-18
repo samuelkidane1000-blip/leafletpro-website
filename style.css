@@ -767,3 +767,16 @@ textarea {
 .footer-contact-item a:hover{
   color:#ffffff;
 }
+.seo-location {
+  padding: 60px 20px;
+  background: #f5f7fb;
+}
+
+.seo-location h2 {
+  margin-bottom: 15px;
+}
+
+.seo-location p {
+  max-width: 800px;
+  line-height: 1.6;
+}
