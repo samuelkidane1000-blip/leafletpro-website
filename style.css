@@ -16,11 +16,16 @@
 }
 
 .brand img{
-  height:42px;
-  max-width:140px;
+  height:40px;
   width:auto;
+  max-width:160px;
   object-fit:contain;
+  object-position:left center;
   display:block;
+}
+.brand{
+  max-width:160px;
+  overflow:hidden;
 }
 
 @media (max-width: 768px){
