@@ -792,3 +792,13 @@ textarea {
   line-height: 1.7;
   color: #4b5563;
 }
+section[id] {
+  scroll-margin-top: 110px;
+}
+
+.hero,
+.section,
+.lead-calc,
+.seo-location {
+  scroll-margin-top: 110px;
+}
