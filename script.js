@@ -1,11 +1,4 @@
-const stripe = typeof Stripe !== "undefined"
-  ? Stripe("pk_test_51TAQkyPVjya8Qe1Zl1dMPsqC6vPozcMxb72Z2ccthCkZhTZWpvvM9p57k0WJs1TDtkDwYXFMcmqDsS4DBzOFPkBz00W5cpabW3")
-  : null;
-
 const BACKEND_URL = "https://leafletpro-backend.onrender.com";
-
-let map = null;
-let marker = null;
 
 function money(value) {
   return `£${Number(value || 0).toFixed(2)}`;
@@ -59,7 +52,10 @@ function getDistributionPrice(quantity, type) {
 }
 
 function getFormData() {
-  const form = document.getElementById("quoteForm");
+  const form =
+    document.getElementById("quoteForm") ||
+    document.getElementById("contactForm");
+
   if (!form) return null;
 
   const fd = new FormData(form);
@@ -67,22 +63,25 @@ function getFormData() {
   return {
     quantity: Number(fd.get("quantity") || 1000),
     deliveryType: fd.get("deliveryType") || "shared",
-    postcode: fd.get("postcode") || ""
+    postcode: String(fd.get("postcode") || "").trim()
   };
 }
 
 function updateUI(quote) {
-  setText("distributionCost", money(quote.distributionCost));
-  setText("printCost", money(quote.printCost));
-  setText("trackingCost", money(quote.trackingCost));
-  setText("designCost", money(quote.designCost));
-  setText("setupCost", money(quote.setupCost));
-  setText("priorityCost", money(quote.priorityCost));
-  setText("subtotalCost", money(quote.subtotalCost));
-  setText("vatCost", money(quote.vatCost));
-  setText("totalCost", money(quote.totalCost));
+  setText("distributionCost", money(quote.distributionCost || 0));
+  setText("printCost", money(quote.printCost || 0));
+  setText("trackingCost", money(quote.trackingCost || 0));
+  setText("designCost", money(quote.designCost || 0));
+  setText("setupCost", money(quote.setupCost || 0));
+  setText("priorityCost", money(quote.priorityCost || 0));
+  setText("subtotalCost", money(quote.subtotalCost || 0));
+  setText("vatCost", money(quote.vatCost || 0));
+  setText("totalCost", money(quote.totalCost || 0));
   setText("estimatedHomes", quote.estimatedHomes || 0);
   setText("estimatedDays", quote.estimatedDays || "-");
+  setText("ratePerThousand", money(quote.ratePerThousand || 0));
+  setText("summaryZone", quote.zoneName || quote.summaryZone || "-");
+  setText("summaryInsight", quote.summaryInsight || "Up to 2,000 leaflets a day");
 }
 
 async function refreshQuote() {
@@ -90,16 +89,15 @@ async function refreshQuote() {
   if (!data) return;
 
   try {
-    setStatus("Calculating...");
+    setStatus("Calculating quote...");
 
     const res = await fetch(`${BACKEND_URL}/api/quote`, {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
 
-    let quote = await res.json();
-
+    const quote = await res.json();
     const custom = getDistributionPrice(data.quantity, data.deliveryType);
 
     if (custom > 0) {
@@ -112,19 +110,21 @@ async function refreshQuote() {
       quote.subtotalCost = custom;
       quote.vatCost = 0;
       quote.totalCost = custom;
+      quote.ratePerThousand = custom / (data.quantity / 1000);
     }
 
     updateUI(quote);
-    setStatus("Updated");
-
+    setStatus("Quote updated.");
   } catch (e) {
-    console.log(e);
-    setStatus("Error updating quote");
+    console.error(e);
+    setStatus("Error updating quote.");
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("quoteForm");
+  const form =
+    document.getElementById("quoteForm") ||
+    document.getElementById("contactForm");
 
   if (form) {
     form.addEventListener("change", refreshQuote);
