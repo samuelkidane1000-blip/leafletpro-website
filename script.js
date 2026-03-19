@@ -71,7 +71,31 @@ const saveOrderBtn = document.querySelector('.form-actions button:first-child');
 const checkoutBtn = document.querySelector('.form-actions button:last-child');
 
 const money = (value) => `£${Number(value || 0).toFixed(2)}`;
+function getDistributionPrice(quantity, type) {
+  let price = 0;
 
+  if (type === "solo") {
+    if (quantity == 10000) price = 598;
+    else if (quantity == 20000) price = 1198;
+    else if (quantity == 50000) price = 2986;
+    else if (quantity == 75000) price = 4446;
+    else if (quantity == 100000) price = 5996;
+    else if (quantity == 150000) price = 8990;
+    else if (quantity == 250000) price = 14500;
+  }
+
+  if (type === "shared") {
+    if (quantity == 10000) price = 590;
+    else if (quantity == 20000) price = 1185;
+    else if (quantity == 50000) price = 2960;
+    else if (quantity == 75000) price = 4420;
+    else if (quantity == 100000) price = 5950;
+    else if (quantity == 150000) price = 8900;
+    else if (quantity == 250000) price = 14350;
+  }
+
+  return price;
+}
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
