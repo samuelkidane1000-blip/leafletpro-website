@@ -136,7 +136,10 @@ async function refreshQuote() {
   }
 
   const quote = await response.json();
+  const quantity = Number(formData.get('quantity'));
+const deliveryType = formData.get('deliveryType');
 
+quote.distributionCost = getDistributionPrice(quantity, deliveryType);
   tText('distributionCost', money(quote.distributionCost));
 tText('printCost', money(quote.printCost));
 tText('designCost', money(quote.designCost));
