@@ -117,17 +117,17 @@
       padding:8px 0;
     }
 
-    .eyebrow{
-      display:inline-block;
+    .hero-logo-banner{
+      display:block;
       margin-bottom:18px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.08);
-      color:#dbe5ff;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+      max-width:100%;
+    }
+
+    .hero-logo-banner img{
+      display:block;
+      width:min(100%, 620px);
+      height:auto;
+      object-fit:contain;
     }
 
     .hero h1{
@@ -259,6 +259,23 @@
 
     .section{
       padding:34px 0;
+    }
+
+    .seo-location{
+      padding:18px 0 10px;
+    }
+
+    .seo-location h2{
+      margin:0 0 12px;
+      font-size:34px;
+      line-height:1.1;
+    }
+
+    .seo-location p{
+      margin:0;
+      color:rgba(255,255,255,0.82);
+      line-height:1.8;
+      font-size:17px;
     }
 
     .section-heading{
@@ -593,7 +610,8 @@
         font-size:44px;
       }
 
-      .section-heading h2{
+      .section-heading h2,
+      .seo-location h2{
         font-size:34px;
       }
 
@@ -648,6 +666,14 @@
       .quote-form-logo{
         max-width:120px;
       }
+
+      .hero-logo-banner{
+        margin-bottom:16px;
+      }
+
+      .hero-logo-banner img{
+        width:min(100%, 520px);
+      }
     }
   </style>
 </head>
@@ -655,7 +681,7 @@
   <header class="site-header">
     <div class="container header-row">
       <div class="brand">LeafletPro UK</div>
-       
+
       <nav class="nav" id="siteNav">
         <a href="#services">Services</a>
         <a href="#calculator">Quote</a>
@@ -663,7 +689,6 @@
         <a href="#coverage">Coverage</a>
         <a href="#reviews">Reviews</a>
         <a href="/leaflet-distribution-london.html">London</a>
-        <a href="https://leafletpro-website-1.onrender.com/login.html">Dashboard</a>
       </nav>
 
       <a href="#calculator" class="header-cta">Get Live Quote</a>
@@ -675,13 +700,15 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Tracked leaflet campaigns across London</span>
+        <div class="hero-logo-banner">
+          <img src="/images/leafletpro-uk-banner-logo.png" alt="LeafletPro UK - Tracked leaflet campaigns across London">
+        </div>
+
         <h1>Leaflet distribution that looks premium, books online and converts like a real sales machine.</h1>
         <p>High-trust local growth campaigns with instant quote pricing, postcode targeting, tracked distribution, print support, design support and a booking flow built to generate serious leads.</p>
 
         <div class="hero-actions">
           <a href="#calculator" class="btn btn-gold">Build Your Campaign Quote</a>
-          <a href="https://leafletpro-website-1.onrender.com/login.html" class="btn btn-dark">Open Dashboard</a>
         </div>
 
         <a href="/leaflet-distribution-london.html" class="btn btn-dark">London Coverage</a>
@@ -705,7 +732,7 @@
       <div class="hero-panel">
         <div class="panel-kicker">Premium campaign overview</div>
         <h3>Serious local growth needs a serious landing page.</h3>
-        <p>LeafletPro UK combines premium presentation with real campaign functionality: quote generation, postcode targeting, design support, printing options and a clean admin workflow.</p>
+        <p>LeafletPro UK combines premium presentation with real campaign functionality: quote generation, postcode targeting, design support and printing options for a cleaner lead-focused customer journey.</p>
 
         <div class="hero-stats">
           <div class="hero-stat">
@@ -816,7 +843,7 @@
           </div>
           <div class="feature">
             <h3>Instant online booking flow</h3>
-            <p>Let prospects calculate campaign pricing, save details and move into a more professional sales process.</p>
+            <p>Let prospects calculate campaign pricing and move into a more professional sales process.</p>
           </div>
         </div>
       </div>
@@ -834,7 +861,6 @@
         <div class="quote-single-wrap">
           <div class="quote-form-card full-width">
             <div class="quote-form-header">
-              
               <div>
                 <h3>Leaflet Distribution Quote</h3>
                 <p class="quote-form-subtext">Complete the form below and send us your campaign details.</p>
@@ -1093,11 +1119,10 @@
       <div class="cta-band">
         <div>
           <h3>Ready to turn this into a serious lead machine?</h3>
-          <p>Build the quote, save the campaign request, and manage incoming orders from your admin dashboard.</p>
+          <p>Build the quote and send your campaign request in a few simple steps.</p>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="#calculator" class="btn btn-gold">Start Your Quote</a>
-          <a href="/orders.html" class="btn btn-dark" style="color:#fff;">Open Dashboard</a>
         </div>
       </div>
     </div>
