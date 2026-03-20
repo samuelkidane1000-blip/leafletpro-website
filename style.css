@@ -935,3 +935,13 @@ section[id] {
   max-width: 900px;
   margin: 0 auto;
 }
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+@media (max-width:640px){
+  .brand img{
+    height:34px;
+  }
+}
