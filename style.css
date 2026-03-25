@@ -937,3 +937,14 @@ section[id],
     background: rgba(5, 15, 45, 0.55);
   }
 }
+@media (max-width: 768px){
+  .hero{
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(5,15,45,0.76) 0%,
+        rgba(5,15,45,0.60) 100%
+      ),
+      url('./34F881DE-CED0-4CAC-8452-A4E40DB639DC.png') center center / cover no-repeat;
+  }
+}
