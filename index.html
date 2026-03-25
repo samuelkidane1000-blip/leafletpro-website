@@ -138,12 +138,24 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
+      color:var(--white);
+      white-space:nowrap;
+      min-width:0;
+    }
+
+    .brand img{
+      height:38px;
+      width:auto;
+      border-radius:8px;
+      flex-shrink:0;
+    }
+
+    .brand span{
       font-size:22px;
       font-weight:800;
       letter-spacing:.02em;
-      color:var(--white);
-      white-space:nowrap;
+      line-height:1;
     }
 
     .nav{
@@ -207,6 +219,17 @@
       font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
+    }
+
+    .hero-logo{
+      margin-bottom:18px;
+    }
+
+    .hero-logo img{
+      width:min(100%, 520px);
+      height:auto;
+      border-radius:16px;
+      box-shadow:0 16px 36px rgba(0,0,0,0.18);
     }
 
     .hero h1{
@@ -780,7 +803,8 @@
     @media (max-width: 768px){
       .container{width:calc(100% - 24px)}
       .header-row{min-height:68px}
-      .brand{font-size:19px}
+      .brand img{height:32px}
+      .brand span{font-size:18px}
 
       .hero{
         padding:34px 0 28px;
@@ -845,7 +869,6 @@
     }
 
     @media (max-width: 640px){
-      .brand{font-size:18px}
       .hero h1{font-size:34px}
       .quote-form-header h3{font-size:24px}
       .quote-section-title{font-size:20px}
@@ -860,7 +883,10 @@
 <body>
   <header class="site-header">
     <div class="container header-row">
-      <div class="brand">LeafletPro UK</div>
+      <a href="/" class="brand" aria-label="LeafletPro UK home">
+        <img src="IMG_3897.jpeg" alt="LeafletPro UK logo" />
+        <span>LeafletPro UK</span>
+      </a>
 
       <nav class="nav" id="siteNav">
         <a href="#services">Services</a>
@@ -881,7 +907,13 @@
     <div class="container hero-grid">
       <div class="hero-copy">
         <div class="eyebrow">GPS tracked leaflet distribution in London</div>
+
+        <div class="hero-logo">
+          <img src="IMG_3897.jpeg" alt="LeafletPro UK tracked leaflet campaigns across London" />
+        </div>
+
         <h1>Leaflet distribution in London that’s tracked, trusted, and built to generate enquiries.</h1>
+
         <p>
           Reach the right homes with postcode-targeted delivery, GPS-tracked routes, and optional design and print support — all managed by one professional team.
         </p>
@@ -901,7 +933,7 @@
 
       <div class="hero-visual">
         <div class="hero-main-image">
-          <img src="team-london.jpg" alt="LeafletPro UK distribution team in London" />
+          <img src="BD42A6C9-8D25-48A2-9B03-A82C3F99DDAD.png" alt="LeafletPro UK distribution team in London" />
         </div>
 
         <div class="hero-float-card">
@@ -967,16 +999,16 @@
       <div class="gallery-grid">
         <div class="gallery-main">
           <div class="gallery-card">
-            <img src="delivery-door.jpg" alt="Leaflet being delivered through a front door by LeafletPro UK staff" />
+            <img src="E677686A-FB68-454D-BE6C-5404E4447257.png" alt="LeafletPro UK team member delivering a leaflet through a front door" />
           </div>
         </div>
 
         <div class="gallery-stack">
           <div class="gallery-card">
-            <img src="walk-street.jpg" alt="LeafletPro UK team walking through a London street ready for distribution" />
+            <img src="34F881DE-CED0-4CAC-8452-A4E40DB639DC.png" alt="LeafletPro UK team walking on a London street ready for leaflet distribution" />
           </div>
           <div class="gallery-card">
-            <img src="delivery-closeup.jpg" alt="Close-up of leaflets being delivered through a letterbox" />
+            <img src="IMG_4158.jpeg" alt="Close-up of leaflets being delivered through a letterbox" />
           </div>
         </div>
       </div>
