@@ -935,4 +935,12 @@
   margin-top: 40px;
   padding-bottom: 120px;
 }
+body {
+  padding-bottom: 120px;
+}
+
+.site-footer {
+  margin-top: 50px;
+  padding-bottom: 110px;
+}
 </style>
