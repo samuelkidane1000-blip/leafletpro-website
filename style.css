@@ -902,3 +902,38 @@ section[id],
     padding: 28px 14px;
   }
 }
+/* HERO BACKGROUND */
+.hero {
+  position: relative;
+  background: url('/images/hero.jpg') right center / cover no-repeat;
+}
+
+/* DARK OVERLAY */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(5, 15, 45, 0.85) 0%,
+    rgba(5, 15, 45, 0.75) 40%,
+    rgba(5, 15, 45, 0.55) 100%
+  );
+}
+
+/* TEXT ABOVE */
+.hero * {
+  position: relative;
+  z-index: 1;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .hero {
+    background-position: center;
+  }
+
+  .hero::before {
+    background: rgba(5, 15, 45, 0.55);
+  }
+}
