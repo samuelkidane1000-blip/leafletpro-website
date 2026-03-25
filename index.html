@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEY2YY3PR0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XEY2YY3PR0');
+  </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XEY2YY3PR0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XEY2YY3PR0');
-</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LeafletPro UK | Premium Leaflet Distribution in London</title>
+  <title>LeafletPro UK | GPS Tracked Leaflet Distribution in London</title>
   <meta
     name="description"
-    content="Premium leaflet distribution, GPS tracked delivery, design and printing across London. Get a quote today with LeafletPro UK."
+    content="GPS tracked leaflet distribution across London from £55 per 1,000. Design, print and delivery handled end-to-end by LeafletPro UK."
   />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -65,13 +60,11 @@
       margin:0 auto;
     }
 
-    .section{
-      padding:72px 0;
-    }
+    .section{padding:72px 0}
 
     .section-heading{
-      margin-bottom:28px;
       text-align:center;
+      margin-bottom:28px;
     }
 
     .section-heading h2{
@@ -104,9 +97,7 @@
       text-align:center;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-    }
+    .btn:hover{transform:translateY(-1px)}
 
     .btn-gold{
       background:var(--gold);
@@ -120,12 +111,18 @@
       border:1px solid rgba(255,255,255,0.12);
     }
 
+    .btn-outline-dark{
+      background:#fff;
+      color:#111827;
+      border:1px solid #dde3ee;
+    }
+
     .site-header{
       position:sticky;
       top:0;
       z-index:9999;
       backdrop-filter:blur(12px);
-      background:rgba(7,18,47,0.82);
+      background:rgba(7,18,47,0.84);
       border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
@@ -157,9 +154,7 @@
       font-size:15px;
     }
 
-    .nav a:hover{
-      color:var(--gold);
-    }
+    .nav a:hover{color:var(--gold)}
 
     .header-cta{
       display:inline-flex;
@@ -191,29 +186,14 @@
     }
 
     .hero{
-      padding:56px 0 44px;
+      padding:56px 0 48px;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.08fr 0.92fr;
-      gap:24px;
-      align-items:stretch;
-    }
-
-    .hero-copy{
-      padding:8px 0;
-    }
-
-    .hero-logo-banner{
-      margin-bottom:18px;
-      max-width:100%;
-    }
-
-    .hero-logo-banner img{
-      width:min(100%, 520px);
-      height:auto;
-      object-fit:contain;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:28px;
+      align-items:center;
     }
 
     .eyebrow{
@@ -231,7 +211,7 @@
 
     .hero h1{
       margin:0 0 16px;
-      font-size:clamp(34px, 5.2vw, 68px);
+      font-size:clamp(36px, 5.2vw, 68px);
       line-height:1;
       letter-spacing:-.04em;
       max-width:760px;
@@ -249,125 +229,98 @@
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-bottom:22px;
+      margin-bottom:24px;
     }
 
-    .trust-row{
+    .hero-bullets{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
       margin-top:10px;
     }
 
-    .trust-card{
-      padding:18px;
-      border-radius:20px;
+    .hero-bullet{
+      padding:16px 18px;
+      border-radius:18px;
       background:rgba(255,255,255,0.06);
       border:1px solid rgba(255,255,255,0.08);
+      color:rgba(255,255,255,0.88);
+      font-size:15px;
+      line-height:1.5;
+      font-weight:700;
     }
 
-    .trust-card strong{
+    .hero-visual{
+      position:relative;
+    }
+
+    .hero-main-image{
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow-lg);
+      border:1px solid rgba(255,255,255,0.08);
+      background:#fff;
+    }
+
+    .hero-main-image img{
+      width:100%;
+      height:100%;
+      min-height:540px;
+      object-fit:cover;
+    }
+
+    .hero-float-card{
+      position:absolute;
+      left:-18px;
+      bottom:18px;
+      max-width:260px;
+      background:#fff;
+      color:var(--text);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      border:1px solid #e9ecf4;
+    }
+
+    .hero-float-card strong{
       display:block;
+      font-size:19px;
       margin-bottom:8px;
-      font-size:17px;
-      line-height:1.25;
+      line-height:1.15;
     }
 
-    .trust-card span{
-      color:rgba(255,255,255,0.74);
+    .hero-float-card span{
+      display:block;
+      color:#667085;
       font-size:14px;
       line-height:1.55;
     }
 
-    .hero-panel{
-      background:linear-gradient(180deg,#fbfbfc 0%, #f2f4f8 100%);
-      color:var(--text);
-      border-radius:30px;
-      padding:26px;
-      box-shadow:var(--shadow-lg);
-      border:1px solid #eceff5;
-    }
-
-    .panel-kicker{
-      font-size:12px;
-      font-weight:800;
-      color:#6b7280;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:10px;
-    }
-
-    .hero-panel h3{
-      margin:0 0 12px;
-      font-size:28px;
-      line-height:1.12;
-    }
-
-    .hero-panel p{
-      margin:0 0 16px;
-      color:#475467;
-      font-size:15px;
-      line-height:1.7;
-    }
-
-    .hero-stats{
+    .stats-band{
+      margin-top:26px;
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-      margin-top:18px;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
     }
 
-    .hero-stat{
-      border-radius:18px;
-      background:#fff;
-      padding:16px;
-      border:1px solid #e9ecf4;
+    .stat-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:20px;
     }
 
-    .hero-stat strong{
+    .stat-card strong{
       display:block;
-      font-size:24px;
-      margin-bottom:5px;
+      font-size:28px;
       line-height:1;
+      margin-bottom:6px;
     }
 
-    .hero-stat span{
-      color:#6b7280;
-      font-size:13px;
-      line-height:1.45;
-    }
-
-    .seo-location{
-      padding:18px 0 4px;
-    }
-
-    .seo-location h2{
-      margin:0 0 12px;
-      font-size:clamp(28px, 4vw, 40px);
-      line-height:1.08;
-    }
-
-    .seo-location p{
-      margin:0;
-      color:rgba(255,255,255,0.82);
-      line-height:1.75;
-      font-size:16px;
-    }
-
-    .areas-links{
-      margin-top:22px;
-      color:rgba(255,255,255,0.86);
-      line-height:2;
-      font-size:15px;
-    }
-
-    .areas-links a{
-      color:#fff;
-      opacity:.92;
-    }
-
-    .areas-links a:hover{
-      color:var(--gold);
+    .stat-card span{
+      color:rgba(255,255,255,0.75);
+      font-size:14px;
+      line-height:1.55;
     }
 
     .light-card{
@@ -379,17 +332,23 @@
       border:1px solid rgba(231,234,241,0.85);
     }
 
+    .trust-grid,
     .feature-grid,
     .process-grid,
-    .reviews-grid{
+    .reviews-grid,
+    .gallery-grid,
+    .why-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:16px;
     }
 
+    .trust-item,
     .feature,
     .step-card,
-    .review-card{
+    .review-card,
+    .faq-box,
+    .why-card{
       background:#fff;
       color:var(--text);
       border-radius:22px;
@@ -397,28 +356,90 @@
       border:1px solid #eceef4;
     }
 
+    .trust-item h3,
     .feature h3,
     .step-card h3,
-    .review-card h3{
+    .review-card h3,
+    .faq-box h3,
+    .why-card h3{
       margin:0 0 10px;
       font-size:21px;
       line-height:1.2;
     }
 
+    .trust-item p,
     .feature p,
     .step-card p,
-    .review-card p{
+    .review-card p,
+    .faq-box p,
+    .why-card p{
       margin:0;
       color:#6b7280;
       line-height:1.7;
       font-size:15px;
     }
 
-    .feature a{
-      display:inline-block;
-      margin-top:12px;
-      color:#9b6f16;
-      font-weight:700;
+    .gallery-grid{
+      grid-template-columns:1.15fr 0.85fr;
+      align-items:stretch;
+    }
+
+    .gallery-main,
+    .gallery-stack{
+      display:grid;
+      gap:16px;
+    }
+
+    .gallery-stack{
+      grid-template-rows:1fr 1fr;
+    }
+
+    .gallery-card{
+      overflow:hidden;
+      border-radius:24px;
+      background:#fff;
+      border:1px solid #e7ebf3;
+      min-height:280px;
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .quote-wrap{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:20px;
+      align-items:start;
+    }
+
+    .quote-side{
+      display:grid;
+      gap:16px;
+    }
+
+    .quote-mini{
+      background:#fff;
+      border:1px solid #eceef4;
+      border-radius:20px;
+      padding:20px;
+      color:#111827;
+    }
+
+    .quote-mini h3{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.2;
+    }
+
+    .quote-mini p{
+      margin:0;
+      color:#667085;
+      font-size:15px;
+      line-height:1.7;
     }
 
     .quote-form-card{
@@ -430,18 +451,14 @@
     }
 
     .quote-form-header{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      margin-bottom:22px;
+      margin-bottom:20px;
       padding-bottom:18px;
       border-bottom:1px solid #eceef4;
-      flex-wrap:wrap;
     }
 
     .quote-form-header h3{
-      margin:0 0 6px;
-      font-size:26px;
+      margin:0 0 8px;
+      font-size:28px;
       color:#111827;
       line-height:1.15;
     }
@@ -507,6 +524,13 @@
       flex-wrap:wrap;
       gap:12px;
       margin-top:18px;
+    }
+
+    .privacy-note{
+      margin-top:16px;
+      font-size:13px;
+      line-height:1.7;
+      color:#667085;
     }
 
     .status-message{
@@ -579,7 +603,6 @@
     }
 
     .cta-band{
-      margin-top:4px;
       border-radius:28px;
       padding:28px;
       background:linear-gradient(135deg,#fff 0%, #f7efe0 100%);
@@ -611,17 +634,11 @@
       gap:16px;
     }
 
-    .faq-card h3{
-      margin:0 0 8px;
-      color:#111827;
-      font-size:20px;
-    }
-
-    .faq-card p{
-      margin:0 0 18px;
-      color:#6b7280;
-      line-height:1.75;
-      font-size:15px;
+    .feature a{
+      display:inline-block;
+      margin-top:12px;
+      color:#9b6f16;
+      font-weight:700;
     }
 
     .learn-more{
@@ -639,9 +656,7 @@
       line-height:2;
     }
 
-    .learn-more a:hover{
-      color:var(--gold);
-    }
+    .learn-more a:hover{color:var(--gold)}
 
     .site-footer{
       padding:28px 0 50px;
@@ -689,29 +704,44 @@
       word-break:break-word;
     }
 
-    #google-reviews .btn{
-      white-space:nowrap;
+    .sticky-call{
+      position:fixed;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      z-index:9998;
+      display:none;
+      background:var(--gold);
+      color:#111;
+      padding:15px 18px;
+      border-radius:16px;
+      font-weight:800;
+      text-align:center;
+      box-shadow:0 16px 40px rgba(0,0,0,0.28);
     }
 
     @media (max-width: 1100px){
-      .links-grid{
-        grid-template-columns:repeat(3,1fr);
-      }
+      .links-grid{grid-template-columns:repeat(3,1fr)}
+      .stats-band{grid-template-columns:repeat(2,1fr)}
     }
 
     @media (max-width: 980px){
       .hero-grid,
+      .gallery-grid,
+      .quote-wrap,
       .coverage-grid,
+      .trust-grid,
       .feature-grid,
       .process-grid,
       .reviews-grid,
-      .trust-row,
+      .why-grid,
       .footer-contact-grid{
         grid-template-columns:1fr;
       }
 
       .field-grid,
-      .links-grid{
+      .links-grid,
+      .hero-bullets{
         grid-template-columns:1fr;
       }
 
@@ -719,13 +749,7 @@
         padding-top:42px;
       }
 
-      .hero-stats{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .menu-toggle{
-        display:inline-flex;
-      }
+      .menu-toggle{display:inline-flex}
 
       .nav{
         display:none;
@@ -743,31 +767,20 @@
         z-index:10001;
       }
 
-      .nav.open{
-        display:flex;
-      }
-
-      .header-cta{
-        display:none;
-      }
-
-      .section{
-        padding:60px 0;
+      .nav.open{display:flex}
+      .header-cta{display:none}
+      .section{padding:60px 0}
+      .hero-float-card{
+        position:static;
+        max-width:none;
+        margin-top:16px;
       }
     }
 
     @media (max-width: 768px){
-      .container{
-        width:calc(100% - 24px);
-      }
-
-      .header-row{
-        min-height:68px;
-      }
-
-      .brand{
-        font-size:19px;
-      }
+      .container{width:calc(100% - 24px)}
+      .header-row{min-height:68px}
+      .brand{font-size:19px}
 
       .hero{
         padding:34px 0 28px;
@@ -788,104 +801,59 @@
         align-items:stretch;
       }
 
-      .hero-actions .btn,
-      .hero-copy > .btn-dark{
-        width:100%;
+      .hero-actions .btn{width:100%}
+
+      .hero-main-image img{
+        min-height:360px;
       }
 
-      .section-heading{
-        margin-bottom:22px;
-      }
-
-      .section-heading h2{
-        font-size:31px;
-      }
-
-      .section-heading p{
-        font-size:15px;
-      }
+      .section-heading{margin-bottom:22px}
+      .section-heading h2{font-size:31px}
+      .section-heading p{font-size:15px}
 
       .light-card,
-      .hero-panel,
       .quote-form-card,
       .feature,
       .step-card,
       .review-card,
-      .footer-card{
+      .footer-card,
+      .why-card,
+      .trust-item,
+      .faq-box{
         border-radius:20px;
       }
 
       .light-card,
-      .hero-panel,
       .quote-form-card{
         padding:20px;
       }
 
       .feature,
       .step-card,
-      .review-card{
+      .review-card,
+      .why-card,
+      .trust-item,
+      .faq-box{
         padding:18px;
       }
 
-      .hero-stats{
-        grid-template-columns:1fr;
-      }
-
-      .cta-band{
-        padding:22px;
-      }
-
-      .cta-band h3{
-        font-size:26px;
-      }
-
-      #map{
-        height:320px;
-      }
-
-      .seo-location{
-        padding:10px 0 0;
-      }
+      .stats-band{grid-template-columns:1fr}
+      .cta-band{padding:22px}
+      .cta-band h3{font-size:26px}
+      #map{height:320px}
+      .sticky-call{display:block}
     }
 
     @media (max-width: 640px){
-      .brand{
-        font-size:18px;
-      }
-
-      .hero-logo-banner img{
-        width:min(100%, 420px);
-      }
-
-      .hero h1{
-        font-size:34px;
-      }
-
-      .hero-panel h3{
-        font-size:24px;
-      }
-
-      .quote-form-header{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .quote-form-header h3{
-        font-size:23px;
-      }
-
-      .quote-section-title{
-        font-size:20px;
-      }
-
+      .brand{font-size:18px}
+      .hero h1{font-size:34px}
+      .quote-form-header h3{font-size:24px}
+      .quote-section-title{font-size:20px}
       .footer-row{
         flex-direction:column;
         align-items:flex-start;
       }
-
-      .btn{
-        width:100%;
-      }
+      .btn{width:100%}
     }
   </style>
 </head>
@@ -896,14 +864,14 @@
 
       <nav class="nav" id="siteNav">
         <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
         <a href="#calculator">Quote</a>
-        <a href="/design-printing.html">Design & Printing</a>
         <a href="#coverage">Coverage</a>
         <a href="#reviews">Reviews</a>
-        <a href="/leaflet-distribution-london.html">London</a>
+        <a href="/design-printing.html">Design & Printing</a>
       </nav>
 
-      <a href="#calculator" class="header-cta">Get Quote</a>
+      <a href="#calculator" class="header-cta">Get Pricing</a>
 
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">☰</button>
     </div>
@@ -912,104 +880,141 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow">Tracked leaflet distribution in London</div>
-
-        <div class="hero-logo-banner">
-          <img src="IMG_3897.jpeg" alt="LeafletPro UK" />
-        </div>
-
-        <h1>GPS tracked leaflet distribution across London from £55 per 1,000.</h1>
-
+        <div class="eyebrow">GPS tracked leaflet distribution in London</div>
+        <h1>Leaflet distribution in London that’s tracked, trusted, and built to generate enquiries.</h1>
         <p>
-          Professional door-to-door leaflet delivery with postcode targeting, design support and printing support — all in one clean, reliable service built to generate local enquiries.
+          Reach the right homes with postcode-targeted delivery, GPS-tracked routes, and optional design and print support — all managed by one professional team.
         </p>
 
         <div class="hero-actions">
-          <a href="#calculator" class="btn btn-gold">Get Your Quote</a>
-          <a href="/leaflet-distribution-london.html" class="btn btn-dark">View London Coverage</a>
+          <a href="#calculator" class="btn btn-gold">Get Pricing</a>
+          <a href="tel:02081035100" class="btn btn-dark">Call 020 8103 5100</a>
         </div>
 
-        <div class="trust-row">
-          <div class="trust-card">
-            <strong>GPS tracked delivery</strong>
-            <span>Reliable door-to-door campaigns with stronger trust and better visibility.</span>
-          </div>
-          <div class="trust-card">
-            <strong>Fast quote process</strong>
-            <span>Get campaign pricing quickly and move forward without friction.</span>
-          </div>
-          <div class="trust-card">
-            <strong>Design, print & deliver</strong>
-            <span>Everything in one place for a cleaner and more professional service.</span>
-          </div>
+        <div class="hero-bullets">
+          <div class="hero-bullet">GPS-tracked delivery with postcode targeting</div>
+          <div class="hero-bullet">From £55 per 1,000 leaflets</div>
+          <div class="hero-bullet">Design, print and distribution handled end-to-end</div>
+          <div class="hero-bullet">Fast turnaround across London boroughs</div>
         </div>
       </div>
 
-      <div class="hero-panel">
-        <div class="panel-kicker">Campaign overview</div>
-        <h3>A professional service built for real local growth.</h3>
-        <p>
-          LeafletPro UK combines premium presentation with real campaign functionality: quote requests, postcode targeting, GPS tracked delivery, design support and printing options.
-        </p>
-
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <strong>GPS</strong>
-            <span>Tracked leaflet distribution across London</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Fast</strong>
-            <span>Quick quote requests and easy booking flow</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Print</strong>
-            <span>Leaflet printing support for full campaigns</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Design</strong>
-            <span>Creative help to get your campaign launch ready</span>
-          </div>
+      <div class="hero-visual">
+        <div class="hero-main-image">
+          <img src="team-london.jpg" alt="LeafletPro UK distribution team in London" />
         </div>
+
+        <div class="hero-float-card">
+          <strong>What happens next?</strong>
+          <span>Request pricing, confirm your area, launch your campaign, and receive delivery proof once the drop is complete.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container stats-band">
+      <div class="stat-card">
+        <strong>GPS</strong>
+        <span>Tracked routes for greater confidence and transparency</span>
+      </div>
+      <div class="stat-card">
+        <strong>Fast</strong>
+        <span>Quick quotes and campaign planning without delays</span>
+      </div>
+      <div class="stat-card">
+        <strong>London</strong>
+        <span>Coverage across key boroughs and target postcodes</span>
+      </div>
+      <div class="stat-card">
+        <strong>All-in-one</strong>
+        <span>Design, print and distribution from one supplier</span>
       </div>
     </div>
   </section>
 
-  <section class="seo-location">
+  <section id="why-us" class="section">
     <div class="container">
-      <h2>Leaflet Distribution Services Across London</h2>
-      <p>
-        We provide professional leaflet distribution across Central London, North London, South London, East London and West London. Our campaigns are GPS tracked and designed to help local businesses reach the right homes more effectively.
-      </p>
+      <div class="section-heading">
+        <h2>Why businesses choose LeafletPro UK</h2>
+        <p>Trust matters in leaflet distribution. Your site should show clear proof, a simple process, and a professional team people feel confident using.</p>
+      </div>
 
-      <div class="areas-links">
-        <strong>Areas we cover:</strong><br />
-        <a href="/leaflet-distribution-camden.html">Camden</a> |
-        <a href="/leaflet-distribution-islington.html">Islington</a> |
-        <a href="/leaflet-distribution-hackney.html">Hackney</a> |
-        <a href="/leaflet-distribution-croydon.html">Croydon</a> |
-        <a href="/leaflet-distribution-stratford.html">Stratford</a> |
-        <a href="/leaflet-distribution-canary-wharf.html">Canary Wharf</a> |
-        <a href="/leaflet-distribution-westminster.html">Westminster</a> |
-        <a href="/leaflet-distribution-chelsea.html">Chelsea</a> |
-        <a href="/leaflet-distribution-fulham.html">Fulham</a> |
-        <a href="/leaflet-distribution-kensington.html">Kensington</a> |
-        <a href="/leaflet-distribution-shoreditch.html">Shoreditch</a> |
-        <a href="/leaflet-distribution-clapham.html">Clapham</a> |
-        <a href="/leaflet-distribution-greenwich.html">Greenwich</a> |
-        <a href="/leaflet-distribution-brixton.html">Brixton</a> |
-        <a href="/leaflet-distribution-paddington.html">Paddington</a> |
-        <a href="/leaflet-distribution-kings-cross.html">King’s Cross</a> |
-        <a href="/leaflet-distribution-hammersmith.html">Hammersmith</a>
+      <div class="light-card">
+        <div class="why-grid">
+          <div class="why-card">
+            <h3>GPS tracked delivery</h3>
+            <p>Every campaign is built around visibility and accountability, so you have more confidence in where your leaflets were delivered.</p>
+          </div>
+          <div class="why-card">
+            <h3>Professional team</h3>
+            <p>Use a branded, organised distribution team that gives your business a more credible and established feel.</p>
+          </div>
+          <div class="why-card">
+            <h3>End-to-end service</h3>
+            <p>From design and print to delivery and reporting, everything is handled in one place for a smoother campaign experience.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="lead-calc section">
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Real images. Real delivery. Real trust.</h2>
+        <p>Your photos are strong trust assets, so they should work harder across the homepage.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-main">
+          <div class="gallery-card">
+            <img src="delivery-door.jpg" alt="Leaflet being delivered through a front door by LeafletPro UK staff" />
+          </div>
+        </div>
+
+        <div class="gallery-stack">
+          <div class="gallery-card">
+            <img src="walk-street.jpg" alt="LeafletPro UK team walking through a London street ready for distribution" />
+          </div>
+          <div class="gallery-card">
+            <img src="delivery-closeup.jpg" alt="Close-up of leaflets being delivered through a letterbox" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Everything you need to run a stronger local campaign</h2>
+        <p>LeafletPro UK helps you plan, print and deliver campaigns that look more professional and convert better.</p>
+      </div>
+
+      <div class="light-card">
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>Leaflet distribution</h3>
+            <p>Professional door-to-door distribution across London with a cleaner, more reliable campaign process.</p>
+          </div>
+          <div class="feature">
+            <h3>GPS tracking</h3>
+            <p>Tracked routes that improve transparency and give your business more confidence in campaign delivery.</p>
+          </div>
+          <div class="feature">
+            <h3>Design & printing</h3>
+            <p>Get design support and quality printing so your campaign is ready to launch from one supplier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="light-card">
         <p style="font-weight:700;color:#b98012;margin:0 0 10px;">Leaflet distribution from £55 per 1,000</p>
         <h2 style="margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.1;color:#111827;">Estimate the response from your campaign</h2>
-        <p style="margin:0 0 20px;color:#667085;line-height:1.7;">Use this simple calculator to estimate enquiries and customers from your leaflet campaign.</p>
+        <p style="margin:0 0 20px;color:#667085;line-height:1.7;">Use this calculator to estimate likely enquiries and customers from your leaflet drop.</p>
 
         <div class="field-grid">
           <label>
@@ -1040,155 +1045,138 @@
     </div>
   </section>
 
-  <section id="services" class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Everything you need to run a successful local campaign</h2>
-        <p>LeafletPro UK helps you plan, print and deliver professional campaigns across London.</p>
-      </div>
-
-      <div class="light-card">
-        <div class="feature-grid">
-          <div class="feature">
-            <h3>Leaflet Distribution</h3>
-            <p>Professional door-to-door delivery across London with a cleaner, more reliable campaign process.</p>
-          </div>
-          <div class="feature">
-            <h3>GPS Tracking</h3>
-            <p>Tracked routes that give you more confidence, more transparency and stronger trust.</p>
-          </div>
-          <div class="feature">
-            <h3>Design & Printing</h3>
-            <p>Get design support and high-quality printing so your campaign is ready to launch from one supplier.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="calculator" class="section">
     <div class="container">
       <div class="section-heading">
-        <h2>Request a leaflet distribution quote</h2>
-        <p>Tell us about your campaign and we’ll get back to you with pricing and delivery options.</p>
+        <h2>Get pricing for your leaflet campaign</h2>
+        <p>Tell us your area, quantity and delivery needs. We’ll come back to you with pricing and the best options for your campaign.</p>
       </div>
 
       <div class="light-card">
-        <div class="quote-form-card">
-          <div class="quote-form-header">
-            <div>
-              <h3>Leaflet Distribution Quote</h3>
-              <p class="quote-form-subtext">Complete the form below and send us your campaign details.</p>
+        <div class="quote-wrap">
+          <div class="quote-side">
+            <div class="quote-mini">
+              <h3>What you get</h3>
+              <p>Postcode targeting, GPS-tracked delivery, optional design and print support, and a smoother campaign process from start to finish.</p>
+            </div>
+
+            <div class="quote-mini">
+              <h3>What happens next</h3>
+              <p>We review your enquiry, recommend the best approach, confirm pricing, then help you launch your campaign quickly.</p>
+            </div>
+
+            <div class="quote-mini">
+              <h3>Prefer to talk now?</h3>
+              <p>Call us directly on <strong>020 8103 5100</strong> if you want to discuss areas, quantities or timing before filling in the form.</p>
             </div>
           </div>
 
-          <form id="contactForm" action="https://formspree.io/f/xojkkejz" method="POST">
-            <input type="hidden" name="_next" value="https://leafletprouk.com/thank-you.html" />
-
-            <div class="quote-section-title">Contact Information</div>
-
-            <div class="field-grid">
-              <label>
-                First Name *
-                <input name="first_name" type="text" placeholder="First Name" required />
-              </label>
-
-              <label>
-                Last Name
-                <input name="last_name" type="text" placeholder="Last Name" />
-              </label>
-
-              <label>
-                Contact Number *
-                <input name="phone" type="text" placeholder="Enter your contact number" required />
-              </label>
-
-              <label>
-                Your Email Address *
-                <input name="email" type="email" placeholder="Enter your email" required />
-              </label>
+          <div class="quote-form-card">
+            <div class="quote-form-header">
+              <h3>Request your quote</h3>
+              <p class="quote-form-subtext">Complete the form below and send us your campaign details.</p>
             </div>
 
-            <label style="margin-top:16px;">
-              Company / Organisation Name
-              <input name="company" type="text" placeholder="Enter your company or organisation name" />
-            </label>
+            <form id="contactForm" action="https://formspree.io/f/xojkkejz" method="POST">
+              <input type="hidden" name="_next" value="https://leafletprouk.com/thank-you.html" />
 
-            <label style="margin-top:16px;">
-              Street Address
-              <input name="street_address" type="text" placeholder="Street Address" />
-            </label>
+              <div class="quote-section-title">Contact information</div>
 
-            <div class="field-grid" style="margin-top:16px;">
-              <label>
-                Town / City
-                <input name="town_city" type="text" placeholder="Town / City" />
+              <div class="field-grid">
+                <label>
+                  First Name *
+                  <input name="first_name" type="text" placeholder="First Name" required />
+                </label>
+
+                <label>
+                  Last Name
+                  <input name="last_name" type="text" placeholder="Last Name" />
+                </label>
+
+                <label>
+                  Contact Number *
+                  <input name="phone" type="text" placeholder="Enter your contact number" required />
+                </label>
+
+                <label>
+                  Your Email Address *
+                  <input name="email" type="email" placeholder="Enter your email" required />
+                </label>
+              </div>
+
+              <label style="margin-top:16px;">
+                Company / Organisation Name
+                <input name="company" type="text" placeholder="Enter your company or organisation name" />
               </label>
 
-              <label>
-                Postcode *
-                <input name="postcode" type="text" placeholder="Postcode" required />
+              <div class="quote-section-title">Delivery details</div>
+              <p class="quote-helper-text">
+                If you don’t have every detail yet, leave non-required fields blank and we’ll help you work out the best campaign setup.
+              </p>
+
+              <div class="field-grid">
+                <label>
+                  Postcode *
+                  <input name="postcode" type="text" placeholder="Postcode" required />
+                </label>
+
+                <label>
+                  Campaign Start Date
+                  <input name="campaign_start_date" type="date" />
+                </label>
+
+                <label>
+                  Quantity to deliver
+                  <input name="quantity" type="number" placeholder="Enter quantity" />
+                </label>
+
+                <label>
+                  Size of item for delivery
+                  <select name="item_size">
+                    <option value="">Please Select...</option>
+                    <option value="Business Card">Business Card</option>
+                    <option value="1/3 A4">1/3 A4</option>
+                    <option value="A6">A6</option>
+                    <option value="A5">A5</option>
+                    <option value="A4">A4</option>
+                    <option value="A3">A3</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+
+                <label>
+                  Do you already have your material printed? *
+                  <select name="printed_already" required>
+                    <option value="">Please Select...</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </label>
+              </div>
+
+              <label style="margin-top:16px;">
+                Areas Required
+                <textarea name="areas_required" placeholder="Enter the areas you want distribution in"></textarea>
               </label>
-            </div>
 
-            <div class="quote-section-title">Delivery Information</div>
-            <p class="quote-helper-text">
-              If you don’t have every detail yet, leave any non-required fields blank and we’ll contact you to discuss your campaign properly.
-            </p>
-
-            <div class="field-grid">
-              <label>
-                Campaign Start Date
-                <input name="campaign_start_date" type="date" />
+              <label style="margin-top:16px;">
+                Message
+                <textarea name="message" placeholder="Tell us anything else about your campaign"></textarea>
               </label>
 
-              <label>
-                Size of item for delivery
-                <select name="item_size">
-                  <option value="">Please Select...</option>
-                  <option value="Business Card">Business Card</option>
-                  <option value="1/3 A4">1/3 A4</option>
-                  <option value="A6">A6</option>
-                  <option value="A5">A5</option>
-                  <option value="A4">A4</option>
-                  <option value="A3">A3</option>
-                  <option value="Other">Other</option>
-                </select>
-              </label>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-gold">Send Quote Request</button>
+              </div>
 
-              <label>
-                Quantity to deliver
-                <input name="quantity" type="number" placeholder="Enter quantity" />
-              </label>
+              <div class="privacy-note">
+                By submitting this form, you agree that we may contact you about your enquiry. See our Privacy Policy for more information.
+              </div>
 
-              <label>
-                Do you already have your material printed? *
-                <select name="printed_already" required>
-                  <option value="">Please Select...</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-              </label>
-            </div>
-
-            <label style="margin-top:16px;">
-              Areas Required
-              <textarea name="areas_required" placeholder="Enter the areas you want distribution in"></textarea>
-            </label>
-
-            <label style="margin-top:16px;">
-              Message
-              <textarea name="message" placeholder="Any additional information we should know"></textarea>
-            </label>
-
-            <div class="form-actions">
-              <button type="submit" class="btn btn-gold">Send Quote Request</button>
-            </div>
-
-            <div id="statusMessage" class="status-message">
-              Sending your enquiry...
-            </div>
-          </form>
+              <div id="statusMessage" class="status-message">
+                Sending your enquiry...
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -1198,25 +1186,25 @@
     <div class="container">
       <div class="section-heading">
         <h2>Simple campaign process</h2>
-        <p>A premium service feels more valuable when the next step is clear and easy.</p>
+        <p>People convert more easily when the process is clear.</p>
       </div>
 
       <div class="light-card">
         <div class="process-grid">
           <div class="step-card">
             <div class="step-number">1</div>
-            <h3>Request your quote</h3>
-            <p>Tell us about your campaign, your area and the volume you want to distribute.</p>
+            <h3>Request pricing</h3>
+            <p>Tell us about your campaign, target area and approximate quantity.</p>
           </div>
           <div class="step-card">
             <div class="step-number">2</div>
-            <h3>We review the details</h3>
-            <p>We check your delivery needs, printing requirements and location targeting.</p>
+            <h3>We plan your campaign</h3>
+            <p>We review your needs, recommend the best setup and confirm delivery options.</p>
           </div>
           <div class="step-card">
             <div class="step-number">3</div>
-            <h3>Launch your campaign</h3>
-            <p>Move into printing, distribution and reporting with a more organised process.</p>
+            <h3>Launch and deliver</h3>
+            <p>We print if needed, distribute your leaflets and complete the campaign professionally.</p>
           </div>
         </div>
       </div>
@@ -1227,68 +1215,42 @@
     <div class="container">
       <div class="section-heading">
         <h2>Built to create trust</h2>
-        <p>Strong presentation and client confidence matter when someone is deciding who to trust with their campaign.</p>
+        <p>These sections should feel believable, professional and grounded in how your service actually works.</p>
       </div>
 
       <div class="light-card">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <h3>Professional first impression</h3>
+            <p>Your branded team, clean process and stronger site presentation help you feel more legitimate than generic leaflet companies.</p>
+          </div>
+          <div class="trust-item">
+            <h3>Clearer buying journey</h3>
+            <p>Strong CTA placement, a simpler process and better information help reduce hesitation before people enquire.</p>
+          </div>
+          <div class="trust-item">
+            <h3>More conversion support</h3>
+            <p>Better trust signals, stronger visuals and clearer messaging make your offer easier to understand and act on.</p>
+          </div>
+        </div>
+
+        <div style="height:16px;"></div>
+
         <div class="reviews-grid">
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
             <h3>Professional from first contact</h3>
-            <p>Fast communication, clearer pricing and a stronger overall campaign experience than we expected.</p>
+            <p>Fast communication, clear pricing and a stronger overall campaign experience than we expected.</p>
           </div>
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
             <h3>Much more polished process</h3>
-            <p>The quote system and campaign flow made the whole service feel premium and easy to trust.</p>
+            <p>The quote flow and campaign setup made the whole service feel organised and easy to trust.</p>
           </div>
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
             <h3>Great for serious local growth</h3>
             <p>Ideal for businesses that want more than a basic leaflet drop and need a smarter presentation.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="google-reviews">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Trusted by London businesses</h2>
-        <p>Real trust signals help your site feel stronger and more established.</p>
-      </div>
-
-      <div class="light-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:24px;">
-          <div>
-            <div style="font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;">Google Reviews</div>
-            <h3 style="margin:8px 0 10px;font-size:34px;color:#111;line-height:1.1;">4.9 out of 5</h3>
-            <p style="margin:0;color:#6b7280;font-size:16px;">Based on verified local client feedback.</p>
-          </div>
-          <a href="#" class="btn btn-gold">View Google Reviews</a>
-        </div>
-
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <h3>Professional from start to finish</h3>
-            <p>Very smooth process and a much stronger campaign setup than we expected.</p>
-            <p style="margin-top:14px;font-weight:700;color:#111;">Daniel Morris</p>
-          </div>
-
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <h3>Excellent local coverage</h3>
-            <p>Clear pricing, great communication and a more premium service than most leaflet companies.</p>
-            <p style="margin-top:14px;font-weight:700;color:#111;">Sarah Patel</p>
-          </div>
-
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <h3>Strong results for our campaign</h3>
-            <p>The campaign helped us generate enquiries quickly and the process felt very organised.</p>
-            <p style="margin-top:14px;font-weight:700;color:#111;">James Cooper</p>
           </div>
         </div>
       </div>
@@ -1316,7 +1278,7 @@
             </div>
 
             <div style="margin-top:14px;color:#6b7280;font-size:15px;line-height:1.7;">
-              This helps show coverage visually and adds more confidence to the buying process.
+              This helps visitors visualise their area and adds confidence to the buying process.
             </div>
           </div>
 
@@ -1333,10 +1295,11 @@
       <div class="cta-band">
         <div>
           <h3>Ready to launch your next leaflet campaign?</h3>
-          <p>Request your quote today and let’s plan a campaign that reaches the right homes.</p>
+          <p>Request pricing today and let’s plan a campaign that reaches the right homes.</p>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="#calculator" class="btn btn-gold">Start Your Quote</a>
+          <a href="#calculator" class="btn btn-gold">Get Pricing</a>
+          <a href="tel:02081035100" class="btn btn-outline-dark">Call Now</a>
         </div>
       </div>
     </div>
@@ -1345,7 +1308,7 @@
   <section class="section">
     <div class="container">
       <div class="section-heading">
-        <h2>Leaflet Distribution Across London</h2>
+        <h2>Leaflet distribution across London</h2>
         <p>Explore our coverage pages and targeted leaflet delivery services across London.</p>
       </div>
 
@@ -1388,25 +1351,42 @@
   <section class="section">
     <div class="container">
       <div class="section-heading">
-        <h2>Leaflet Distribution London FAQs</h2>
+        <h2>Leaflet distribution London FAQs</h2>
         <p>Common questions about our leaflet delivery service across London.</p>
       </div>
 
-      <div class="light-card faq-card">
-        <h3>How does leaflet distribution work?</h3>
-        <p>We deliver your leaflets door-to-door using GPS tracked routes to give you better coverage visibility and more confidence.</p>
+      <div class="light-card">
+        <div class="why-grid">
+          <div class="faq-box">
+            <h3>How does leaflet distribution work?</h3>
+            <p>We deliver your leaflets door-to-door using GPS tracked routes to give you better coverage visibility and more confidence.</p>
+          </div>
 
-        <h3>What areas do you cover?</h3>
-        <p>We cover London-wide, including Camden, Islington, Hackney, Croydon, Stratford, Clapham and many more areas.</p>
+          <div class="faq-box">
+            <h3>What areas do you cover?</h3>
+            <p>We cover London-wide, including Camden, Islington, Hackney, Croydon, Stratford, Clapham and many more areas.</p>
+          </div>
 
-        <h3>How much does leaflet distribution cost?</h3>
-        <p>Prices start from £55 per 1,000 leaflets. Final pricing depends on quantity, area and campaign requirements.</p>
+          <div class="faq-box">
+            <h3>How much does leaflet distribution cost?</h3>
+            <p>Prices start from £55 per 1,000 leaflets. Final pricing depends on quantity, area and campaign requirements.</p>
+          </div>
 
-        <h3>Is leaflet distribution effective?</h3>
-        <p>Yes — when planned properly and targeted well, leaflet campaigns can generate strong local awareness and consistent enquiries.</p>
+          <div class="faq-box">
+            <h3>Is leaflet distribution effective?</h3>
+            <p>Yes — when targeted well and delivered properly, leaflet campaigns can generate strong local awareness and consistent enquiries.</p>
+          </div>
 
-        <h3>Do you provide GPS tracking?</h3>
-        <p>Yes — our campaigns include GPS tracking to help verify delivery coverage and improve trust.</p>
+          <div class="faq-box">
+            <h3>Do you provide GPS tracking?</h3>
+            <p>Yes — our campaigns include GPS tracking to help verify delivery coverage and improve trust.</p>
+          </div>
+
+          <div class="faq-box">
+            <h3>Can you handle print too?</h3>
+            <p>Yes — we can help with design and printing so your campaign is ready to launch without using multiple suppliers.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1443,6 +1423,8 @@
       </div>
     </div>
   </footer>
+
+  <a class="sticky-call" href="tel:02081035100">Call Now: 020 8103 5100</a>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
