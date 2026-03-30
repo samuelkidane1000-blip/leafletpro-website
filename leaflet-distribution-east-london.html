@@ -1,310 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leaflet Distribution East London | LeafletPro UK</title>
-  <meta name="description" content="Professional leaflet distribution across East London with GPS tracked delivery, postcode targeting and premium campaign support for local businesses." />
+
+  <meta name="description" content="Leaflet distribution in East London with GPS tracked delivery, postcode targeting and full campaign support.">
   <link rel="canonical" href="https://leafletprouk.com/leaflet-distribution-east-london.html" />
 
   <style>
-    :root{
-      --bg:#07122f;
-      --bg-2:#0c1b45;
-      --white:#ffffff;
-      --gold:#d7a645;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg,#07122f,#0c1b45);
+      color: white;
     }
 
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header {
+      padding: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header a{
       color:#fff;
-    }
-
-    .container{
-      width:min(1100px, calc(100% - 32px));
-      margin:auto;
-    }
-
-    .hero{
-      padding:100px 0 50px;
-    }
-
-    h1{
-      font-size:clamp(38px,6vw,64px);
-      margin-bottom:20px;
-      line-height:1;
-      max-width:900px;
-    }
-
-    h2{
-      line-height:1.2;
-    }
-
-    p{
-      font-size:20px;
-      color:rgba(255,255,255,0.85);
-      line-height:1.6;
-      max-width:840px;
-    }
-
-    .hero a.inline-link{
-      color:#fff;
-      text-decoration:underline;
-      font-weight:700;
-    }
-
-    .trust-points{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin:28px 0 10px;
-      max-width:520px;
-    }
-
-    .trust-point{
-      font-size:18px;
-      font-weight:700;
-    }
-
-    .btn{
-      padding:16px 22px;
-      border-radius:16px;
-      font-weight:800;
-      display:inline-block;
-      margin-top:20px;
       text-decoration:none;
     }
 
-    .btn-gold{
-      background:var(--gold);
-      color:#111;
+    h1 {
+      font-size: 40px;
+      margin-bottom: 15px;
     }
 
-    .btn-secondary{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.18);
+    h2 {
+      color: #111;
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.6;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .inline-link{
       color:#fff;
-      margin-left:12px;
-    }
-
-    .section{
-      padding:30px 0;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-    }
-
-    .card{
-      background:#fff;
-      color:#111;
-      padding:20px;
-      border-radius:18px;
-    }
-
-    .card h3{
-      margin-top:0;
-      margin-bottom:10px;
-      font-size:20px;
-    }
-
-    .card p{
-      color:#555;
-      font-size:16px;
-      line-height:1.6;
-      margin:0;
-    }
-
-    .area-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-    }
-
-    .area-box{
-      background:#fff;
-      color:#111;
-      padding:20px;
-      border-radius:18px;
-    }
-
-    .area-box h3{
-      margin-top:0;
-      margin-bottom:12px;
-      font-size:20px;
-    }
-
-    .area-box a{
-      display:block;
-      color:#0c1b45;
-      font-weight:700;
       text-decoration:underline;
-      margin-bottom:8px;
+      font-weight:700;
     }
 
-    .seo{
-      background:#fff;
-      color:#111;
-      padding:24px;
-      border-radius:18px;
+    .section {
+      padding: 40px 0;
     }
 
-    .seo p{
-      color:#444;
-      font-size:17px;
-      line-height:1.7;
+    .card {
+      background: white;
+      color: #111;
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 20px;
     }
 
-    .seo a{
+    .card p,
+    .card li {
+      color: #444;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .card a{
       color:#0c1b45;
       font-weight:700;
       text-decoration:underline;
     }
 
-    @media(max-width:900px){
-      .grid{
-        grid-template-columns:1fr;
-      }
+    ul {
+      padding-left: 22px;
+    }
 
-      .area-grid{
-        grid-template-columns:1fr;
-      }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-      .btn-secondary{
-        margin-left:0;
-        display:block;
-      }
-
-      h1{
-        font-size:44px;
-      }
+    .btn-gold {
+      background: #d9ab45;
+      color: black;
     }
   </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <div class="container">
+<header class="container">
+  <a href="/index.html">LeafletPro UK</a>
+</header>
 
-    <h1>Leaflet Distribution in East London That Generates Local Enquiries</h1>
+<section class="section container">
+  <h1>Leaflet Distribution East London</h1>
 
-    <p>
-      LeafletPro UK provides professional leaflet distribution across East London with GPS tracked delivery, postcode targeting and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
-    </p>
+  <p>
+    We provide professional leaflet distribution across East London including 
+    <a href="/leaflet-distribution-stratford.html" class="inline-link">Stratford</a>, 
+    <a href="/leaflet-distribution-hackney.html" class="inline-link">Hackney</a>, 
+    <a href="/leaflet-distribution-canary-wharf.html" class="inline-link">Canary Wharf</a> 
+    and surrounding areas.
+  </p>
 
-    <p>
-      Ideal for restaurants, gyms, clinics, estate agents, retail brands, trades and local service businesses targeting one of London’s busiest and fastest-growing regions.
-    </p>
+  <p>
+    Our campaigns are GPS tracked and designed to help businesses reach the right audience with targeted local delivery across wider <a href="/index.html" class="inline-link">London leaflet distribution</a>.
+  </p>
 
-    <div class="trust-points">
-      <div class="trust-point">✓ GPS tracked delivery</div>
-      <div class="trust-point">✓ Targeted postcode coverage</div>
-      <div class="trust-point">✓ Built for real local results</div>
-    </div>
-
-    <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
-    <a href="/leaflet-distribution-london.html" class="btn btn-secondary">View London Coverage</a>
-
-  </div>
+  <a href="/index.html#calculator" class="btn btn-gold">Get Your Quote</a>
 </section>
 
-<section class="section">
-  <div class="container">
-
-    <h2>Why leaflet distribution works in East London</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Strong residential density</h3>
-        <p>Reach busy local neighbourhoods with strong campaign potential.</p>
-      </div>
-
-      <div class="card">
-        <h3>Fast-growing local economy</h3>
-        <p>Ideal for businesses targeting households, professionals and local services.</p>
-      </div>
-
-      <div class="card">
-        <h3>Excellent postcode targeting</h3>
-        <p>Focus your campaign on the streets and districts that matter most.</p>
-      </div>
-
-      <div class="card">
-        <h3>Built for real enquiries</h3>
-        <p>Structured campaigns designed to generate response, not just deliver leaflets.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-
+<section class="section container">
+  <div class="card">
     <h2>East London areas we cover</h2>
 
-    <div class="area-grid">
-      <div class="area-box">
-        <h3>Core East London areas</h3>
-        <a href="/leaflet-distribution-hackney.html">Hackney</a>
-        <a href="/leaflet-distribution-stratford.html">Stratford</a>
-        <a href="/leaflet-distribution-shoreditch.html">Shoreditch</a>
-        <a href="/leaflet-distribution-canary-wharf.html">Canary Wharf</a>
-      </div>
+    <p>
+      Stratford, Hackney, Canary Wharf, Bow, Bethnal Green, Leyton, Ilford, Barking and surrounding areas.
+    </p>
 
-      <div class="area-box">
-        <h3>Additional coverage</h3>
-        <p>
-          We also support campaigns in Bow, Bethnal Green, Leyton, Ilford, Barking and nearby East London districts depending on your targeting needs.
-        </p>
-      </div>
-    </div>
-
+    <p>
+      We also support nearby borough campaigns and postcode-based targeting depending on your business and campaign goals.
+    </p>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
+<section class="section container">
+  <div class="card">
+    <h2>Why choose LeafletPro UK</h2>
 
-    <div class="seo">
-      <h2>Leaflet distribution East London</h2>
+    <ul>
+      <li>GPS tracked leaflet delivery</li>
+      <li>Targeted postcode campaigns</li>
+      <li>Design, print and distribution</li>
+      <li>Built for real business growth</li>
+    </ul>
 
-      <p>
-        Our East London leaflet distribution service helps businesses target key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
-      </p>
-
-      <p>
-        We also cover
-        <a href="/leaflet-distribution-hackney.html">Hackney</a>,
-        <a href="/leaflet-distribution-stratford.html">Stratford</a>,
-        <a href="/leaflet-distribution-shoreditch.html">Shoreditch</a>,
-        <a href="/leaflet-distribution-canary-wharf.html">Canary Wharf</a>
-        and wider <a href="/leaflet-distribution-london.html">London</a> campaigns.
-      </p>
-
-      <p>
-        You can also use our <a href="/index.html#calculator">homepage quote tool</a> to plan your campaign and choose the right coverage.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-
-    <h2>Start your campaign</h2>
-
-    <p>Build your quote and launch your East London campaign today.</p>
-
-    <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
-
+    <p>
+      You can also return to our <a href="/index.html">homepage</a> or use the <a href="/index.html#calculator">quote tool</a> to plan your campaign.
+    </p>
   </div>
 </section>
 
