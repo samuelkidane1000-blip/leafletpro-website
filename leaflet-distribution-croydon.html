@@ -2,100 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaflet Distribution Croydon | LeafletPro UK</title>
-  <meta name="description" content="Professional leaflet distribution in Croydon with GPS tracked delivery, postcode targeting, print and design support. Covering Central Croydon, South Croydon, Purley and nearby areas." />
+  <meta name="description" content="Professional leaflet distribution in Croydon with GPS tracked delivery, postcode targeting and premium leaflet campaigns for local businesses." />
   <link rel="canonical" href="https://leafletprouk.com/leaflet-distribution-croydon.html" />
 
   <style>
     :root{
       --bg:#07122f;
       --bg-2:#0c1b45;
-      --card:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
       --white:#ffffff;
       --gold:#d7a645;
-      --line:rgba(255,255,255,0.08);
     }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:Arial, sans-serif;
-      background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
-      color:var(--white);
-    }
-
-    a{text-decoration:none;color:inherit}
-
-    .container{
-      width:min(1100px, calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:9999;
-      backdrop-filter:blur(12px);
-      background:rgba(7,18,47,0.82);
-      border-bottom:1px solid var(--line);
-    }
-
-    .header-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      min-height:76px;
-    }
-
-    .brand{
-      font-size:24px;
-      font-weight:800;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
       color:#fff;
     }
 
-    .nav{
-      display:flex;
-      gap:18px;
-      font-size:15px;
-    }
-
-    .nav a:hover{
-      color:var(--gold);
+    .container{
+      width:min(1100px, calc(100% - 32px));
+      margin:auto;
     }
 
     .hero{
       padding:100px 0 50px;
     }
 
-    .eyebrow{
-      display:inline-block;
-      margin-bottom:18px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.08);
-      font-size:13px;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-
-    .hero h1{
-      margin:0 0 18px;
-      font-size:clamp(38px, 6vw, 64px);
+    h1{
+      font-size:clamp(38px,6vw,64px);
+      margin-bottom:20px;
       line-height:1;
       max-width:850px;
     }
 
-    .hero p{
-      margin:0 0 20px;
+    p{
       font-size:20px;
-      color:rgba(255,255,255,0.82);
+      color:rgba(255,255,255,0.85);
+      line-height:1.6;
       max-width:820px;
-      line-height:1.65;
     }
 
     .hero a.inline-link{
@@ -104,21 +51,26 @@
       font-weight:700;
     }
 
-    .hero-actions{
+    .trust-points{
       display:flex;
-      gap:14px;
-      margin-top:20px;
-      flex-wrap:wrap;
+      flex-direction:column;
+      gap:10px;
+      margin:28px 0 10px;
+      max-width:520px;
+    }
+
+    .trust-point{
+      font-size:18px;
+      font-weight:700;
     }
 
     .btn{
       padding:16px 22px;
-      border-radius:18px;
+      border-radius:16px;
       font-weight:800;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      display:inline-block;
+      margin-top:20px;
+      text-decoration:none;
     }
 
     .btn-gold{
@@ -126,34 +78,15 @@
       color:#111;
     }
 
-    .btn-dark{
+    .btn-secondary{
       background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.18);
       color:#fff;
+      margin-left:12px;
     }
 
     .section{
-      padding:34px 0;
-    }
-
-    .section-heading h2{
-      font-size:40px;
-      margin:0 0 10px;
-    }
-
-    .section-heading p{
-      color:rgba(255,255,255,0.75);
-      line-height:1.7;
-      max-width:850px;
-      margin:0;
-    }
-
-    .light-card{
-      background:#fff;
-      color:#111;
-      border-radius:28px;
-      padding:28px;
-      box-shadow:0 18px 48px rgba(0,0,0,0.18);
+      padding:30px 0;
     }
 
     .grid{
@@ -164,236 +97,152 @@
 
     .card{
       background:#fff;
-      border-radius:20px;
+      color:#111;
       padding:20px;
-      border:1px solid #eceef4;
-    }
-
-    .card h3{
-      margin:0 0 8px;
-      color:#111827;
+      border-radius:18px;
     }
 
     .card p{
-      margin:0;
-      color:#6b7280;
-      line-height:1.7;
-    }
-
-    .area-list{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
+      color:#555;
+      font-size:16px;
+      line-height:1.6;
     }
 
     .area{
       background:#fff;
+      color:#111;
       padding:14px;
-      border-radius:16px;
-      border:1px solid #eceef4;
+      border-radius:14px;
+      margin-bottom:10px;
       font-weight:700;
-      color:#111827;
     }
 
-    .seo-box{
+    .seo{
       background:#fff;
       color:#111;
-      border-radius:20px;
       padding:24px;
-      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+      border-radius:18px;
     }
 
-    .seo-box h2{
-      margin:0 0 12px;
-    }
-
-    .seo-box p{
-      color:#4b5563;
+    .seo p{
+      color:#444;
+      font-size:17px;
       line-height:1.7;
     }
 
-    .seo-box a{
+    .seo a{
       color:#0c1b45;
       font-weight:700;
       text-decoration:underline;
     }
 
-    .cta{
-      background:linear-gradient(135deg,#fff 0%, #f7efe0 100%);
-      color:#111;
-      padding:28px;
-      border-radius:28px;
-      box-shadow:0 18px 48px rgba(0,0,0,0.18);
-    }
-
-    .cta h2{
-      margin:0 0 10px;
-    }
-
-    .cta p{
-      color:#6b7280;
-      line-height:1.7;
-      max-width:760px;
-    }
-
-    @media (max-width: 900px){
+    @media(max-width:900px){
       .grid{
         grid-template-columns:1fr;
       }
 
-      .area-list{
-        grid-template-columns:1fr;
-      }
-
-      .nav{
-        display:none;
-      }
-
-      .hero{
-        padding:120px 0 40px;
-      }
-
-      .hero h1{
-        font-size:44px;
-      }
-
-      .hero-actions{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .hero-actions .btn{
-        width:100%;
-        max-width:520px;
+      .btn-secondary{
+        margin-left:0;
+        display:block;
       }
     }
   </style>
 </head>
-<body>
 
-<header class="site-header">
-  <div class="container header-row">
-    <a href="/index.html" class="brand">LeafletPro UK</a>
-    <nav class="nav">
-      <a href="/index.html">Home</a>
-      <a href="/leaflet-distribution-london.html">London</a>
-      <a href="/leaflet-distribution-south-london.html">South London</a>
-    </nav>
-  </div>
-</header>
+<body>
 
 <section class="hero">
   <div class="container">
-    <span class="eyebrow">Leaflet Distribution Croydon</span>
 
-    <h1>Leaflet Distribution in Croydon That Delivers Real Local Results</h1>
+    <h1>Leaflet Distribution in Croydon That Generates Local Enquiries</h1>
 
     <p>
-      LeafletPro UK provides professional leaflet distribution in Croydon with GPS tracked delivery, postcode targeting and full campaign support for businesses that want better local visibility across <a href="/leaflet-distribution-south-london.html" class="inline-link">South London</a>.
+      LeafletPro UK provides professional leaflet distribution in Croydon with GPS tracked delivery, postcode targeting and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
     </p>
 
     <p>
-      Covering Central Croydon, South Croydon, Purley and nearby areas, we help businesses reach the right households with a cleaner and more effective campaign setup across wider <a href="/index.html" class="inline-link">London leaflet distribution</a> campaigns.
+      Ideal for trades, estate agents, gyms, clinics, restaurants and service businesses targeting one of South London’s busiest and most commercially active areas.
     </p>
 
-    <div class="hero-actions">
-      <a href="/index.html#calculator" class="btn btn-gold">Get Your Quote</a>
+    <div class="trust-points">
+      <div class="trust-point">✓ GPS tracked delivery</div>
+      <div class="trust-point">✓ Targeted postcode coverage</div>
+      <div class="trust-point">✓ Built for real local results</div>
     </div>
+
+    <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
+    <a href="/leaflet-distribution-south-london.html" class="btn btn-secondary">View South London Coverage</a>
+
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section-heading">
-      <h2>Why leaflet distribution works in Croydon</h2>
-      <p>
-        Croydon combines strong residential areas, busy local commerce and broad postcode reach, making it one of the strongest South London areas for targeted leaflet campaigns.
-      </p>
+
+    <h2>Why leaflet distribution works in Croydon</h2>
+
+    <div class="grid">
+      <div class="card"><p>Strong residential areas with excellent local reach.</p></div>
+      <div class="card"><p>Busy commercial centre with high business activity.</p></div>
+      <div class="card"><p>Great postcode targeting opportunities across key districts.</p></div>
+      <div class="card"><p>Strong enquiry potential for local services and trades.</p></div>
     </div>
 
-    <div class="light-card">
-      <div class="grid">
-        <div class="card">
-          <h3>GPS tracked delivery</h3>
-          <p>Run your campaign with better accountability and delivery confidence.</p>
-        </div>
-
-        <div class="card">
-          <h3>Targeted postcode campaigns</h3>
-          <p>Focus on the areas in and around Croydon that best match your audience.</p>
-        </div>
-
-        <div class="card">
-          <h3>Print & design support</h3>
-          <p>Keep everything under one roof with joined-up design, print and delivery.</p>
-        </div>
-
-        <div class="card">
-          <h3>Built to generate enquiries</h3>
-          <p>We structure campaigns to support real local growth, not just basic flyer drops.</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section-heading">
-      <h2>Areas we cover in Croydon</h2>
-      <p>
-        We support leaflet distribution campaigns across Croydon and surrounding South London locations.
-      </p>
-    </div>
 
-    <div class="light-card">
-      <div class="area-list">
-        <div class="area">Central Croydon</div>
-        <div class="area">South Croydon</div>
-        <div class="area">Purley</div>
-        <div class="area">Thornton Heath</div>
-        <div class="area">Shirley</div>
-        <div class="area">Addiscombe</div>
-      </div>
-    </div>
+    <h2>Areas we cover in Croydon</h2>
+
+    <div class="area">Central Croydon</div>
+    <div class="area">South Croydon</div>
+    <div class="area">Purley</div>
+    <div class="area">Thornton Heath</div>
+    <div class="area">Shirley</div>
+    <div class="area">Addiscombe</div>
+
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="seo-box">
+
+    <div class="seo">
       <h2>Leaflet distribution Croydon</h2>
+
       <p>
-        Our Croydon leaflet distribution service helps businesses run targeted campaigns across key local areas with GPS tracked delivery and stronger local visibility.
+        Our Croydon leaflet distribution service helps businesses target key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
       </p>
 
       <p>
-        We also cover
-        <a href="/leaflet-distribution-clapham.html">Clapham</a>,
-        <a href="/leaflet-distribution-brixton.html">Brixton</a>,
-        <a href="/leaflet-distribution-south-london.html">South London</a>
-        and <a href="/leaflet-distribution-london.html">London-wide campaigns</a>.
+        We also cover 
+        <a href="/leaflet-distribution-clapham.html">Clapham</a>, 
+        <a href="/leaflet-distribution-brixton.html">Brixton</a>, 
+        <a href="/leaflet-distribution-southwark.html">Southwark</a>, 
+        <a href="/leaflet-distribution-south-london.html">South London</a> 
+        and wider <a href="/leaflet-distribution-london.html">London</a> campaigns.
       </p>
 
       <p>
-        You can also return to our <a href="/index.html">homepage</a> or use the <a href="/index.html#calculator">quote tool</a> to plan your campaign.
+        You can also use our <a href="/index.html#calculator">homepage quote tool</a> to plan your campaign.
       </p>
+
     </div>
+
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="cta">
-      <h2>Ready to launch your Croydon campaign?</h2>
-      <p>
-        Use our quote system to price your campaign, choose your quantity and move into a more professional local growth campaign with LeafletPro UK.
-      </p>
 
-      <div class="hero-actions">
-        <a href="/index.html#calculator" class="btn btn-gold">Build Your Quote</a>
-      </div>
-    </div>
+    <h2>Start your campaign</h2>
+
+    <p>Build your quote and launch your Croydon campaign today.</p>
+
+    <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
+
   </div>
 </section>
 
