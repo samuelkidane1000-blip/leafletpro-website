@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://leafletprouk.com/</loc>
-  </url>
+<!-- Main Pages -->
+<url><loc>https://leafletprouk.com/</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-london.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-locations.html</loc></url>
 
-  <url>
-    <loc>https://leafletprouk.com/design-printing.html</loc>
-  </url>
+<!-- Core Areas -->
+<url><loc>https://leafletprouk.com/leaflet-distribution-north-london.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-east-london.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-south-london.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-west-london.html</loc></url>
+
+<!-- Locations -->
+<url><loc>https://leafletprouk.com/leaflet-distribution-acton.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-angel.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-barking.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-barnet.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-bethnal-green.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-bow.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-brixton.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-camden.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-canary-wharf.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-chelsea.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-chiswick.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-clapham.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-croydon.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-ealing.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-enfield.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-finchley.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-fulham.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-greenwich.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-hackney.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-hammersmith.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-hampstead.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-ilford.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-islington.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-kensington.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-kings-cross.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-lambeth.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-lewisham.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-leyton.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-notting-hill.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-paddington.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-shepherds-bush.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-shoreditch.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-southwark.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-stratford.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-tottenham.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-wembley.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-westminster.html</loc></url>
+<url><loc>https://leafletprouk.com/leaflet-distribution-wood-green.html</loc></url>
 
 </urlset>
