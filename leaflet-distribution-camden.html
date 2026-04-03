@@ -15,6 +15,9 @@
       --gold:#d7a645;
     }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Arial, sans-serif;
@@ -27,20 +30,48 @@
       margin:auto;
     }
 
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(7,18,47,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      margin-bottom:0;
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      font-size:24px;
+      font-weight:800;
+      letter-spacing:.02em;
+      color:var(--white);
+      white-space:nowrap;
+    }
+
     .hero{
-      padding:100px 0 50px;
+      padding:60px 0 40px;
     }
 
     h1{
       font-size:clamp(38px,6vw,64px);
-      margin-bottom:20px;
+      margin:0 0 12px;
       line-height:1;
       max-width:850px;
     }
 
     h2{
       font-size:clamp(28px,4vw,46px);
-      margin-bottom:20px;
+      margin:0 0 20px;
       line-height:1.15;
     }
 
@@ -49,6 +80,7 @@
       color:rgba(255,255,255,0.85);
       line-height:1.6;
       max-width:820px;
+      margin:0 0 20px;
     }
 
     .hero a.inline-link{
@@ -70,13 +102,23 @@
       font-weight:700;
     }
 
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:24px;
+    }
+
     .btn{
       padding:16px 22px;
       border-radius:16px;
       font-weight:800;
-      display:inline-block;
-      margin-top:20px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       text-decoration:none;
+      border:none;
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
     }
 
     .btn-gold{
@@ -88,11 +130,10 @@
       background:rgba(255,255,255,0.08);
       border:1px solid rgba(255,255,255,0.18);
       color:#fff;
-      margin-left:12px;
     }
 
     .section{
-      padding:30px 0;
+      padding:34px 0;
     }
 
     .grid{
@@ -130,6 +171,7 @@
       color:#111;
       padding:24px;
       border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
     }
 
     .seo h2,
@@ -143,6 +185,7 @@
       font-size:17px;
       line-height:1.7;
       max-width:none;
+      margin:0 0 16px;
     }
 
     .seo a{
@@ -156,10 +199,12 @@
       color:#111;
       padding:24px;
       border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
     }
 
     .faq h2{
       color:#111;
+      margin-top:0;
     }
 
     .faq p{
@@ -167,6 +212,21 @@
       font-size:17px;
       line-height:1.7;
       max-width:none;
+      margin:0 0 16px;
+    }
+
+    .site-footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,0.72);
+      font-size:15px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
     @media(max-width:900px){
@@ -174,15 +234,30 @@
         grid-template-columns:1fr;
       }
 
-      .btn-secondary{
-        margin-left:0;
-        display:block;
+      .hero{
+        padding:70px 0 30px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+        max-width:520px;
       }
     }
   </style>
 </head>
 
 <body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">LeafletPro UK</div>
+  </div>
+</header>
 
 <section class="hero">
   <div class="container">
@@ -203,8 +278,10 @@
       <div class="trust-point">✓ Built for real local results</div>
     </div>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
-    <a href="/leaflet-distribution-north-london.html" class="btn btn-secondary">View North London Coverage</a>
+    <div class="hero-actions">
+      <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
+      <a href="/leaflet-distribution-north-london.html" class="btn btn-secondary">View North London Coverage</a>
+    </div>
 
   </div>
 </section>
@@ -394,10 +471,19 @@
 
     <p>Build your quote and launch your Camden campaign today.</p>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
+    <div class="hero-actions" style="margin-top:0;">
+      <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
+    </div>
 
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 LeafletPro UK</span>
+    <span>Camden Leaflet Distribution</span>
+  </div>
+</footer>
 
 </body>
 </html>
