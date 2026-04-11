@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaflet Design & Printing London | LeafletPro UK</title>
   <meta name="description" content="Professional leaflet design, printing and distribution across London. High-quality flyer printing, design support and full campaign packages from LeafletPro UK." />
+  <link rel="canonical" href="https://leafletprouk.com/design-printing.html" />
 
   <style>
     :root{
@@ -146,6 +147,12 @@
       line-height:1.6;
       color:rgba(255,255,255,0.82);
       max-width:720px;
+    }
+
+    .hero p a{
+      color:#fff;
+      text-decoration:underline;
+      font-weight:700;
     }
 
     .hero-actions{
@@ -323,6 +330,12 @@
       font-size:16px;
     }
 
+    .feature-card a{
+      color:#0c1b45;
+      text-decoration:underline;
+      font-weight:700;
+    }
+
     .price-tag{
       display:inline-block;
       margin-top:16px;
@@ -391,6 +404,11 @@
       font-size:16px;
       outline:none;
       background:#fff;
+    }
+
+    input:focus, select:focus, textarea:focus{
+      border-color:#caa03f;
+      box-shadow:0 0 0 3px rgba(215,166,69,0.15);
     }
 
     textarea{
@@ -546,9 +564,7 @@
 
   <header class="site-header">
     <div class="container header-row">
-      <div class="brand">
-        <div class="brand">LeafletPro UK</div>
-      </div>
+      <a href="/index.html" class="brand">LeafletPro UK</a>
 
       <nav class="nav" id="siteNav">
         <a href="/index.html">Home</a>
@@ -571,7 +587,9 @@
         <span class="eyebrow">Professional leaflet design & printing in London</span>
         <h1>Design it. Print it. Deliver it.</h1>
         <p>
-          LeafletPro UK provides professional leaflet design, premium quality printing and door-to-door distribution across London. We help businesses launch complete campaigns from design to delivery.
+          LeafletPro UK provides professional leaflet design, premium quality printing and door-to-door distribution across
+          <a href="/leaflet-distribution-london.html">London</a>.
+          We help businesses launch complete campaigns from design to delivery.
         </p>
 
         <div class="hero-actions">
@@ -655,6 +673,19 @@
               Need everything handled in one place? We can design, print and distribute your leaflets across London with one simple campaign setup.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="light-card">
+        <div class="section-heading" style="margin-bottom:18px;">
+          <h2 style="color:#111827;">Leaflet design and printing in London</h2>
+          <p style="color:#6b7280;">
+            We provide leaflet design and printing in London for businesses that want professional marketing materials ready for distribution. Whether you need design only, printing only or a full campaign, we can support local promotions across <a href="/leaflet-distribution-london.html" style="color:#0c1b45;text-decoration:underline;font-weight:700;">London</a>, including <a href="/leaflet-distribution-north-london.html" style="color:#0c1b45;text-decoration:underline;font-weight:700;">North London</a>, <a href="/leaflet-distribution-east-london.html" style="color:#0c1b45;text-decoration:underline;font-weight:700;">East London</a>, <a href="/leaflet-distribution-south-london.html" style="color:#0c1b45;text-decoration:underline;font-weight:700;">South London</a> and <a href="/leaflet-distribution-west-london.html" style="color:#0c1b45;text-decoration:underline;font-weight:700;">West London</a>.
+          </p>
         </div>
       </div>
     </div>
@@ -747,6 +778,49 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Design and printing FAQs</h2>
+        <p>Common questions about leaflet design, flyer printing and campaign setup.</p>
+      </div>
+
+      <div class="light-card">
+        <div class="cards">
+          <div class="feature-card">
+            <h3>What leaflet sizes do you offer?</h3>
+            <p>We offer popular sizes including A6, A5 and A4 depending on your campaign needs and budget.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Can you design the leaflet for us?</h3>
+            <p>Yes, we provide professional leaflet design for businesses that need a clean, effective layout ready for print.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Do you offer printing only?</h3>
+            <p>Yes, we can provide printing only, design only, or a full campaign including distribution.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>What paper weights are available?</h3>
+            <p>We offer a range of paper weights including 90gsm, 130gsm, 170gsm and 250gsm depending on the finish you want.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Do you distribute the leaflets too?</h3>
+            <p>Yes, we can design, print and distribute your leaflets across London as one complete campaign service.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>How do I get a quote?</h3>
+            <p>Use the enquiry form on this page and we’ll review your design, print and campaign requirements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="quote-form">
     <div class="container">
       <div class="section-heading">
@@ -765,17 +839,17 @@
               <div class="field-grid">
                 <label>
                   Name
-                  <input type="text" name="name" placeholder="Your name" required>
+                  <input type="text" name="name" placeholder="Your name" required />
                 </label>
 
                 <label>
                   Email
-                  <input type="email" name="email" placeholder="Your email" required>
+                  <input type="email" name="email" placeholder="Your email" required />
                 </label>
 
                 <label>
                   Phone
-                  <input type="text" name="phone" placeholder="Phone number">
+                  <input type="text" name="phone" placeholder="Phone number" />
                 </label>
 
                 <label>
@@ -812,27 +886,30 @@
 
                 <label>
                   Postcode
-                  <input type="text" name="postcode" placeholder="Enter postcode">
+                  <input type="text" name="postcode" placeholder="Enter postcode" />
                 </label>
 
                 <label>
-                  <label>Paper Weight
-  <select name="paper_weight">
-    <option value="90gsm">90gsm</option>
-    <option value="130gsm">130gsm</option>
-    <option value="170gsm">170gsm</option>
-    <option value="250gsm">250gsm</option>
-  </select>
-</label>
-                  <label>Paper Type
-  <select name="paper_type">
-    <option value="Gloss">Gloss</option>
-    <option value="Silk">Silk</option>
-    <option value="Premium">Premium</option>
-  </select>
-</label>
+                  Paper Weight
+                  <select name="paper_weight">
+                    <option value="90gsm">90gsm</option>
+                    <option value="130gsm">130gsm</option>
+                    <option value="170gsm">170gsm</option>
+                    <option value="250gsm">250gsm</option>
+                  </select>
+                </label>
 
-              <label>
+                <label>
+                  Paper Type
+                  <select name="paper_type">
+                    <option value="Gloss">Gloss</option>
+                    <option value="Silk">Silk</option>
+                    <option value="Premium">Premium</option>
+                  </select>
+                </label>
+              </div>
+
+              <label style="margin-top:18px; display:block;">
                 Project Details
                 <textarea name="message" placeholder="Tell us about your leaflet design, offer, campaign or business goals"></textarea>
               </label>
@@ -875,7 +952,7 @@
     </div>
   </section>
 
-  <footer class="site-footer footer-dark">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-row">
         <span>© 2026 LeafletPro UK</span>
