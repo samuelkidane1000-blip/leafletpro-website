@@ -938,10 +938,25 @@
       border-radius:14px;
     }
   }
-.social-icons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin:20px 0;
+.social-icons {
+  display: flex !important;
+  flex-direction: row !important;   /* 🔥 FORCE HORIZONTAL */
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
+.social-icons img:hover {
+  transform: scale(1.1);
 }
 </style>
