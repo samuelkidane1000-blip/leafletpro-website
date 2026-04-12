@@ -938,12 +938,10 @@
       border-radius:14px;
     }
   }
-.social-icons img {
-  width: 40px !important;
-  height: 40px !important;
-  max-width: 40px !important;
-  min-width: 40px !important;
-  object-fit: contain !important;
-  display: inline-block !important;
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:20px 0;
 }
 </style>
