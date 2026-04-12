@@ -940,18 +940,24 @@
   }
 .social-icons {
   display: flex;
-  gap: 15px;
-  margin-top: 15px;
+  gap: 12px;
+  justify-content: center; /* center them */
+  margin: 20px 0;
 }
 
-.social-icons a img {
-  width: 45px;
-  height: 45px;
+.social-icons img {
+  width: 40px;   /* 🔥 FIX SIZE HERE */
+  height: 40px;
+  border-radius: 50%;
+}
+.social-icons img {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   transition: 0.3s;
 }
 
-.social-icons a img:hover {
+.social-icons img:hover {
   transform: scale(1.1);
 }
 </style>
