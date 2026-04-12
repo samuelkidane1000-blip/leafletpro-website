@@ -938,4 +938,20 @@
       border-radius:14px;
     }
   }
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.1);
+}
 </style>
