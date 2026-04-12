@@ -938,26 +938,12 @@
       border-radius:14px;
     }
   }
-.social-icons {
-  display: flex;
-  gap: 12px;
-  justify-content: center; /* center them */
-  margin: 20px 0;
-}
-
 .social-icons img {
-  width: 40px;   /* 🔥 FIX SIZE HERE */
-  height: 40px;
-  border-radius: 50%;
-}
-.social-icons img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-.social-icons img:hover {
-  transform: scale(1.1);
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
+  min-width: 40px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
 }
 </style>
