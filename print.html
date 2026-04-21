@@ -495,6 +495,85 @@
       word-break:break-word;
     }
 
+    .template-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+    }
+
+    .template-card{
+      background:#fff;
+      border:1px solid #eceef4;
+      border-radius:26px;
+      overflow:hidden;
+      color:#111827;
+      box-shadow:0 10px 28px rgba(0,0,0,.06);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .template-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px rgba(0,0,0,.12);
+    }
+
+    .template-preview{
+      position:relative;
+      background:linear-gradient(180deg,#edf2f7 0%, #e7ecf4 100%);
+      padding:18px;
+    }
+
+    .template-preview img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:16px;
+      box-shadow:0 18px 36px rgba(17,24,39,.18);
+      display:block;
+    }
+
+    .template-content{
+      padding:20px;
+    }
+
+    .template-content h3{
+      margin:0 0 8px;
+      font-size:22px;
+    }
+
+    .template-content p{
+      margin:0 0 16px;
+      color:#6b7280;
+      line-height:1.65;
+      font-size:15px;
+      min-height:50px;
+    }
+
+    .template-actions{
+      display:flex;
+      gap:12px;
+    }
+
+    .template-actions .btn{
+      flex:1;
+      padding:12px 16px;
+      font-size:15px;
+      box-shadow:none;
+      text-decoration:none;
+    }
+
+    .template-label{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(215,166,69,0.14);
+      color:#9b6a00;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+
     @media (max-width: 980px){
       .hero-grid,
       .cards,
@@ -550,12 +629,24 @@
       .header-cta{
         display:none;
       }
+
+      .template-actions{
+        flex-direction:column;
+      }
     }
 
     @media (max-width: 640px){
       .footer-row{
         flex-direction:column;
         align-items:flex-start;
+      }
+
+      .template-grid{
+        grid-template-columns:1fr;
+      }
+
+      .template-preview img{
+        height:220px;
       }
     }
   </style>
@@ -575,7 +666,7 @@
         <a href="/index.html#calculator">Get Quote</a>
       </nav>
 
-      <a href="#quote-form" class="header-cta">Get Printing Quote</a>
+      <a href="#design-templates" class="header-cta">View Design Templates</a>
 
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">☰</button>
     </div>
@@ -593,7 +684,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#quote-form" class="btn btn-gold">Get Design Quote</a>
+          <a href="#design-templates" class="btn btn-gold">Browse Design Templates</a>
           <a href="#packages" class="btn btn-dark">View Packages</a>
         </div>
 
@@ -637,6 +728,233 @@
             <strong>London</strong>
             <span>Targeted campaigns across Greater London</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="design-templates">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Choose a leaflet design template</h2>
+        <p>
+          Pick a design style you like and continue to the print page with that template selected.
+        </p>
+      </div>
+
+      <div class="light-card">
+        <div class="template-grid">
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template1.jpg" alt="Modern Promo leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 1</span>
+              <h3>Modern Promo</h3>
+              <p>Bold, high-impact layout for sales, offers and promotional leaflets.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=modern-promo" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template2.jpg" alt="Clean Service leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 2</span>
+              <h3>Clean Service</h3>
+              <p>Professional service-led design for cleaning, trades and local businesses.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=clean-service" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template3.jpg" alt="Luxury Brand leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 3</span>
+              <h3>Luxury Brand</h3>
+              <p>Elegant premium look for beauty, fashion, aesthetics and high-end brands.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=luxury-brand" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template4.jpg" alt="Restaurant Menu leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 4</span>
+              <h3>Restaurant Menu</h3>
+              <p>Perfect for food menus, takeaway promotions and restaurant offers.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=restaurant-menu" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template5.jpg" alt="Real Estate leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 5</span>
+              <h3>Real Estate</h3>
+              <p>Property-focused design for estate agents, lettings and developments.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=real-estate" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template6.jpg" alt="Gym Fitness leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 6</span>
+              <h3>Gym Fitness</h3>
+              <p>Strong energetic design for gyms, trainers and fitness campaigns.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=gym-fitness" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template7.jpg" alt="Beauty Salon leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 7</span>
+              <h3>Beauty Salon</h3>
+              <p>Soft and stylish layout for salons, lashes, nails and beauty services.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=beauty-salon" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template8.jpg" alt="Construction leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 8</span>
+              <h3>Construction</h3>
+              <p>Bold trade-style layout for builders, roofers and construction services.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=construction" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template9.jpg" alt="Cleaning Services leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 9</span>
+              <h3>Cleaning Services</h3>
+              <p>Fresh, clean layout for domestic and commercial cleaning businesses.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=cleaning-services" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template10.jpg" alt="Event Promotion leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 10</span>
+              <h3>Event Promotion</h3>
+              <p>Eye-catching flyer for events, music nights, launches and parties.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=event-promotion" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template11.jpg" alt="Tech Startup leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 11</span>
+              <h3>Tech Startup</h3>
+              <p>Modern digital style for SaaS, startups, apps and innovation brands.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=tech-startup" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template12.jpg" alt="Education leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 12</span>
+              <h3>Education</h3>
+              <p>Friendly, informative design for schools, colleges and tutoring services.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=education" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template13.jpg" alt="Car Services leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 13</span>
+              <h3>Car Services</h3>
+              <p>Automotive design for garages, repairs, MOT and servicing campaigns.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=car-services" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template14.jpg" alt="Takeaway Food leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 14</span>
+              <h3>Takeaway Food</h3>
+              <p>Great for burger, pizza, kebab and takeaway food delivery promotions.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=takeaway-food" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-preview">
+              <img src="images/template15.jpg" alt="Corporate Business leaflet template">
+            </div>
+            <div class="template-content">
+              <span class="template-label">Template 15</span>
+              <h3>Corporate Business</h3>
+              <p>Professional business layout for agencies, consultants and B2B brands.</p>
+              <div class="template-actions">
+                <a href="/print.html?template=corporate-business" class="btn btn-gold">Use Template</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
