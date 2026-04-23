@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaflet Distribution Wood Green | LeafletPro UK</title>
-  <meta name="description" content="Professional leaflet distribution in Wood Green with GPS tracked delivery, postcode targeting and premium leaflet campaigns for local businesses." />
+  <meta name="description" content="Professional leaflet distribution in Wood Green with GPS tracked delivery, postcode targeting across N22 and N8 and premium leaflet campaigns for local businesses." />
   <link rel="canonical" href="https://leafletprouk.com/leaflet-distribution-wood-green.html" />
 
   <style>
@@ -14,6 +14,9 @@
       --white:#ffffff;
       --gold:#d7a645;
     }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -27,15 +30,43 @@
       margin:auto;
     }
 
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(7,18,47,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+    }
+
+    .brand{
+      font-size:24px;
+      font-weight:800;
+      color:#fff;
+      text-decoration:none;
+    }
+
     .hero{
-      padding:100px 0 50px;
+      padding:60px 0 40px;
     }
 
     h1{
       font-size:clamp(38px,6vw,64px);
-      margin-bottom:20px;
+      margin:0 0 12px;
       line-height:1;
       max-width:850px;
+    }
+
+    h2{
+      font-size:clamp(28px,4vw,46px);
+      margin:0 0 20px;
     }
 
     p{
@@ -43,34 +74,40 @@
       color:rgba(255,255,255,0.85);
       line-height:1.6;
       max-width:820px;
+      margin:0 0 20px;
     }
 
     .hero a.inline-link{
       color:#fff;
-      text-decoration:underline;
       font-weight:700;
+      text-decoration:underline;
     }
 
     .trust-points{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin:28px 0 10px;
-      max-width:520px;
+      margin:28px 0;
     }
 
     .trust-point{
       font-size:18px;
       font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
     }
 
     .btn{
       padding:16px 22px;
       border-radius:16px;
       font-weight:800;
-      display:inline-block;
-      margin-top:20px;
       text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
     }
 
     .btn-gold{
@@ -82,11 +119,10 @@
       background:rgba(255,255,255,0.08);
       border:1px solid rgba(255,255,255,0.18);
       color:#fff;
-      margin-left:12px;
     }
 
     .section{
-      padding:30px 0;
+      padding:34px 0;
     }
 
     .grid{
@@ -103,9 +139,9 @@
     }
 
     .card p{
-      color:#555;
       font-size:16px;
-      line-height:1.6;
+      color:#555;
+      margin:0;
     }
 
     .area{
@@ -122,42 +158,66 @@
       color:#111;
       padding:24px;
       border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
     }
 
     .seo p{
       color:#444;
       font-size:17px;
-      line-height:1.7;
+      margin-bottom:16px;
     }
 
     .seo a{
       color:#0c1b45;
       font-weight:700;
-      text-decoration:underline;
+    }
+
+    .faq{
+      background:#fff;
+      color:#111;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .faq p{
+      color:#444;
+      font-size:17px;
+    }
+
+    .site-footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,0.72);
+      font-size:15px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
     }
 
     @media(max-width:900px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .btn-secondary{
-        margin-left:0;
-        display:block;
-      }
+      .grid{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column}
     }
   </style>
 </head>
 
 <body>
 
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="brand">LeafletPro UK</a>
+  </div>
+</header>
+
 <section class="hero">
   <div class="container">
 
-    <h1>Leaflet Distribution in Wood Green That Generates Local Enquiries</h1>
+    <h1>Leaflet Distribution Wood Green That Generates Local Enquiries</h1>
 
     <p>
-      LeafletPro UK provides professional leaflet distribution in Wood Green with GPS tracked delivery, postcode targeting and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
+      LeafletPro UK provides professional leaflet distribution in Wood Green with GPS tracked delivery, postcode targeting across N22 and N8 and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
     </p>
 
     <p>
@@ -170,8 +230,10 @@
       <div class="trust-point">✓ Built for real local results</div>
     </div>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
-    <a href="/leaflet-distribution-north-london.html" class="btn btn-secondary">View North London Coverage</a>
+    <div class="hero-actions">
+      <a href="/#calculator" class="btn btn-gold">Get Instant Quote</a>
+      <a href="/leaflet-distribution-north-london.html" class="btn btn-secondary">View North London Coverage</a>
+    </div>
 
   </div>
 </section>
@@ -182,10 +244,10 @@
     <h2>Why leaflet distribution works in Wood Green</h2>
 
     <div class="grid">
-      <div class="card"><p>Busy retail and shopping activity with strong visibility.</p></div>
-      <div class="card"><p>Excellent mix of residential and commercial reach.</p></div>
-      <div class="card"><p>Great postcode targeting opportunities.</p></div>
-      <div class="card"><p>High response potential for local services and promotions.</p></div>
+      <div class="card"><p>Busy retail and shopping environment makes Wood Green highly effective for leaflet distribution campaigns.</p></div>
+      <div class="card"><p>Excellent for postcode-targeted campaigns across N22 and N8.</p></div>
+      <div class="card"><p>Strong mix of residential and commercial reach for local businesses.</p></div>
+      <div class="card"><p>High response potential from active households and local customers.</p></div>
     </div>
 
   </div>
@@ -196,10 +258,10 @@
 
     <h2>Areas we cover in Wood Green</h2>
 
-    <div class="area">Wood Green</div>
-    <div class="area">Bounds Green</div>
-    <div class="area">Alexandra Palace</div>
-    <div class="area">Turnpike Lane</div>
+    <div class="area">Wood Green (N22)</div>
+    <div class="area">Bounds Green (N11 nearby)</div>
+    <div class="area">Alexandra Palace (N22 / N8)</div>
+    <div class="area">Turnpike Lane (N8)</div>
     <div class="area">Noel Park nearby areas</div>
     <div class="area">Hornsey nearby areas</div>
 
@@ -212,21 +274,37 @@
     <div class="seo">
       <h2>Leaflet distribution Wood Green</h2>
 
-      <p>
-        Our Wood Green leaflet distribution service helps businesses reach key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
-      </p>
+      <p>Our Wood Green leaflet distribution service helps businesses target N22 and N8 with GPS tracked delivery and structured campaigns.</p>
+
+      <p>We regularly deliver campaigns across N22 and N8, helping businesses focus on the most relevant residential and commercial areas.</p>
 
       <p>
         We also cover 
         <a href="/leaflet-distribution-tottenham.html">Tottenham</a>, 
         <a href="/leaflet-distribution-hackney.html">Hackney</a>, 
         <a href="/leaflet-distribution-north-london.html">North London</a> 
-        and wider <a href="/leaflet-distribution-london.html">London</a> campaigns.
+        and wider <a href="/leaflet-distribution-london.html">London</a>.
       </p>
 
       <p>
-        You can also use our <a href="/index.html#calculator">homepage quote tool</a> to plan your campaign.
+        You can also use our <a href="/#calculator">quote tool</a>.
       </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="faq">
+      <h2>Leaflet distribution Wood Green FAQs</h2>
+
+      <p><strong>Can you target N22 and N8?</strong><br>
+      Yes, we regularly deliver campaigns across N22 and N8.</p>
+
+      <p><strong>Is leaflet distribution effective in Wood Green?</strong><br>
+      Yes — Wood Green has strong retail activity and residential density.</p>
 
     </div>
 
@@ -240,10 +318,19 @@
 
     <p>Build your quote and launch your Wood Green campaign today.</p>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
+    <div class="hero-actions">
+      <a href="/#calculator" class="btn btn-gold">Build Quote</a>
+    </div>
 
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 LeafletPro UK</span>
+    <span>Wood Green Leaflet Distribution</span>
+  </div>
+</footer>
 
 </body>
 </html>
