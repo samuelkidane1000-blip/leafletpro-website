@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaflet Distribution Brixton | LeafletPro UK</title>
-  <meta name="description" content="Professional leaflet distribution in Brixton with GPS tracked delivery, postcode targeting and premium leaflet campaigns for local businesses." />
+  <meta name="description" content="Professional leaflet distribution in Brixton with GPS tracked delivery, postcode targeting across SW2 and SW9 and premium leaflet campaigns for local businesses." />
   <link rel="canonical" href="https://leafletprouk.com/leaflet-distribution-brixton.html" />
 
   <style>
@@ -14,6 +14,9 @@
       --white:#ffffff;
       --gold:#d7a645;
     }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -27,15 +30,43 @@
       margin:auto;
     }
 
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(7,18,47,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+    }
+
+    .brand{
+      font-size:24px;
+      font-weight:800;
+      color:#fff;
+      text-decoration:none;
+    }
+
     .hero{
-      padding:100px 0 50px;
+      padding:60px 0 40px;
     }
 
     h1{
       font-size:clamp(38px,6vw,64px);
-      margin-bottom:20px;
+      margin:0 0 12px;
       line-height:1;
       max-width:850px;
+    }
+
+    h2{
+      font-size:clamp(28px,4vw,46px);
+      margin:0 0 20px;
     }
 
     p{
@@ -43,34 +74,40 @@
       color:rgba(255,255,255,0.85);
       line-height:1.6;
       max-width:820px;
+      margin:0 0 20px;
     }
 
     .hero a.inline-link{
       color:#fff;
-      text-decoration:underline;
       font-weight:700;
+      text-decoration:underline;
     }
 
     .trust-points{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin:28px 0 10px;
-      max-width:520px;
+      margin:28px 0;
     }
 
     .trust-point{
       font-size:18px;
       font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
     }
 
     .btn{
       padding:16px 22px;
       border-radius:16px;
       font-weight:800;
-      display:inline-block;
-      margin-top:20px;
       text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
     }
 
     .btn-gold{
@@ -82,11 +119,10 @@
       background:rgba(255,255,255,0.08);
       border:1px solid rgba(255,255,255,0.18);
       color:#fff;
-      margin-left:12px;
     }
 
     .section{
-      padding:30px 0;
+      padding:34px 0;
     }
 
     .grid{
@@ -103,9 +139,9 @@
     }
 
     .card p{
-      color:#555;
       font-size:16px;
-      line-height:1.6;
+      color:#555;
+      margin:0;
     }
 
     .area{
@@ -122,42 +158,66 @@
       color:#111;
       padding:24px;
       border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
     }
 
     .seo p{
       color:#444;
       font-size:17px;
-      line-height:1.7;
+      margin-bottom:16px;
     }
 
     .seo a{
       color:#0c1b45;
       font-weight:700;
-      text-decoration:underline;
+    }
+
+    .faq{
+      background:#fff;
+      color:#111;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .faq p{
+      color:#444;
+      font-size:17px;
+    }
+
+    .site-footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,0.72);
+      font-size:15px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
     }
 
     @media(max-width:900px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .btn-secondary{
-        margin-left:0;
-        display:block;
-      }
+      .grid{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column}
     }
   </style>
 </head>
 
 <body>
 
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="brand">LeafletPro UK</a>
+  </div>
+</header>
+
 <section class="hero">
   <div class="container">
 
-    <h1>Leaflet Distribution in Brixton That Generates Local Enquiries</h1>
+    <h1>Leaflet Distribution Brixton That Generates Local Enquiries</h1>
 
     <p>
-      LeafletPro UK provides professional leaflet distribution in Brixton with GPS tracked delivery, postcode targeting and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
+      LeafletPro UK provides professional leaflet distribution in Brixton with GPS tracked delivery, postcode targeting across SW2 and SW9 and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
     </p>
 
     <p>
@@ -170,8 +230,10 @@
       <div class="trust-point">✓ Built for real local results</div>
     </div>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
-    <a href="/leaflet-distribution-south-london.html" class="btn btn-secondary">View South London Coverage</a>
+    <div class="hero-actions">
+      <a href="/#calculator" class="btn btn-gold">Get Instant Quote</a>
+      <a href="/leaflet-distribution-south-london.html" class="btn btn-secondary">View South London Coverage</a>
+    </div>
 
   </div>
 </section>
@@ -182,10 +244,10 @@
     <h2>Why leaflet distribution works in Brixton</h2>
 
     <div class="grid">
-      <div class="card"><p>Busy local district with strong residential demand.</p></div>
-      <div class="card"><p>Excellent for food, fitness and local service businesses.</p></div>
-      <div class="card"><p>Great postcode targeting across nearby streets and homes.</p></div>
-      <div class="card"><p>Strong enquiry potential from active local audiences.</p></div>
+      <div class="card"><p>Busy local district with strong residential demand makes Brixton highly effective for leaflet distribution campaigns.</p></div>
+      <div class="card"><p>Excellent for postcode-targeted campaigns across SW2 and SW9.</p></div>
+      <div class="card"><p>Great for restaurants, salons, gyms and local services targeting nearby households.</p></div>
+      <div class="card"><p>Strong enquiry potential from active local audiences and busy surrounding streets.</p></div>
     </div>
 
   </div>
@@ -196,7 +258,7 @@
 
     <h2>Areas we cover in Brixton</h2>
 
-    <div class="area">Brixton</div>
+    <div class="area">Brixton (SW2, SW9)</div>
     <div class="area">Brixton Hill</div>
     <div class="area">Herne Hill</div>
     <div class="area">Stockwell nearby areas</div>
@@ -212,22 +274,37 @@
     <div class="seo">
       <h2>Leaflet distribution Brixton</h2>
 
-      <p>
-        Our Brixton leaflet distribution service helps businesses target key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
-      </p>
+      <p>Our Brixton leaflet distribution service helps businesses target SW2 and SW9 with GPS tracked delivery and structured campaigns.</p>
+
+      <p>We regularly deliver campaigns across SW2 and SW9, helping businesses target the most relevant residential and commercial areas.</p>
 
       <p>
         We also cover 
         <a href="/leaflet-distribution-clapham.html">Clapham</a>, 
         <a href="/leaflet-distribution-croydon.html">Croydon</a>, 
-        <a href="/leaflet-distribution-southwark.html">Southwark</a>, 
         <a href="/leaflet-distribution-south-london.html">South London</a> 
-        and wider <a href="/leaflet-distribution-london.html">London</a> campaigns.
+        and wider <a href="/leaflet-distribution-london.html">London</a>.
       </p>
 
       <p>
-        You can also use our <a href="/index.html#calculator">homepage quote tool</a> to plan your campaign.
+        You can also use our <a href="/#calculator">quote tool</a>.
       </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="faq">
+      <h2>Leaflet distribution Brixton FAQs</h2>
+
+      <p><strong>Can you target SW2 and SW9?</strong><br>
+      Yes, we regularly deliver campaigns across SW2 and SW9.</p>
+
+      <p><strong>Is leaflet distribution effective in Brixton?</strong><br>
+      Yes — Brixton has strong local demand and high residential density.</p>
 
     </div>
 
@@ -241,10 +318,19 @@
 
     <p>Build your quote and launch your Brixton campaign today.</p>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
+    <div class="hero-actions">
+      <a href="/#calculator" class="btn btn-gold">Build Quote</a>
+    </div>
 
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 LeafletPro UK</span>
+    <span>Brixton Leaflet Distribution</span>
+  </div>
+</footer>
 
 </body>
 </html>
