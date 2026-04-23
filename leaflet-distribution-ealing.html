@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaflet Distribution Ealing | LeafletPro UK</title>
-  <meta name="description" content="Professional leaflet distribution in Ealing with GPS tracked delivery, postcode targeting and premium leaflet campaigns for local businesses." />
+  <meta name="description" content="Professional leaflet distribution in Ealing with GPS tracked delivery, postcode targeting across W5 and W13 and premium leaflet campaigns for local businesses." />
   <link rel="canonical" href="https://leafletprouk.com/leaflet-distribution-ealing.html" />
 
   <style>
@@ -14,6 +14,9 @@
       --white:#ffffff;
       --gold:#d7a645;
     }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -27,15 +30,42 @@
       margin:auto;
     }
 
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(7,18,47,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      min-height:76px;
+    }
+
+    .brand{
+      font-size:24px;
+      font-weight:800;
+      color:#fff;
+      text-decoration:none;
+    }
+
     .hero{
-      padding:100px 0 50px;
+      padding:60px 0 40px;
     }
 
     h1{
       font-size:clamp(38px,6vw,64px);
-      margin-bottom:20px;
+      margin:0 0 12px;
       line-height:1;
       max-width:850px;
+    }
+
+    h2{
+      font-size:clamp(28px,4vw,46px);
+      margin:0 0 20px;
     }
 
     p{
@@ -43,33 +73,34 @@
       color:rgba(255,255,255,0.85);
       line-height:1.6;
       max-width:820px;
+      margin:0 0 20px;
     }
 
-    .hero a.inline-link{
+    .hero a{
       color:#fff;
       text-decoration:underline;
       font-weight:700;
     }
 
     .trust-points{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin:28px 0 10px;
-      max-width:520px;
+      margin:25px 0;
     }
 
     .trust-point{
-      font-size:18px;
       font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     .btn{
-      padding:16px 22px;
-      border-radius:16px;
+      padding:14px 20px;
+      border-radius:14px;
       font-weight:800;
-      display:inline-block;
-      margin-top:20px;
       text-decoration:none;
     }
 
@@ -80,9 +111,8 @@
 
     .btn-secondary{
       background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.2);
       color:#fff;
-      margin-left:12px;
     }
 
     .section{
@@ -92,41 +122,42 @@
     .grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:16px;
+      gap:14px;
     }
 
     .card{
       background:#fff;
       color:#111;
-      padding:20px;
-      border-radius:18px;
+      padding:18px;
+      border-radius:16px;
     }
 
     .card p{
+      font-size:15px;
       color:#555;
-      font-size:16px;
-      line-height:1.6;
+      margin:0;
     }
 
     .area{
       background:#fff;
       color:#111;
-      padding:14px;
-      border-radius:14px;
-      margin-bottom:10px;
+      padding:12px;
+      border-radius:12px;
+      margin-bottom:8px;
       font-weight:700;
     }
 
     .seo{
       background:#fff;
       color:#111;
-      padding:24px;
-      border-radius:18px;
+      padding:22px;
+      border-radius:16px;
+      margin-bottom:20px;
     }
 
     .seo p{
       color:#444;
-      font-size:17px;
+      font-size:16px;
       line-height:1.7;
     }
 
@@ -136,32 +167,57 @@
       text-decoration:underline;
     }
 
-    @media(max-width:900px){
-      .grid{
-        grid-template-columns:1fr;
-      }
+    .faq{
+      background:#fff;
+      color:#111;
+      padding:22px;
+      border-radius:16px;
+    }
 
-      .btn-secondary{
-        margin-left:0;
-        display:block;
-      }
+    .faq p{
+      font-size:16px;
+      color:#444;
+    }
+
+    .site-footer{
+      padding:25px 0 40px;
+      font-size:14px;
+      color:rgba(255,255,255,0.7);
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
     }
   </style>
 </head>
 
 <body>
 
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="brand">LeafletPro UK</a>
+  </div>
+</header>
+
 <section class="hero">
   <div class="container">
 
-    <h1>Leaflet Distribution in Ealing That Generates Local Enquiries</h1>
+    <h1>Leaflet Distribution Ealing That Generates Local Enquiries</h1>
 
     <p>
-      LeafletPro UK provides professional leaflet distribution in Ealing with GPS tracked delivery, postcode targeting and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
+      LeafletPro UK provides professional leaflet distribution in Ealing with GPS tracked delivery, postcode targeting across W5 and W13 and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html">London</a>.
     </p>
 
     <p>
-      Ideal for restaurants, cafés, clinics, gyms, estate agents, trades and local service businesses targeting one of West London’s strongest residential and high street areas.
+      Ideal for restaurants, cafés, gyms, estate agents, clinics, trades and local service businesses targeting one of West London’s busiest residential and commercial areas.
     </p>
 
     <div class="trust-points">
@@ -170,8 +226,10 @@
       <div class="trust-point">✓ Built for real local results</div>
     </div>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
-    <a href="/leaflet-distribution-west-london.html" class="btn btn-secondary">View West London Coverage</a>
+    <div class="hero-actions">
+      <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
+      <a href="/leaflet-distribution-west-london.html" class="btn btn-secondary">View West London Coverage</a>
+    </div>
 
   </div>
 </section>
@@ -182,10 +240,18 @@
     <h2>Why leaflet distribution works in Ealing</h2>
 
     <div class="grid">
-      <div class="card"><p>Strong residential density with reliable household reach.</p></div>
-      <div class="card"><p>Busy local high streets with strong business visibility.</p></div>
-      <div class="card"><p>Excellent postcode targeting opportunities.</p></div>
-      <div class="card"><p>High response potential for local services and promotions.</p></div>
+      <div class="card">
+        <p>High residential density across W5 and W13 makes leaflet distribution highly effective for reaching local households and generating enquiries.</p>
+      </div>
+      <div class="card">
+        <p>Excellent for postcode-targeted campaigns across Ealing Broadway, South Ealing and surrounding areas.</p>
+      </div>
+      <div class="card">
+        <p>Busy local high streets such as Ealing Broadway provide strong visibility for local campaigns.</p>
+      </div>
+      <div class="card">
+        <p>Strong enquiry potential from a mix of families, professionals and active local communities.</p>
+      </div>
     </div>
 
   </div>
@@ -196,12 +262,32 @@
 
     <h2>Areas we cover in Ealing</h2>
 
-    <div class="area">Ealing</div>
-    <div class="area">West Ealing</div>
-    <div class="area">South Ealing</div>
-    <div class="area">Northfields</div>
-    <div class="area">Ealing Broadway nearby areas</div>
+    <div class="area">Ealing Broadway (W5)</div>
+    <div class="area">South Ealing (W5)</div>
+    <div class="area">West Ealing (W13)</div>
+    <div class="area">Northfields nearby areas</div>
     <div class="area">Hanwell nearby areas</div>
+    <div class="area">Acton nearby areas</div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <h2>Leaflet distribution services in Ealing</h2>
+
+    <p>
+      Our Ealing leaflet distribution services are designed to help businesses reach local customers effectively across W5 and W13. We provide structured campaigns focused on residential targeting, postcode coverage and high-response areas.
+    </p>
+
+    <p>
+      Services include door-to-door leaflet delivery, GPS tracked campaigns, targeted postcode distribution and full campaign management. Whether you are promoting a local service, restaurant or business, we help you generate consistent local enquiries.
+    </p>
+
+    <p>
+      We target key residential streets and surrounding neighbourhoods across Ealing, helping your leaflets reach strong-response zones with excellent local visibility.
+    </p>
 
   </div>
 </section>
@@ -213,21 +299,113 @@
       <h2>Leaflet distribution Ealing</h2>
 
       <p>
-        Our Ealing leaflet distribution service helps businesses reach key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
+        Our Ealing leaflet distribution service helps businesses target key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
+      </p>
+
+      <p>
+        Ealing’s mix of residential housing, busy shopping areas and strong local business activity makes it one of the most effective areas in West London for leaflet distribution campaigns.
+      </p>
+
+      <p>
+        We regularly deliver leaflet distribution campaigns across Ealing targeting W5 and W13, helping businesses increase visibility and generate consistent enquiries.
+      </p>
+
+      <p>
+        Our experienced leaflet distribution teams operate across Ealing regularly, helping businesses reach local households with reliable delivery, strong postcode coverage and structured campaigns designed for measurable results.
       </p>
 
       <p>
         We also cover 
         <a href="/leaflet-distribution-acton.html">Acton</a>, 
         <a href="/leaflet-distribution-chiswick.html">Chiswick</a>, 
+        <a href="/leaflet-distribution-hanwell.html">Hanwell</a>, 
         <a href="/leaflet-distribution-west-london.html">West London</a> 
-        and wider <a href="/leaflet-distribution-london.html">London</a> campaigns.
+        and wider <a href="/leaflet-distribution-london.html">London</a>.
       </p>
 
       <p>
-        You can also use our <a href="/index.html#calculator">homepage quote tool</a> to plan your campaign.
+        You can also use our <a href="/#calculator">homepage quote tool</a> to plan your campaign.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="seo">
+      <h2>Leaflet distribution near Ealing</h2>
+
+      <p>
+        Looking for leaflet distribution near Ealing? LeafletPro UK is a trusted leaflet company in London providing professional leaflet delivery services across W5 and W13 and nearby West London areas. Our GPS tracked campaigns help businesses reach local households and generate consistent enquiries.
       </p>
 
+      <p>
+        We specialise in leaflet distribution in Ealing, offering targeted postcode campaigns designed to maximise response rates. Whether you need leaflet distribution near me, flyer distribution near me or a reliable Ealing leaflet delivery service, our team delivers structured campaigns built for local results.
+      </p>
+
+      <p>
+        If you are searching for leaflet distribution W5, leaflet delivery Ealing or a dependable leaflet company London businesses can rely on, our campaigns are designed to put your message in front of the right homes and streets.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="seo">
+      <h2>Who our Ealing leaflet distribution is for</h2>
+
+      <p>
+        Our leaflet distribution services in Ealing are ideal for restaurants, estate agents, gyms, cafés, local trades, clinics and service-based businesses looking to reach nearby customers through targeted offline marketing.
+      </p>
+
+      <p>
+        Whether you want to promote an offer, launch a new business, increase local brand awareness or drive more enquiries, our Ealing campaigns are built to help you reach the right streets, postcodes and households.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="faq">
+      <h2>Leaflet distribution Ealing FAQs</h2>
+
+      <p>
+        <strong>How effective is leaflet distribution in Ealing?</strong><br>
+        Leaflet distribution is highly effective in Ealing due to its strong residential population, busy local centres and high response potential.
+      </p>
+
+      <p>
+        <strong>Which areas do you cover in Ealing?</strong><br>
+        We cover Ealing Broadway, South Ealing, West Ealing, Northfields, Hanwell and surrounding W5 and W13 areas.
+      </p>
+
+      <p>
+        <strong>Do you offer GPS tracked delivery?</strong><br>
+        Yes, our campaigns include GPS tracked delivery for transparency, accountability and reliable reporting.
+      </p>
+
+      <p>
+        <strong>What types of businesses use leaflet distribution in Ealing?</strong><br>
+        Restaurants, gyms, estate agents, trades, clinics, cafés and other local service businesses commonly use leaflet distribution to generate local enquiries.
+      </p>
+
+      <p>
+        <strong>Do you provide leaflet distribution near me in Ealing?</strong><br>
+        Yes, we provide leaflet distribution near Ealing and across nearby West London areas with postcode-targeted campaigns designed for local coverage.
+      </p>
+
+      <p>
+        <strong>Can you target W5 and W13?</strong><br>
+        Yes, we regularly run leaflet distribution campaigns across W5 and W13, helping businesses focus on the most relevant residential and commercial areas.
+      </p>
     </div>
 
   </div>
@@ -240,10 +418,19 @@
 
     <p>Build your quote and launch your Ealing campaign today.</p>
 
-    <a href="/index.html#calculator" class="btn btn-gold">Build Quote</a>
+    <div class="hero-actions" style="margin-top:0;">
+      <a href="/#calculator" class="btn btn-gold">Build Quote</a>
+    </div>
 
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 LeafletPro UK</span>
+    <span>Ealing Leaflet Distribution</span>
+  </div>
+</footer>
 
 </body>
 </html>
