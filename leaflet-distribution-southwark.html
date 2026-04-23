@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaflet Distribution Southwark | LeafletPro UK</title>
-  <meta name="description" content="Professional leaflet distribution in Southwark with GPS tracked delivery, postcode targeting and premium leaflet campaigns for local businesses." />
+  <meta name="description" content="Professional leaflet distribution in Southwark with GPS tracked delivery, postcode targeting across SE1 and SE16 and premium leaflet campaigns for local businesses." />
   <link rel="canonical" href="https://leafletprouk.com/leaflet-distribution-southwark.html" />
 
   <style>
@@ -49,6 +49,7 @@
       font-size:24px;
       font-weight:800;
       color:#fff;
+      text-decoration:none;
     }
 
     .hero{
@@ -65,6 +66,7 @@
     h2{
       font-size:clamp(28px,4vw,46px);
       margin:0 0 20px;
+      line-height:1.15;
     }
 
     p{
@@ -75,32 +77,42 @@
       margin:0 0 20px;
     }
 
-    .hero a{
+    .hero a.inline-link{
       color:#fff;
       text-decoration:underline;
       font-weight:700;
     }
 
     .trust-points{
-      margin:25px 0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin:28px 0 10px;
+      max-width:520px;
     }
 
     .trust-point{
+      font-size:18px;
       font-weight:700;
-      margin-bottom:8px;
     }
 
     .hero-actions{
       display:flex;
-      gap:12px;
       flex-wrap:wrap;
+      gap:14px;
+      margin-top:24px;
     }
 
     .btn{
-      padding:14px 20px;
-      border-radius:14px;
+      padding:16px 22px;
+      border-radius:16px;
       font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       text-decoration:none;
+      border:none;
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
     }
 
     .btn-gold{
@@ -110,72 +122,80 @@
 
     .btn-secondary{
       background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.2);
+      border:1px solid rgba(255,255,255,0.18);
       color:#fff;
     }
 
     .section{
-      padding:30px 0;
+      padding:34px 0;
     }
 
     .grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:14px;
+      gap:16px;
     }
 
     .card{
       background:#fff;
       color:#111;
-      padding:18px;
-      border-radius:16px;
+      padding:20px;
+      border-radius:18px;
     }
 
     .card p{
-      font-size:15px;
       color:#555;
+      font-size:16px;
       margin:0;
     }
 
     .area{
       background:#fff;
       color:#111;
-      padding:12px;
-      border-radius:12px;
-      margin-bottom:8px;
+      padding:14px;
+      border-radius:14px;
+      margin-bottom:10px;
       font-weight:700;
     }
 
     .seo{
       background:#fff;
       color:#111;
-      padding:22px;
-      border-radius:16px;
-      margin-bottom:20px;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
     }
 
     .seo p{
       color:#444;
-      font-size:16px;
-      line-height:1.7;
+      font-size:17px;
+      margin-bottom:16px;
+    }
+
+    .seo a{
+      color:#0c1b45;
+      font-weight:700;
+      text-decoration:underline;
     }
 
     .faq{
       background:#fff;
       color:#111;
-      padding:22px;
-      border-radius:16px;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
     }
 
     .faq p{
-      font-size:16px;
       color:#444;
+      font-size:17px;
+      margin-bottom:16px;
     }
 
     .site-footer{
-      padding:25px 0 40px;
-      font-size:14px;
-      color:rgba(255,255,255,0.7);
+      padding:28px 0 50px;
+      color:rgba(255,255,255,0.72);
+      font-size:15px;
     }
 
     .footer-row{
@@ -187,7 +207,6 @@
     @media(max-width:900px){
       .grid{grid-template-columns:1fr}
       .hero-actions{flex-direction:column}
-      .btn{width:100%}
     }
   </style>
 </head>
@@ -196,7 +215,7 @@
 
 <header class="site-header">
   <div class="container header-row">
-    <div class="brand">LeafletPro UK</div>
+    <a href="/" class="brand">LeafletPro UK</a>
   </div>
 </header>
 
@@ -206,11 +225,11 @@
     <h1>Leaflet Distribution Southwark That Generates Local Enquiries</h1>
 
     <p>
-      LeafletPro UK provides professional leaflet distribution in Southwark with GPS tracked delivery, postcode targeting and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html">London</a>.
+      LeafletPro UK provides professional leaflet distribution in Southwark with GPS tracked delivery, postcode targeting across SE1 and SE16 and premium campaign support for businesses that want stronger local visibility across <a href="/leaflet-distribution-london.html" class="inline-link">London</a>.
     </p>
 
     <p>
-      Ideal for restaurants, cafés, clinics, gyms, estate agents, trades and service businesses targeting one of South London’s busiest residential and commercial areas.
+      Ideal for restaurants, offices, clinics, gyms, estate agents, cafés, trades and local service businesses targeting one of Central South London’s busiest residential and commercial areas.
     </p>
 
     <div class="trust-points">
@@ -220,7 +239,7 @@
     </div>
 
     <div class="hero-actions">
-      <a href="/index.html#calculator" class="btn btn-gold">Get Instant Quote</a>
+      <a href="/#calculator" class="btn btn-gold">Get Instant Quote</a>
       <a href="/leaflet-distribution-south-london.html" class="btn btn-secondary">View South London Coverage</a>
     </div>
 
@@ -233,10 +252,10 @@
     <h2>Why leaflet distribution works in Southwark</h2>
 
     <div class="grid">
-      <div class="card"><p>High residential density across SE1, SE5 and SE15 makes campaigns highly effective.</p></div>
-      <div class="card"><p>Busy areas like London Bridge and Borough create strong visibility.</p></div>
-      <div class="card"><p>Great postcode targeting opportunities across South London zones.</p></div>
-      <div class="card"><p>Strong enquiry potential for local services and businesses.</p></div>
+      <div class="card"><p>High-density residential housing across SE1 and SE16 makes leaflet campaigns highly effective.</p></div>
+      <div class="card"><p>Strong postcode targeting across central South London.</p></div>
+      <div class="card"><p>Excellent for local services, offices, hospitality and retail businesses.</p></div>
+      <div class="card"><p>Consistent enquiry potential from active households and working professionals.</p></div>
     </div>
 
   </div>
@@ -248,11 +267,12 @@
     <h2>Areas we cover in Southwark</h2>
 
     <div class="area">Southwark (SE1)</div>
-    <div class="area">Borough (SE1)</div>
-    <div class="area">London Bridge (SE1)</div>
-    <div class="area">Elephant & Castle (SE1)</div>
     <div class="area">Bermondsey (SE16)</div>
-    <div class="area">Peckham nearby areas</div>
+    <div class="area">London Bridge nearby areas</div>
+    <div class="area">Elephant & Castle nearby areas</div>
+    <div class="area">Rotherhithe nearby areas</div>
+    <div class="area">Bankside nearby areas</div>
+    <div class="area">Canada Water nearby areas</div>
 
   </div>
 </section>
@@ -263,15 +283,15 @@
     <h2>Leaflet distribution services in Southwark</h2>
 
     <p>
-      Our Southwark leaflet distribution services are designed to help businesses reach local customers effectively across SE1 and surrounding South London areas.
+      Our Southwark leaflet distribution services are designed to help businesses reach local customers effectively across SE1 and SE16. We focus on residential targeting, postcode coverage and high-response delivery areas.
     </p>
 
     <p>
-      We provide door-to-door leaflet delivery, GPS tracked campaigns, postcode targeting and structured campaigns designed to generate consistent enquiries.
+      Services include door-to-door leaflet delivery, GPS tracked campaigns, postcode targeting and full campaign management to generate consistent enquiries.
     </p>
 
     <p>
-      We target key areas including Borough High Street, London Bridge and surrounding residential streets to maximise visibility and response rates.
+      We target key residential streets, apartments and busy areas across Southwark to maximise leaflet visibility and campaign performance.
     </p>
 
   </div>
@@ -284,44 +304,28 @@
       <h2>Leaflet distribution Southwark</h2>
 
       <p>
-        Our Southwark leaflet distribution service helps businesses target key local areas with GPS tracked delivery and structured campaigns designed to generate real enquiries.
+        Our Southwark leaflet distribution service helps businesses target SE1 and SE16 with GPS tracked delivery and structured campaigns designed to generate real enquiries.
       </p>
 
       <p>
-        Southwark combines busy commercial areas, strong residential demand and excellent local visibility, making it ideal for leaflet campaigns.
+        Southwark’s mix of residential developments, office spaces and busy local areas makes it one of the most effective locations in London for leaflet campaigns.
       </p>
 
       <p>
-        We recently delivered a high-volume leaflet distribution campaign across Southwark targeting SE1 for a local business, generating increased enquiries within the first week.
+        We regularly deliver campaigns across Southwark, helping businesses increase visibility and drive local response.
       </p>
 
       <p>
         We also cover 
-        <a href="/leaflet-distribution-greenwich.html">Greenwich</a>, 
-        <a href="/leaflet-distribution-croydon.html">Croydon</a>, 
+        <a href="/leaflet-distribution-london-bridge.html">London Bridge</a>, 
+        <a href="/leaflet-distribution-bermondsey.html">Bermondsey</a>, 
         <a href="/leaflet-distribution-south-london.html">South London</a> 
         and wider <a href="/leaflet-distribution-london.html">London</a>.
       </p>
 
-    </div>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-
-    <div class="seo">
-      <h2>Leaflet distribution near Southwark</h2>
-
       <p>
-        Looking for leaflet distribution near Southwark? We provide targeted leaflet delivery campaigns across SE1 and nearby areas with GPS tracking and structured planning.
+        You can also use our <a href="/#calculator">quote tool</a>.
       </p>
-
-      <p>
-        Whether you need leaflet distribution near me, flyer distribution near me or a reliable London leaflet company, we help deliver strong local results.
-      </p>
-
     </div>
 
   </div>
@@ -333,12 +337,28 @@
     <div class="faq">
       <h2>Leaflet distribution Southwark FAQs</h2>
 
-      <p><strong>How effective is leaflet distribution in Southwark?</strong><br>Very effective due to strong residential density and busy local areas.</p>
+      <p><strong>Can you target SE1 and SE16?</strong><br>Yes, we regularly deliver across both areas.</p>
 
-      <p><strong>Which areas do you cover?</strong><br>Southwark, Borough, London Bridge, Bermondsey and surrounding areas.</p>
+      <p><strong>Is leaflet distribution effective in Southwark?</strong><br>Yes — strong residential and business density makes it highly effective.</p>
 
-      <p><strong>Do you offer GPS tracking?</strong><br>Yes, all campaigns include GPS tracked delivery.</p>
+      <p><strong>Do you provide GPS tracking?</strong><br>Yes, all campaigns are tracked.</p>
 
+      <p><strong>Do you offer leaflet distribution near me?</strong><br>Yes, across South London.</p>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <h2>Start your campaign</h2>
+
+    <p>Build your quote and launch your Southwark campaign today.</p>
+
+    <div class="hero-actions">
+      <a href="/#calculator" class="btn btn-gold">Build Quote</a>
     </div>
 
   </div>
