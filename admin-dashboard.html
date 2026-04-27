@@ -171,19 +171,18 @@
 
       const filtered = allOrders.filter(order => {
         const text = [
-          order.firstName,
-          order.lastName,
-          order.email,
-          order.phone,
-          order.company,
-          order.postcode,
-          order.quantity,
-          order.printedAlready,
-          order.campaignStartDate,
-          order.areasRequired,
-          order.notes
-        ].join(" ").toLowerCase();
-
+  order.firstName || order.first_name,
+  order.lastName || order.last_name,
+  order.email,
+  order.phone,
+  order.company,
+  order.postcode,
+  order.quantity,
+  order.printedAlready || order.printed_already,
+  order.campaignStartDate || order.campaign_start_date,
+  order.areasRequired || order.areas_required,
+  order.notes || order.message
+].join(" ").toLowerCase();
         return text.includes(search);
       });
 
