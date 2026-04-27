@@ -1616,9 +1616,16 @@
               }
             });
 
-            if (response.ok) {
-              window.location.href = "/thank-you.html";
-            } else {
+          if (response.ok) {
+
+  await fetch("https://leafletpro-backend.onrender.com/order", {
+    method: "POST",
+    body: formData,
+  });
+
+  window.location.href = "/thank-you.html";
+
+} else { 
               if (statusMessage) {
                 statusMessage.style.display = "block";
                 statusMessage.textContent = "There was a problem sending your enquiry. Please try again.";
