@@ -4,1022 +4,220 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LeafletPro Admin</title>
+
   <style>
-    :root{
-      --bg:#07122f;
-      --bg-2:#0c1b45;
-      --panel:#ffffff;
-      --panel-2:#f6f8fc;
-      --panel-3:#eef2f8;
-      --text:#111827;
-      --muted:#6b7280;
-      --line:#e6eaf2;
-      --gold:#d7a645;
-      --blue:#2563eb;
-      --green:#12b76a;
-      --orange:#f59e0b;
-      --red:#ef4444;
-      --shadow:0 18px 48px rgba(0,0,0,0.18);
-      --radius:28px;
+    * {
+      box-sizing: border-box;
     }
 
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
-      color:#fff;
-    }
-
-    .shell{
-      display:grid;
-      grid-template-columns:270px 1fr;
-      min-height:100vh;
-    }
-
-    .sidebar{
-      background:rgba(5,12,32,0.78);
-      border-right:1px solid rgba(255,255,255,0.08);
-      padding:28px 18px;
-      backdrop-filter:blur(12px);
-    }
-
-    .brand{
-      font-size:28px;
-      font-weight:800;
-      letter-spacing:-0.03em;
-      margin-bottom:8px;
-    }
-
-    .brand-sub{
-      color:rgba(255,255,255,0.68);
-      font-size:14px;
-      line-height:1.6;
-      margin-bottom:28px;
-    }
-
-    .nav{
-      display:grid;
-      gap:10px;
-    }
-
-    .nav a{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 16px;
-      border-radius:16px;
-      color:#fff;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.06);
-      text-decoration:none;
-      font-weight:700;
-    }
-
-    .nav a.active{
-      background:rgba(215,166,69,0.16);
-      border-color:rgba(215,166,69,0.32);
-      color:#ffd98b;
-    }
-
-    .sidebar-card{
-      margin-top:24px;
-      padding:18px;
-      border-radius:22px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .sidebar-card h3{
-      margin:0 0 8px;
-      font-size:16px;
-    }
-
-    .sidebar-card p{
-      margin:0;
-      font-size:14px;
-      line-height:1.6;
-      color:rgba(255,255,255,0.7);
-    }
-
-    .main{
-      padding:28px;
-    }
-
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:18px;
-      flex-wrap:wrap;
-      margin-bottom:22px;
-    }
-
-    .title-wrap h1{
-      margin:0 0 8px;
-      font-size:46px;
-      line-height:1;
-      letter-spacing:-0.04em;
-    }
-
-    .title-wrap p{
-      margin:0;
-      color:rgba(255,255,255,0.76);
-      font-size:18px;
-      line-height:1.6;
-    }
-
-    .top-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      border:none;
-      border-radius:18px;
-      padding:16px 22px;
-      font-size:15px;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 12px 30px rgba(0,0,0,0.22);
-    }
-
-    .btn-dark{
-      background:rgba(255,255,255,0.08);
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.12);
-    }
-
-    .btn-gold{
-      background:var(--gold);
-      color:#111;
-    }
-
-    .kpi-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-      margin-bottom:22px;
-    }
-
-    .card{
-      background:var(--panel);
-      color:var(--text);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:var(--shadow);
-    }
-
-    .kpi-card small{
-      display:block;
-      margin-bottom:10px;
-      font-size:13px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:var(--muted);
-    }
-
-    .kpi-card strong{
-      display:block;
-      font-size:34px;
-      line-height:1;
-      margin-bottom:8px;
-      letter-spacing:-0.03em;
-    }
-
-    .kpi-card span{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .dashboard-grid{
-      display:grid;
-      grid-template-columns:1.3fr 0.9fr;
-      gap:22px;
-      align-items:start;
-    }
-
-    .left-stack,
-    .right-stack{
-      display:grid;
-      gap:22px;
-    }
-
-    .panel-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-
-    .panel-head h2,
-    .panel-head h3{
-      margin:0 0 8px;
-      color:var(--text);
-      letter-spacing:-0.03em;
-    }
-
-    .panel-head p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:15px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:#eef2ff;
-      color:#334155;
-      font-size:13px;
-      font-weight:800;
-    }
-
-    .search-row{
-      display:grid;
-      grid-template-columns:1fr 180px 180px;
-      gap:12px;
-      margin-bottom:18px;
-    }
-
-    .search-row input,
-    .search-row select{
-      width:100%;
-      padding:14px 16px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-size:15px;
-      outline:none;
-    }
-
-    .table-wrap{
-      overflow:auto;
-      border:1px solid var(--line);
-      border-radius:22px;
-      background:#fff;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      min-width:980px;
-    }
-
-    th, td{
-      padding:16px 16px;
-      text-align:left;
-      border-bottom:1px solid var(--line);
-      font-size:14px;
-      color:#1f2937;
-      vertical-align:top;
-    }
-
-    th{
-      background:var(--panel-2);
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:#6b7280;
-      position:sticky;
-      top:0;
-      z-index:1;
-    }
-
-    tr:hover td{
-      background:#fafcff;
-    }
-
-    .empty{
-      text-align:center;
-      color:var(--muted);
-      padding:40px 18px;
-      font-size:16px;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:88px;
-      padding:9px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-
-    .tag.solus{
-      background:#fff3dc;
-      color:#8a5b00;
-    }
-
-    .tag.shared{
-      background:#e8f1ff;
-      color:#175cd3;
-    }
-
-    .status-badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:74px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      background:#ecfdf3;
-      color:#027a48;
-    }
-
-    .notes-btn{
-      border:none;
-      border-radius:12px;
-      padding:10px 12px;
-      background:#eef2ff;
-      color:#1d4ed8;
-      font-weight:800;
-      cursor:pointer;
-    }
-
-    .split-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    .mini-card{
-      background:var(--panel-2);
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:20px;
-    }
-
-    .mini-card small{
-      display:block;
-      margin-bottom:8px;
-      color:var(--muted);
-      font-size:13px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .mini-card strong{
-      display:block;
-      font-size:28px;
-      line-height:1;
-      margin-bottom:6px;
-      color:#111827;
-    }
-
-    .mini-card span{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .activity-list{
-      display:grid;
-      gap:12px;
-    }
-
-    .activity-item{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:14px;
-      padding:16px 18px;
-      border-radius:18px;
-      background:var(--panel-2);
-      border:1px solid var(--line);
-    }
-
-    .activity-item strong{
-      display:block;
-      color:#111827;
-      margin-bottom:4px;
-      font-size:15px;
-    }
-
-    .activity-item span{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .detail-panel{
-      display:grid;
-      gap:16px;
-    }
-
-    .detail-block{
-      padding:18px;
-      border-radius:20px;
-      background:var(--panel-2);
-      border:1px solid var(--line);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #07122f;
+      color: white;
+      padding: 22px;
     }
 
-    .detail-block h4{
-      margin:0 0 12px;
-      font-size:14px;
-      color:#6b7280;
-      text-transform:uppercase;
-      letter-spacing:.08em;
+    h1 {
+      font-size: 42px;
+      margin: 0 0 8px;
     }
 
-    .detail-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
+    p {
+      color: rgba(255,255,255,0.75);
+      font-size: 18px;
+      margin: 0 0 24px;
     }
 
-    .detail-item{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px;
+    .top-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
     }
 
-    .detail-item small{
-      display:block;
-      margin-bottom:6px;
-      color:#6b7280;
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.06em;
+    button {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 15px;
     }
 
-    .detail-item strong{
-      display:block;
-      color:#111827;
-      font-size:16px;
-      line-height:1.4;
-      word-break:break-word;
+    .refresh {
+      background: #d7a645;
+      color: #111;
     }
 
-    .notes-box{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:16px;
-      color:#374151;
-      line-height:1.7;
-      min-height:120px;
-      white-space:pre-wrap;
+    .logout {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
-    .muted{
-      color:var(--muted);
+    input {
+      width: 100%;
+      padding: 16px;
+      border-radius: 18px;
+      border: none;
+      margin-bottom: 24px;
+      font-size: 16px;
     }
 
-    .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.48);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      z-index:999;
+    .order {
+      background: white;
+      color: #111;
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.25);
     }
 
-    .modal.open{
-      display:flex;
+    .order h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #07122f;
     }
 
-    .modal-card{
-      width:min(720px, 100%);
-      background:#fff;
-      color:#111827;
-      border-radius:28px;
-      padding:24px;
-      box-shadow:0 24px 80px rgba(0,0,0,0.28);
+    .order-row {
+      margin: 8px 0;
+      line-height: 1.5;
+      font-size: 15px;
     }
 
-    .modal-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:16px;
+    .order-row strong {
+      color: #07122f;
     }
 
-    .modal-head h3{
-      margin:0;
-      font-size:28px;
-      letter-spacing:-0.03em;
+    .message-box {
+      background: #f4f6fb;
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 10px;
+      white-space: pre-wrap;
     }
 
-    .close-btn{
-      border:none;
-      border-radius:12px;
-      width:42px;
-      height:42px;
-      cursor:pointer;
-      font-size:18px;
-      font-weight:800;
-      background:#f3f4f6;
-      color:#111827;
+    .date {
+      color: #777;
+      font-size: 13px;
+      margin-top: 12px;
     }
 
-    @media (max-width: 1100px){
-      .shell{
-        grid-template-columns:1fr;
+    .empty {
+      background: white;
+      color: #111;
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 18px;
       }
 
-      .sidebar{
-        display:none;
+      h1 {
+        font-size: 34px;
       }
 
-      .dashboard-grid{
-        grid-template-columns:1fr;
-      }
-
-      .kpi-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-    }
-
-    @media (max-width: 720px){
-      .main{
-        padding:18px;
-      }
-
-      .title-wrap h1{
-        font-size:36px;
-      }
-
-      .kpi-grid,
-      .split-grid,
-      .detail-grid,
-      .search-row{
-        grid-template-columns:1fr;
-      }
-
-      .card{
-        padding:20px;
-        border-radius:24px;
-      }
-
-      th, td{
-        padding:14px 12px;
+      button {
+        width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="shell">
-    <aside class="sidebar">
-      <div class="brand">LeafletPro</div>
-      <div class="brand-sub">Premium leaflet campaign admin built for leads, quotes and fulfilment.</div>
 
-      <nav class="nav">
-        <a href="#" class="active"><span>Dashboard</span><span>→</span></a>
-        <a href="#ordersSection"><span>Orders</span><span>→</span></a>
-        <a href="/" target="_blank"><span>Main Website</span><span>↗</span></a>
-        <a href="https://leafletpro-backend.onrender.com/orders" target="_blank"><span>Raw Orders API</span><span>↗</span></a>
-      </nav>
+  <h1>LeafletPro Enquiries</h1>
+  <p>Simple admin view for website quote requests.</p>
 
-      <div class="sidebar-card">
-        <h3>Admin Notes</h3>
-        <p>Use this dashboard to monitor fresh enquiries, review client notes and track campaign demand by postcode and volume.</p>
-      </div>
-    </aside>
-
-    <main class="main">
-      <div class="topbar">
-        <div class="title-wrap">
-          <h1>LeafletPro Admin</h1>
-          <p>Track campaign requests, revenue, notes and incoming orders in one SaaS-style workspace.</p>
-        </div>
-
-        <div class="top-actions">
-          <button class="btn btn-dark" onclick="loadOrders()">Refresh Dashboard</button>
-          <button class="btn btn-gold" onclick="exportCSV()">Export CSV</button>
-        </div>
-      </div>
-
-      <div class="kpi-grid">
-        <div class="card kpi-card">
-          <small>Total Orders</small>
-          <strong id="totalOrders">0</strong>
-          <span>Saved campaign requests from the website.</span>
-        </div>
-
-        <div class="card kpi-card">
-          <small>Total Revenue</small>
-          <strong id="totalRevenue">£0.00</strong>
-          <span>Based on saved order totals.</span>
-        </div>
-
-        <div class="card kpi-card">
-          <small>Leaflets Requested</small>
-          <strong id="leafletsTotal">0</strong>
-          <span>Total quantity across all enquiries.</span>
-        </div>
-
-        <div class="card kpi-card">
-          <small>Average Order</small>
-          <strong id="averageOrder">£0.00</strong>
-          <span>Average value across all campaigns.</span>
-        </div>
-      </div>
-
-      <div class="dashboard-grid">
-        <div class="left-stack">
-          <div class="card" id="ordersSection">
-            <div class="panel-head">
-              <div>
-                <h2>Campaign Requests</h2>
-                <p>Search, scan and review every incoming enquiry from the website.</p>
-              </div>
-              <div class="pill">Live order feed</div>
-            </div>
-
-            <div class="search-row">
-              <input id="searchInput" type="text" placeholder="Search postcode, email, phone or notes" />
-              <select id="deliveryFilter">
-                <option value="">All delivery types</option>
-                <option value="solus">Solus</option>
-                <option value="shared">Shared</option>
-              </select>
-              <select id="notesFilter">
-                <option value="">All notes</option>
-                <option value="with-notes">With notes</option>
-                <option value="no-notes">No notes</option>
-              </select>
-            </div>
-
-            <div class="table-wrap">
-              <table id="ordersTable">
-                <thead>
-                  <tr>
-                    <th>Postcode</th>
-                    <th>Quantity</th>
-                    <th>Total (£)</th>
-                    <th>Delivery</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Status</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="panel-head">
-              <div>
-                <h2>Recent Activity</h2>
-                <p>Quick timeline of the latest campaign requests.</p>
-              </div>
-            </div>
-            <div id="activityList" class="activity-list"></div>
-          </div>
-        </div>
-
-        <div class="right-stack">
-          <div class="card">
-            <div class="panel-head">
-              <div>
-                <h3>Selected Order</h3>
-                <p>Click any order note button to review full details.</p>
-              </div>
-            </div>
-
-            <div class="detail-panel">
-              <div class="detail-block">
-                <h4>Campaign</h4>
-                <div class="detail-grid">
-                  <div class="detail-item">
-                    <small>Postcode</small>
-                    <strong id="detailPostcode">-</strong>
-                  </div>
-                  <div class="detail-item">
-                    <small>Leaflets</small>
-                    <strong id="detailQuantity">-</strong>
-                  </div>
-                  <div class="detail-item">
-                    <small>Delivery</small>
-                    <strong id="detailDelivery">-</strong>
-                  </div>
-                  <div class="detail-item">
-                    <small>Total</small>
-                    <strong id="detailTotal">£0.00</strong>
-                  </div>
-                  <div class="detail-item">
-                    <small>Tracking</small>
-                    <strong id="detailTracking">-</strong>
-                  </div>
-                  <div class="detail-item">
-                    <small>Print</small>
-                    <strong id="detailPrint">-</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="detail-block">
-                <h4>Client</h4>
-                <div class="detail-grid">
-                  <div class="detail-item">
-                    <small>Email</small>
-                    <strong id="detailEmail">-</strong>
-                  </div>
-                  <div class="detail-item">
-                    <small>Phone</small>
-                    <strong id="detailPhone">-</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="detail-block">
-                <h4>Notes</h4>
-                <div class="notes-box" id="detailNotes">No notes selected yet.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="panel-head">
-              <div>
-                <h3>Campaign Metrics</h3>
-                <p>Useful demand signals for pricing and fulfilment.</p>
-              </div>
-            </div>
-
-            <div class="split-grid">
-              <div class="mini-card">
-                <small>Shared Orders</small>
-                <strong id="sharedCount">0</strong>
-                <span>Lower-cost distribution requests.</span>
-              </div>
-
-              <div class="mini-card">
-                <small>Solus Orders</small>
-                <strong id="solusCount">0</strong>
-                <span>Premium solo campaign requests.</span>
-              </div>
-
-              <div class="mini-card">
-                <small>Largest Order</small>
-                <strong id="largestOrder">0</strong>
-                <span>Highest quantity currently saved.</span>
-              </div>
-
-              <div class="mini-card">
-                <small>Top Postcode</small>
-                <strong id="topPostcode">-</strong>
-                <span>Most frequent postcode request.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="panel-head">
-              <div>
-                <h3>Quick Actions</h3>
-                <p>Jump straight into the live system.</p>
-              </div>
-            </div>
-
-            <div class="activity-list">
-              <div class="activity-item">
-                <div>
-                  <strong><a href="/" target="_blank">Open main website</a></strong>
-                  <span>Visit the live frontend.</span>
-                </div>
-              </div>
-
-              <div class="activity-item">
-                <div>
-                  <strong><a href="https://leafletpro-backend.onrender.com/orders" target="_blank">View raw orders API</a></strong>
-                  <span>Inspect backend data directly.</span>
-                </div>
-              </div>
-
-              <div class="activity-item">
-                <div>
-                  <strong><a href="#" onclick="exportCSV(); return false;">Download CSV export</a></strong>
-                  <span>Export all enquiries.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+  <div class="top-buttons">
+    <button class="refresh" onclick="loadOrders()">Refresh</button>
+    <button class="logout" onclick="logoutAdmin()">Logout</button>
   </div>
 
-  <div id="notesModal" class="modal">
-    <div class="modal-card">
-      <div class="modal-head">
-        <h3>Client Notes</h3>
-        <button class="close-btn" onclick="closeNotesModal()">✕</button>
-      </div>
-      <div id="modalNotesText" class="notes-box">No notes available.</div>
-    </div>
-  </div>
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Search name, email, phone, postcode, company..."
+  />
+
+  <div id="ordersContainer"></div>
 
   <script>
+    if (localStorage.getItem("leafletpro_admin_logged_in") !== "true") {
+      window.location.href = "/login.html";
+    }
+
     const BACKEND_URL = "https://leafletpro-backend.onrender.com";
     let allOrders = [];
 
-    function formatMoney(value) {
-      return "£" + Number(value || 0).toFixed(2);
-    }
-
-    function formatTime() {
-      const now = new Date();
-      return now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    }
-
-    function safeText(value) {
+    function safe(value) {
       return String(value || "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    function getOrderTotal(order) {
-      return (
-        Number(order.totalCost) ||
-        Number(order.total) ||
-        Number(order.subtotalCost) ||
-        0
-      );
+    function formatDate(value) {
+      if (!value) return "";
+      const date = new Date(value);
+      if (isNaN(date)) return value;
+      return date.toLocaleString("en-GB");
     }
 
-    function showNotesModal(text) {
-      document.getElementById("modalNotesText").textContent = text || "No notes available.";
-      document.getElementById("notesModal").classList.add("open");
-    }
+    function renderOrders() {
+      const container = document.getElementById("ordersContainer");
+      const search = document.getElementById("searchInput").value.toLowerCase();
 
-    function closeNotesModal() {
-      document.getElementById("notesModal").classList.remove("open");
-    }
-
-    function renderSelectedOrder(order) {
-      if (!order) return;
-
-      document.getElementById("detailPostcode").textContent = order.postcode || "-";
-      document.getElementById("detailQuantity").textContent = Number(order.quantity || 0).toLocaleString();
-      document.getElementById("detailDelivery").textContent = order.deliveryType || "-";
-      document.getElementById("detailTotal").textContent = formatMoney(getOrderTotal(order));
-      document.getElementById("detailTracking").textContent = order.trackedDistribution ? "Yes" : "No";
-      document.getElementById("detailPrint").textContent = order.printIncluded ? "Yes" : "No";
-      document.getElementById("detailEmail").textContent = order.email || "-";
-      document.getElementById("detailPhone").textContent = order.phone || "-";
-      document.getElementById("detailNotes").textContent = order.notes || "No notes provided.";
-    }
-
-    function getFilteredOrders() {
-      const searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
-      const deliveryValue = document.getElementById("deliveryFilter").value;
-      const notesValue = document.getElementById("notesFilter").value;
-
-      return allOrders.filter(order => {
-        const textBlob = [
-          order.postcode,
+      const filtered = allOrders.filter(order => {
+        const text = [
+          order.firstName,
+          order.lastName,
           order.email,
           order.phone,
-          order.notes,
-          order.deliveryType
+          order.company,
+          order.postcode,
+          order.quantity,
+          order.printedAlready,
+          order.campaignStartDate,
+          order.areasRequired,
+          order.notes
         ].join(" ").toLowerCase();
 
-        const deliveryMatch = !deliveryValue || (order.deliveryType || "").toLowerCase() === deliveryValue;
-        const hasNotes = Boolean((order.notes || "").trim());
-        const notesMatch =
-          !notesValue ||
-          (notesValue === "with-notes" && hasNotes) ||
-          (notesValue === "no-notes" && !hasNotes);
-
-        const searchMatch = !searchValue || textBlob.includes(searchValue);
-
-        return deliveryMatch && notesMatch && searchMatch;
+        return text.includes(search);
       });
-    }
 
-    function renderOrdersTable() {
-      const tableBody = document.querySelector("#ordersTable tbody");
-      const filteredOrders = getFilteredOrders();
+      container.innerHTML = "";
 
-      tableBody.innerHTML = "";
-
-      if (!filteredOrders.length) {
-        tableBody.innerHTML = `<tr><td colspan="8" class="empty">No matching orders found</td></tr>`;
+      if (!filtered.length) {
+        container.innerHTML = `<div class="empty">No enquiries found.</div>`;
         return;
       }
 
-      filteredOrders.forEach((order) => {
-        const total = getOrderTotal(order);
-        const quantity = Number(order.quantity) || 0;
-        const deliveryType = (order.deliveryType || "").toLowerCase();
-        const row = document.createElement("tr");
+      filtered.forEach(order => {
+        const card = document.createElement("div");
+        card.className = "order";
 
-        row.innerHTML = `
-          <td>${safeText(order.postcode || "")}</td>
-          <td>${quantity ? quantity.toLocaleString() : ""}</td>
-          <td>${formatMoney(total)}</td>
-          <td><span class="tag ${deliveryType}">${safeText(order.deliveryType || "")}</span></td>
-          <td>${safeText(order.email || "")}</td>
-          <td>${safeText(order.phone || "")}</td>
-          <td><span class="status-badge">New</span></td>
-          <td><button class="notes-btn" type="button">View</button></td>
+        card.innerHTML = `
+          <h2>${safe(order.firstName)} ${safe(order.lastName)}</h2>
+
+          <div class="order-row"><strong>Email:</strong> ${safe(order.email)}</div>
+          <div class="order-row"><strong>Phone:</strong> ${safe(order.phone)}</div>
+          <div class="order-row"><strong>Company:</strong> ${safe(order.company)}</div>
+          <div class="order-row"><strong>Postcode:</strong> ${safe(order.postcode)}</div>
+          <div class="order-row"><strong>Quantity:</strong> ${safe(order.quantity)}</div>
+          <div class="order-row"><strong>Printed Already:</strong> ${safe(order.printedAlready)}</div>
+          <div class="order-row"><strong>Campaign Start Date:</strong> ${safe(order.campaignStartDate)}</div>
+          <div class="order-row"><strong>Areas Required:</strong> ${safe(order.areasRequired)}</div>
+
+          <div class="order-row"><strong>Message:</strong></div>
+          <div class="message-box">${safe(order.notes || order.message || "No message")}</div>
+
+          <div class="date">${safe(formatDate(order.createdAt))}</div>
         `;
 
-        row.querySelector(".notes-btn").addEventListener("click", () => {
-          renderSelectedOrder(order);
-          showNotesModal(order.notes || "No notes available.");
-        });
-
-        row.addEventListener("click", (event) => {
-          if (event.target.closest(".notes-btn")) return;
-          renderSelectedOrder(order);
-        });
-
-        tableBody.appendChild(row);
+        container.appendChild(card);
       });
-
-      renderSelectedOrder(filteredOrders[0]);
-    }
-
-    function renderActivity(orders) {
-      const activityList = document.getElementById("activityList");
-      activityList.innerHTML = "";
-
-      if (!orders.length) {
-        activityList.innerHTML = `<div class="activity-item"><div><strong>No activity yet</strong><span>New orders will appear here once saved from the website.</span></div></div>`;
-        return;
-      }
-
-      orders.slice(0, 6).forEach((order) => {
-        const total = getOrderTotal(order);
-        const quantity = Number(order.quantity) || 0;
-        const deliveryType = (order.deliveryType || "").toLowerCase();
-
-        const item = document.createElement("div");
-        item.className = "activity-item";
-        item.innerHTML = `
-          <div>
-            <strong>${safeText(order.postcode || "No postcode")} · ${quantity.toLocaleString()} leaflets</strong>
-            <span>${formatMoney(total)} · ${safeText(order.deliveryType || "unknown delivery")} · ${safeText(order.email || "no email")}</span>
-          </div>
-          <span class="tag ${deliveryType}">${safeText(order.deliveryType || "order")}</span>
-        `;
-        item.addEventListener("click", () => renderSelectedOrder(order));
-        activityList.appendChild(item);
-      });
-    }
-
-    function renderMetrics(orders) {
-      let totalRevenue = 0;
-      let totalLeaflets = 0;
-      let sharedCount = 0;
-      let solusCount = 0;
-      let largestOrder = 0;
-      const postcodeCounts = {};
-
-      orders.forEach(order => {
-        const total = getOrderTotal(order);
-        const quantity = Number(order.quantity) || 0;
-        const deliveryType = (order.deliveryType || "").toLowerCase();
-
-        totalRevenue += total;
-        totalLeaflets += quantity;
-        if (deliveryType === "shared") sharedCount++;
-        if (deliveryType === "solus") solusCount++;
-        if (quantity > largestOrder) largestOrder = quantity;
-
-        if (order.postcode) {
-          postcodeCounts[order.postcode] = (postcodeCounts[order.postcode] || 0) + 1;
-        }
-      });
-
-      const topPostcodeEntry = Object.entries(postcodeCounts).sort((a, b) => b[1] - a[1])[0];
-
-      document.getElementById("totalOrders").textContent = orders.length;
-      document.getElementById("totalRevenue").textContent = formatMoney(totalRevenue);
-      document.getElementById("leafletsTotal").textContent = totalLeaflets.toLocaleString();
-      document.getElementById("averageOrder").textContent = orders.length ? formatMoney(totalRevenue / orders.length) : "£0.00";
-      document.getElementById("sharedCount").textContent = sharedCount;
-      document.getElementById("solusCount").textContent = solusCount;
-      document.getElementById("largestOrder").textContent = largestOrder.toLocaleString();
-      document.getElementById("topPostcode").textContent = topPostcodeEntry ? topPostcodeEntry[0] : "-";
     }
 
     async function loadOrders() {
@@ -1027,89 +225,25 @@
         const response = await fetch(`${BACKEND_URL}/orders`);
         const orders = await response.json();
 
-        if (!Array.isArray(orders)) {
-          allOrders = [];
-        } else {
-          allOrders = orders.slice().reverse();
-        }
+        allOrders = Array.isArray(orders) ? orders.slice().reverse() : [];
+        renderOrders();
 
-        renderOrdersTable();
-        renderActivity(allOrders);
-        renderMetrics(allOrders);
       } catch (error) {
-        document.querySelector("#ordersTable tbody").innerHTML =
-          `<tr><td colspan="8" class="empty">Unable to load orders</td></tr>`;
-        document.getElementById("activityList").innerHTML =
-          `<div class="activity-item"><div><strong>Dashboard error</strong><span>Unable to load backend order data right now.</span></div></div>`;
-        console.error("Dashboard load error:", error);
+        document.getElementById("ordersContainer").innerHTML =
+          `<div class="empty">Unable to load enquiries.</div>`;
+        console.error(error);
       }
     }
 
-    async function exportCSV() {
-      try {
-        const response = await fetch(`${BACKEND_URL}/orders`);
-        const orders = await response.json();
-
-        if (!Array.isArray(orders) || orders.length === 0) {
-          alert("No orders to export yet.");
-          return;
-        }
-
-        let csv = "Postcode,Quantity,Total,Delivery,Email,Phone,Notes\n";
-
-        orders.forEach(order => {
-          const total = getOrderTotal(order);
-          const cleanNotes = String(order.notes || "").replace(/"/g, '""').replace(/\n/g, " ");
-
-          csv +=
-            `"${order.postcode || ""}",` +
-            `"${order.quantity || ""}",` +
-            `"${total.toFixed(2)}",` +
-            `"${order.deliveryType || ""}",` +
-            `"${order.email || ""}",` +
-            `"${order.phone || ""}",` +
-            `"${cleanNotes}"\n`;
-        });
-
-        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "leafletpro_orders.csv";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } catch (error) {
-        alert("CSV export failed.");
-        console.error("CSV export error:", error);
-      }
+    function logoutAdmin() {
+      localStorage.removeItem("leafletpro_admin_logged_in");
+      window.location.href = "/login.html";
     }
 
-    document.getElementById("searchInput").addEventListener("input", renderOrdersTable);
-    document.getElementById("deliveryFilter").addEventListener("change", renderOrdersTable);
-    document.getElementById("notesFilter").addEventListener("change", renderOrdersTable);
-    document.getElementById("notesModal").addEventListener("click", (e) => {
-      if (e.target.id === "notesModal") closeNotesModal();
-    });
+    document.getElementById("searchInput").addEventListener("input", renderOrders);
 
     loadOrders();
   </script>
- </script>
-
-<button onclick="logoutAdmin()" style="background:#142039;color:#fff;border:1px solid rgba(255,255,255,0.12);padding:12px 18px;border-radius:14px;cursor:pointer;font-weight:700;">
-Logout
-</button>
-
-<script>
-if (localStorage.getItem("leafletpro_admin_logged_in") !== "true") {
-  window.location.href = "/login.html";
-}
-
-function logoutAdmin() {
-  localStorage.removeItem("leafletpro_admin_logged_in");
-  window.location.href = "/login.html";
-}
-</script>
 
 </body>
 </html>
