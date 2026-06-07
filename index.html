@@ -1564,7 +1564,10 @@ londonFiles.forEach(file => {
               fillOpacity: 0.6
             });
 
-            layer.bindPopup(postcode).openPopup();
+            layer.bindPopup(`
+  <strong>${postcode}</strong><br>
+  Click again to add to enquiry
+`).openPopup();
           });
         }
       }).addTo(map);
