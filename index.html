@@ -1496,7 +1496,17 @@ if (window.location.pathname.endsWith("index.html")) {
   <script>
     let map;
     let marker;
-
+const householdCounts = {
+  "E2": 18500,
+  "E3": 21000,
+  "E14": 34000,
+  "SE1": 22000,
+  "SE15": 26000,
+  "SW11": 30000,
+  "WC2N": 4200,
+  "WC2E": 3600,
+  "CR0": 42000
+};
     function initMap() {
       const mapEl = document.getElementById("map");
       if (!mapEl || typeof L === "undefined") return;
@@ -1584,10 +1594,13 @@ londonFiles.forEach(file => {
     textarea.value = selectedAreas.join(", ");
   }
 
-  layer.bindPopup(`
-    <strong>${postcode}</strong><br>
-    Selected: ${selectedAreas.includes(postcode) ? "Yes" : "No"}
-  `).openPopup();
+  const households = householdCounts[postcode] || "Not available";
+
+layer.bindPopup(`
+  <strong>${postcode}</strong><br>
+  Households: ${households === "Not available" ? households : households.toLocaleString()}<br>
+  Selected: ${selectedAreas.includes(postcode) ? "Yes" : "No"}
+`).openPopup();
 
 });
         }
