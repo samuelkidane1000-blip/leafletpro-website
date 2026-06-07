@@ -1561,8 +1561,12 @@ londonFiles.forEach(file => {
             }
 
             layer.setStyle({
-              fillOpacity: 0.6
-            });
+  color: "#111827",
+  weight: 3,
+  fillColor: "#d7a645",
+  fillOpacity: 0.7
+});
+layer.bringToFront();
 
             layer.bindPopup(`
   <strong>${postcode}</strong><br>
