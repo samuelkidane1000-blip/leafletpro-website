@@ -1509,7 +1509,70 @@ if (window.location.pathname.endsWith("index.html")) {
       }).addTo(map);
 
       marker = L.marker([51.5072, -0.1276]).addTo(map);
+   const londonFiles = [
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/E.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/EC.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/N.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/NW.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SE.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SW.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/W.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/WC.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/BR.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/CR.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/DA.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/EN.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/HA.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/IG.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/KT.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/RM.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SM.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/TW.geojson",
+  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/UB.geojson"
+];
 
+const selectedAreas = [];
+
+londonFiles.forEach(file => {
+  fetch(file)
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        style: {
+          color: "#d7a645",
+          weight: 1,
+          fillColor: "#d7a645",
+          fillOpacity: 0.2
+        },
+        onEachFeature: function(feature, layer) {
+          const postcode = feature.properties.name || "Postcode";
+
+          layer.on("click", function() {
+            if (!selectedAreas.includes(postcode)) {
+              selectedAreas.push(postcode);
+            }
+
+            const textarea = document.querySelector(
+              'textarea[name="areas_required"]'
+            );
+
+            if (textarea) {
+              textarea.value = selectedAreas.join(", ");
+            }
+
+            layer.setStyle({
+              fillOpacity: 0.6
+            });
+
+            layer.bindPopup(postcode).openPopup();
+          });
+        }
+      }).addTo(map);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+});
       setTimeout(() => {
         map.invalidateSize();
       }, 250);
