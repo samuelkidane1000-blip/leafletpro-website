@@ -1547,32 +1547,49 @@ londonFiles.forEach(file => {
         onEachFeature: function(feature, layer) {
           const postcode = feature.properties.name || "Postcode";
 
-          layer.on("click", function() {
-            if (!selectedAreas.includes(postcode)) {
-              selectedAreas.push(postcode);
-            }
+     layer.on("click", function() {
 
-            const textarea = document.querySelector(
-              'textarea[name="areas_required"]'
-            );
+  const index = selectedAreas.indexOf(postcode);
 
-            if (textarea) {
-              textarea.value = selectedAreas.join(", ");
-            }
+  if (index > -1) {
 
-            layer.setStyle({
-  color: "#111827",
-  weight: 3,
-  fillColor: "#d7a645",
-  fillOpacity: 0.7
+    selectedAreas.splice(index, 1);
+
+    layer.setStyle({
+      color: "#d7a645",
+      weight: 1,
+      fillColor: "#d7a645",
+      fillOpacity: 0.2
+    });
+
+  } else {
+
+    selectedAreas.push(postcode);
+
+    layer.setStyle({
+      color: "#111827",
+      weight: 3,
+      fillColor: "#d7a645",
+      fillOpacity: 0.7
+    });
+
+    layer.bringToFront();
+  }
+
+  const textarea = document.querySelector(
+    'textarea[name="areas_required"]'
+  );
+
+  if (textarea) {
+    textarea.value = selectedAreas.join(", ");
+  }
+
+  layer.bindPopup(`
+    <strong>${postcode}</strong><br>
+    Selected: ${selectedAreas.includes(postcode) ? "Yes" : "No"}
+  `).openPopup();
+
 });
-layer.bringToFront();
-
-            layer.bindPopup(`
-  <strong>${postcode}</strong><br>
-  Click again to add to enquiry
-`).openPopup();
-          });
         }
       }).addTo(map);
     })
