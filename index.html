@@ -1557,7 +1557,14 @@ londonFiles.forEach(file => {
         onEachFeature: function(feature, layer) {
           const postcode = feature.properties.name || "Postcode";
 
-     layer.on("click", function() {
+          layer.on("click", function() {
+            layer.bindPopup("<strong>" + postcode + "</strong>").openPopup();
+          });
+        }
+      }).addTo(map);
+    })
+    .catch(error => console.error(error));
+});
 
   const index = selectedAreas.indexOf(postcode);
 
