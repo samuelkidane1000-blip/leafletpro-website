@@ -1594,12 +1594,22 @@ londonFiles.forEach(file => {
     textarea.value = selectedAreas.join(", ");
   }
 
-  const households = householdCounts[postcode] || "Not available";
+const households = householdCounts[postcode] || "Not available";
+
+const totalHouseholds = selectedAreas.reduce((total, area) => {
+  return total + (householdCounts[area] || 0);
+}, 0);
 
 layer.bindPopup(`
   <strong>${postcode}</strong><br>
-  Households: ${households === "Not available" ? households : households.toLocaleString()}<br>
-  Selected: ${selectedAreas.includes(postcode) ? "Yes" : "No"}
+  Approx. households: ${
+    households === "Not available"
+      ? households
+      : households.toLocaleString()
+  }<br>
+  Selected: ${selectedAreas.includes(postcode) ? "Yes" : "No"}<br><br>
+  <strong>Total selected households:</strong><br>
+  ${totalHouseholds.toLocaleString()}
 `).openPopup();
 
 });
