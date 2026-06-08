@@ -1494,125 +1494,133 @@ if (window.location.pathname.endsWith("index.html")) {
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
-    let map;
-    let marker;
+let map;
+let marker;
+
 const householdCounts = {
   "E2": 18500,
   "E3": 21000,
   "E14": 34000,
-  "SE1": 37000,,
+  "SE1": 37000,
   "SE15": 26000,
   "SW11": 30000,
   "WC2N": 4200,
   "WC2E": 3600,
   "CR0": 42000
 };
-    function initMap() {
-      const mapEl = document.getElementById("map");
-      if (!mapEl || typeof L === "undefined") return;
 
-      map = L.map(mapEl, { zoomControl: true }).setView([51.5072, -0.1276], 11);
+function initMap() {
+  const mapEl = document.getElementById("map");
+  if (!mapEl || typeof L === "undefined") return;
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-      }).addTo(map);
+  map = L.map(mapEl, { zoomControl: true }).setView([51.5072, -0.1276], 11);
 
-      marker = L.marker([51.5072, -0.1276]).addTo(map);
-   const londonFiles = [
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/E.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/EC.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/N.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/NW.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SE.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SW.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/W.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/WC.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/BR.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/CR.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/DA.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/EN.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/HA.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/IG.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/KT.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/RM.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SM.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/TW.geojson",
-  "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/UB.geojson"
-];
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
 
-const selectedAreas = [];
+  marker = L.marker([51.5072, -0.1276]).addTo(map);
 
-londonFiles.forEach(file => {
-  fetch(file)
-    .then(res => res.json())
-    .then(data => {
-      L.geoJSON(data, {
-        style: {
-          color: "#d7a645",
-          weight: 1,
-          fillColor: "#d7a645",
-          fillOpacity: 0.2
-        },
-        onEachFeature: function(feature, layer) {
-          const postcode = feature.properties.name || "Postcode";
+  const londonFiles = [
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/E.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/EC.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/N.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/NW.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SE.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SW.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/W.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/WC.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/BR.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/CR.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/DA.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/EN.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/HA.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/IG.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/KT.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/RM.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/SM.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/TW.geojson",
+    "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/UB.geojson"
+  ];
 
-          layer.on("click", function() {
-            const index = selectedAreas.indexOf(postcode);
+  const selectedAreas = [];
 
-            if (index > -1) {
-              selectedAreas.splice(index, 1);
+  londonFiles.forEach(file => {
+    fetch(file)
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: {
+            color: "#d7a645",
+            weight: 1,
+            fillColor: "#d7a645",
+            fillOpacity: 0.2
+          },
+          onEachFeature: function(feature, layer) {
+            const postcode = feature.properties.name || "Postcode";
 
-              layer.setStyle({
-                color: "#d7a645",
-                weight: 1,
-                fillColor: "#d7a645",
-                fillOpacity: 0.2
-              });
-            } else {
-              selectedAreas.push(postcode);
+            layer.on("click", function() {
+              const index = selectedAreas.indexOf(postcode);
 
-              layer.setStyle({
-                color: "#111827",
-                weight: 3,
-                fillColor: "#d7a645",
-                fillOpacity: 0.7
-              });
+              if (index > -1) {
+                selectedAreas.splice(index, 1);
 
-              layer.bringToFront();
-            }
+                layer.setStyle({
+                  color: "#d7a645",
+                  weight: 1,
+                  fillColor: "#d7a645",
+                  fillOpacity: 0.2
+                });
+              } else {
+                selectedAreas.push(postcode);
 
-            const textarea = document.querySelector('textarea[name="areas_required"]');
+                layer.setStyle({
+                  color: "#111827",
+                  weight: 3,
+                  fillColor: "#d7a645",
+                  fillOpacity: 0.7
+                });
 
-            if (textarea) {
-              textarea.value = selectedAreas.join(", ");
-            }
-
-            const households = householdCounts[postcode] || "Not available";
-
-            let totalHouseholds = 0;
-
-            selectedAreas.forEach(area => {
-              if (householdCounts[area]) {
-                totalHouseholds += householdCounts[area];
+                layer.bringToFront();
               }
-            });
 
-            layer.bindPopup(
-              "<strong>" + postcode + "</strong><br>" +
-              "Approx. households: " +
-              (households === "Not available" ? households : households.toLocaleString()) +
-              "<br>Selected: " +
-              (selectedAreas.includes(postcode) ? "Yes" : "No") +
-              "<br><br><strong>Total selected households:</strong><br>" +
-              totalHouseholds.toLocaleString()
-            ).openPopup();
-          });
-        }
-      }).addTo(map);
-    })
-    .catch(error => console.error("GeoJSON failed:", error));
-});
+              const textarea = document.querySelector('textarea[name="areas_required"]');
+
+              if (textarea) {
+                textarea.value = selectedAreas.join(", ");
+              }
+
+              const households = householdCounts[postcode] || "Not available";
+
+              let totalHouseholds = 0;
+
+              selectedAreas.forEach(area => {
+                if (householdCounts[area]) {
+                  totalHouseholds += householdCounts[area];
+                }
+              });
+
+              layer.bindPopup(
+                "<strong>" + postcode + "</strong><br>" +
+                "Approx. households: " +
+                (households === "Not available" ? households : households.toLocaleString()) +
+                "<br>Selected: " +
+                (selectedAreas.includes(postcode) ? "Yes" : "No") +
+                "<br><br><strong>Total selected households:</strong><br>" +
+                totalHouseholds.toLocaleString()
+              ).openPopup();
+            });
+          }
+        }).addTo(map);
+      })
+      .catch(error => console.error("GeoJSON failed:", error));
+  });
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 250);
+}
 
 
 
