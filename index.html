@@ -1603,7 +1603,6 @@ selectedAreas.forEach(area => {
     totalHouseholds += householdCounts[area];
   }
 });
-
 layer.bindPopup(
   "<strong>" + postcode + "</strong><br>" +
   "Approx. households: " +
@@ -1615,8 +1614,11 @@ layer.bindPopup(
 ).openPopup();
 
 });
+
+        }
       }).addTo(map);
     })
+
     .catch(error => {
       console.error(error);
     });
