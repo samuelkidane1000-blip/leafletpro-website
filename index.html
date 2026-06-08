@@ -1590,30 +1590,31 @@ londonFiles.forEach(file => {
     'textarea[name="areas_required"]'
   );
 
-  if (textarea) {
-    textarea.value = selectedAreas.join(", ");
-  }
+if (textarea) {
+  textarea.value = selectedAreas.join(", ");
+}
 
 const households = householdCounts[postcode] || "Not available";
 
-const totalHouseholds = selectedAreas.reduce((total, area) => {
-  return total + (householdCounts[area] || 0);
-}, 0);
+let totalHouseholds = 0;
 
-layer.bindPopup(`
-  <strong>${postcode}</strong><br>
-  Approx. households: ${
-    households === "Not available"
-      ? households
-      : households.toLocaleString()
-  }<br>
-  Selected: ${selectedAreas.includes(postcode) ? "Yes" : "No"}<br><br>
-  <strong>Total selected households:</strong><br>
-  ${totalHouseholds.toLocaleString()}
-`).openPopup();
+selectedAreas.forEach(area => {
+  if (householdCounts[area]) {
+    totalHouseholds += householdCounts[area];
+  }
+});
+
+layer.bindPopup(
+  "<strong>" + postcode + "</strong><br>" +
+  "Approx. households: " +
+  (households === "Not available" ? households : households.toLocaleString()) +
+  "<br>Selected: " +
+  (selectedAreas.includes(postcode) ? "Yes" : "No") +
+  "<br><br><strong>Total selected households:</strong><br>" +
+  totalHouseholds.toLocaleString()
+).openPopup();
 
 });
-        }
       }).addTo(map);
     })
     .catch(error => {
