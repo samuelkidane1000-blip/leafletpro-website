@@ -1498,6 +1498,7 @@ let map;
 let marker;
 
 const householdCounts = {
+  "E1": 24000,
   "E2": 18500,
   "E3": 21000,
   "E14": 34000,
@@ -1566,6 +1567,8 @@ function initMap() {
               if (index > -1) {
                 selectedAreas.splice(index, 1);
 
+                layer.unbindTooltip();
+
                 layer.setStyle({
                   color: "#d7a645",
                   weight: 1,
@@ -1574,6 +1577,12 @@ function initMap() {
                 });
               } else {
                 selectedAreas.push(postcode);
+
+                layer.bindTooltip(postcode, {
+                  permanent: true,
+                  direction: "center",
+                  className: "postcode-label"
+                }).openTooltip();
 
                 layer.setStyle({
                   color: "#111827",
@@ -1622,37 +1631,35 @@ function initMap() {
   }, 250);
 }
 
+async function lookupPostcode(postcode) {
+  if (!postcode || !map) return;
 
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=gb&q=${encodeURIComponent(postcode)}`
+    );
 
-    async function lookupPostcode(postcode) {
-      if (!postcode || !map) return;
+    const results = await response.json();
+    if (!results.length) return;
 
-      try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=gb&q=${encodeURIComponent(postcode)}`
-        );
+    const lat = Number(results[0].lat);
+    const lon = Number(results[0].lon);
 
-        const results = await response.json();
-        if (!results.length) return;
+    map.setView([lat, lon], 13);
 
-        const lat = Number(results[0].lat);
-        const lon = Number(results[0].lon);
-
-        map.setView([lat, lon], 13);
-
-        if (marker) {
-          marker.setLatLng([lat, lon]);
-        } else {
-          marker = L.marker([lat, lon]).addTo(map);
-        }
-
-        setTimeout(() => {
-          map.invalidateSize();
-        }, 150);
-      } catch (error) {
-        console.error("Postcode lookup failed", error);
-      }
+    if (marker) {
+      marker.setLatLng([lat, lon]);
+    } else {
+      marker = L.marker([lat, lon]).addTo(map);
     }
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 150);
+  } catch (error) {
+    console.error("Postcode lookup failed", error);
+  }
+}
 
     function calculateLeads() {
       const leaflets = Number(document.getElementById("leadLeaflets").value || 0);
