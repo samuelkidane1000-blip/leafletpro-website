@@ -1933,7 +1933,20 @@ if (selectedHouseholdText) {
 if (totalInput) {
   totalInput.value = totalHouseholds;
 }
+const selectedAreaText = document.getElementById("selectedAreaText");
+const selectedHouseholdText = document.getElementById("selectedHouseholdText");
 
+if (selectedAreaText) {
+  selectedAreaText.textContent =
+    selectedAreas.length
+      ? selectedAreas.join(", ")
+      : "No areas selected";
+}
+
+if (selectedHouseholdText) {
+  selectedHouseholdText.textContent =
+    totalHouseholds.toLocaleString() + " approx. households";
+}
 const households = householdCounts[postcode] || "Not available";
 
               layer.bindPopup(
