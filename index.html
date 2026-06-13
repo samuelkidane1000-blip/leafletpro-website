@@ -2100,29 +2100,6 @@ async function lookupPostcode(postcode) {
     }
   }
 
-const quoteBtn = document.getElementById("quoteSelectedAreas");
-
-if (quoteBtn) {
-  quoteBtn.addEventListener("click", () => {
-
-    const areaBox =
-      document.querySelector('textarea[name="areas_required"]');
-
-    const quantityBox =
-      document.querySelector('input[name="quantity"]');
-
-    if (areaBox) {
-      areaBox.value = selectedAreas.join(", ");
-    }
-
-    if (quantityBox) {
-      quantityBox.value = currentTotalHouseholds;
-    }
-
-  });
-}
-
-});
     });
   </script>
 </body>
