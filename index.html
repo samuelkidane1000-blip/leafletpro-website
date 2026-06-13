@@ -1494,6 +1494,7 @@ if (window.location.pathname.endsWith("index.html")) {
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
+   
 let map;
 let marker;
 const householdCounts = {
@@ -1870,21 +1871,45 @@ function initMap() {
                 layer.bringToFront();
               }
 
-              const textarea = document.querySelector('textarea[name="areas_required"]');
+             const textarea = document.querySelector('textarea[name="areas_required"]');
 
-              if (textarea) {
-                textarea.value = selectedAreas.join(", ");
-              }
+if (textarea) {
+  textarea.value = selectedAreas.join(", ");
+}
 
-              const households = householdCounts[postcode] || "Not available";
+let totalHouseholds = 0;
 
-              let totalHouseholds = 0;
+selectedAreas.forEach(area => {
+  if (householdCounts[area]) {
+    totalHouseholds += householdCounts[area];
+  }
+});
 
-              selectedAreas.forEach(area => {
-                if (householdCounts[area]) {
-                  totalHouseholds += householdCounts[area];
-                }
-              });
+const summaryBox = document.getElementById("selectedMapSummary");
+const selectedAreaText = document.getElementById("selectedAreaText");
+const selectedHouseholdText = document.getElementById("selectedHouseholdText");
+const totalInput = document.getElementById("totalHouseholdsInput");
+
+if (summaryBox) {
+  summaryBox.style.display = "block";
+}
+
+if (selectedAreaText) {
+  selectedAreaText.textContent = selectedAreas.length
+    ? selectedAreas.join(", ")
+    : "No areas selected";
+}
+
+if (selectedHouseholdText) {
+  selectedHouseholdText.textContent =
+    totalHouseholds.toLocaleString() + " approx. households";
+}
+
+if (totalInput) {
+  totalInput.value = totalHouseholds;
+}
+
+const households = householdCounts[postcode] || "Not available";
 
               layer.bindPopup(
                 "<strong>" + postcode + "</strong><br>" +
