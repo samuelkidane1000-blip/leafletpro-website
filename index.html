@@ -1351,6 +1351,12 @@ if (window.location.pathname.endsWith("index.html")) {
   <div id="selectedHouseholdText" style="font-size:22px;margin-top:8px;">
     0 approx. households
   </div>
+            <a id="quoteSelectedAreas"
+   href="#calculator"
+   class="btn btn-gold"
+   style="margin-top:14px;width:100%;">
+   Get Quote For These Areas
+</a>
 </div>
 
 <div id="map"></div>
@@ -1522,6 +1528,8 @@ if (window.location.pathname.endsWith("index.html")) {
    
 let map;
 let marker;
+const selectedAreas = [];
+ let currentTotalHouseholds = 0;
 const householdCounts = {
   "E1": 24000,
   "E2": 18500,
@@ -1847,7 +1855,7 @@ function initMap() {
     "https://raw.githubusercontent.com/missinglink/uk-postcode-polygons/master/geojson/UB.geojson"
   ];
 
-  const selectedAreas = [];
+ 
 
   londonFiles.forEach(file => {
     fetch(file)
@@ -1909,7 +1917,7 @@ selectedAreas.forEach(area => {
     totalHouseholds += householdCounts[area];
   }
 });
-
+currentTotalHouseholds = totalHouseholds;
 const summaryBox = document.getElementById("selectedMapSummary");
 const selectedAreaText = document.getElementById("selectedAreaText");
 const selectedHouseholdText = document.getElementById("selectedHouseholdText");
@@ -2088,6 +2096,33 @@ async function lookupPostcode(postcode) {
           }
         });
       }
+           }
+    }
+  }
+
+const quoteBtn = document.getElementById("quoteSelectedAreas");
+
+if (quoteBtn) {
+  quoteBtn.addEventListener("click", () => {
+
+    const areaBox =
+      document.querySelector('textarea[name="areas_required"]');
+
+    const quantityBox =
+      document.querySelector('input[name="quantity"]');
+
+    if (areaBox) {
+      areaBox.value = selectedAreas.join(", ");
+    }
+
+    if (quantityBox) {
+      quantityBox.value = currentTotalHouseholds;
+    }
+
+  });
+}
+
+});
     });
   </script>
 </body>
