@@ -1930,18 +1930,6 @@ if (selectedHouseholdText) {
     totalHouseholds.toLocaleString() + " approx. households";
 }
 
-if (totalInput) {
-  totalInput.value = totalHouseholds;
-}
-const selectedAreaText = document.getElementById("selectedAreaText");
-const selectedHouseholdText = document.getElementById("selectedHouseholdText");
-
-if (selectedAreaText) {
-  selectedAreaText.textContent =
-    selectedAreas.length
-      ? selectedAreas.join(", ")
-      : "No areas selected";
-}
 
 if (selectedHouseholdText) {
   selectedHouseholdText.textContent =
