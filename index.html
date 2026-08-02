@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18042798526"></script>
+<!-- Google Consent Mode + Google Ads -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
+  // Default consent before Google tag loads
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+
+  gtag('js', new Date());
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18042798526"></script>
+
+<script>
   gtag('config', 'AW-18042798526');
 </script>
 
@@ -2127,5 +2140,109 @@ async function lookupPostcode(postcode) {
 }); 
         
   </script>
+ <div id="cookieBanner" style="
+  display:none;
+  position:fixed;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  z-index:99999;
+  max-width:700px;
+  margin:auto;
+  background:#ffffff;
+  color:#111827;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.30);
+  border:1px solid #e5e7eb;
+">
+
+  <strong style="display:block;font-size:18px;margin-bottom:8px;">
+    Your privacy choices
+  </strong>
+
+  <p style="margin:0 0 16px;line-height:1.6;color:#4b5563;">
+    We use cookies and similar technologies to measure website
+    performance and advertising. You can accept or reject optional
+    cookies. See our
+    <a href="/privacy-policy.html"
+       style="color:#9b6f16;text-decoration:underline;">
+       Privacy Policy
+    </a>.
+  </p>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+    <button id="acceptCookies" type="button" style="
+      border:0;
+      background:#d7a645;
+      color:#111;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;">
+      Accept
+    </button>
+
+    <button id="rejectCookies" type="button" style="
+      border:1px solid #d1d5db;
+      background:#ffffff;
+      color:#111827;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;">
+      Reject
+    </button>
+
+  </div>
+</div>
+ <script>
+(function () {
+  const banner = document.getElementById("cookieBanner");
+  const acceptButton = document.getElementById("acceptCookies");
+  const rejectButton = document.getElementById("rejectCookies");
+
+  const savedConsent = localStorage.getItem("leafletpro_cookie_consent");
+
+  function grantConsent() {
+    gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'analytics_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted'
+    });
+  }
+
+  function denyConsent() {
+    gtag('consent', 'update', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  }
+
+  if (savedConsent === "accepted") {
+    grantConsent();
+  } else if (savedConsent === "rejected") {
+    denyConsent();
+  } else {
+    banner.style.display = "block";
+  }
+
+  acceptButton.addEventListener("click", function () {
+    localStorage.setItem("leafletpro_cookie_consent", "accepted");
+    grantConsent();
+    banner.style.display = "none";
+  });
+
+  rejectButton.addEventListener("click", function () {
+    localStorage.setItem("leafletpro_cookie_consent", "rejected");
+    denyConsent();
+    banner.style.display = "none";
+  });
+})();
+</script>
 </body>
 </html>
