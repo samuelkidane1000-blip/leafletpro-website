@@ -2140,57 +2140,66 @@ async function lookupPostcode(postcode) {
 }); 
         
   </script>
- <div id="cookieBanner" style="
+<div id="cookieBanner" style="
   display:none;
   position:fixed;
-  left:16px;
-  right:16px;
-  bottom:16px;
+  left:12px;
+  right:12px;
+  bottom:85px;
   z-index:99999;
-  max-width:700px;
+  max-width:520px;
   margin:auto;
-  background:#ffffff;
-  color:#111827;
-  padding:20px;
-  border-radius:18px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.30);
-  border:1px solid #e5e7eb;
+  background:#0b1535;
+  color:#ffffff;
+  padding:16px 18px;
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.15);
 ">
 
-  <strong style="display:block;font-size:18px;margin-bottom:8px;">
+  <strong style="
+    display:block;
+    font-size:17px;
+    margin-bottom:6px;
+    color:#ffffff;">
     Your privacy choices
   </strong>
 
-  <p style="margin:0 0 16px;line-height:1.6;color:#4b5563;">
-    We use cookies and similar technologies to measure website
-    performance and advertising. You can accept or reject optional
-    cookies. See our
+  <p style="
+    margin:0 0 12px;
+    font-size:14px;
+    line-height:1.45;
+    color:#d1d5db;">
+    We use optional cookies to measure website performance and advertising.
+    You can accept or reject them.
     <a href="/privacy-policy.html"
-       style="color:#9b6f16;text-decoration:underline;">
-       Privacy Policy
-    </a>.
+       style="color:#d7a645;text-decoration:underline;">
+      Privacy Policy
+    </a>
   </p>
 
-  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+  <div style="display:flex;gap:8px;">
 
     <button id="acceptCookies" type="button" style="
       border:0;
       background:#d7a645;
-      color:#111;
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:800;
+      color:#111827;
+      padding:9px 16px;
+      border-radius:9px;
+      font-size:14px;
+      font-weight:700;
       cursor:pointer;">
       Accept
     </button>
 
     <button id="rejectCookies" type="button" style="
-      border:1px solid #d1d5db;
-      background:#ffffff;
-      color:#111827;
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:800;
+      border:1px solid #64748b;
+      background:transparent;
+      color:#ffffff;
+      padding:9px 16px;
+      border-radius:9px;
+      font-size:14px;
+      font-weight:700;
       cursor:pointer;">
       Reject
     </button>
