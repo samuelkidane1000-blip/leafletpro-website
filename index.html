@@ -701,66 +701,180 @@ if (window.location.pathname.endsWith("index.html")) {
 
     .learn-more a:hover{color:var(--gold)}
 
-    .site-footer{
-      padding:28px 0 50px;
-      color:rgba(255,255,255,0.72);
-      font-size:15px;
-      background:#0c1222;
+    /* ===== Footer contact cards ===== */
+    .footer-contact-wrap{
       margin-top:44px;
-    }
-
-    .footer-row{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      align-items:center;
+      padding-top:36px;
+      border-top:1px solid rgba(255,255,255,0.08);
     }
 
     .footer-contact-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
-      margin-top:22px;
+      margin-top:0;
     }
 
     .footer-card{
-      background:rgba(255,255,255,0.06);
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      background:rgba(255,255,255,0.05);
       border:1px solid rgba(255,255,255,0.08);
       border-radius:18px;
-      padding:18px;
+      padding:20px;
       color:rgba(255,255,255,0.86);
+      transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .footer-card:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,0.08);
+      border-color:rgba(215,166,69,0.35);
+    }
+
+    .footer-card-icon{
+      flex:0 0 42px;
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:rgba(215,166,69,0.14);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+    }
+
+    .footer-card-body{
+      min-width:0;
     }
 
     .footer-card strong{
       display:block;
-      margin-bottom:8px;
-      font-size:15px;
-      color:#fff;
+      margin-bottom:6px;
+      font-size:13px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.55);
+      font-weight:800;
     }
 
     .footer-card span,
     .footer-card a{
-      color:rgba(255,255,255,0.76);
-      line-height:1.6;
-      font-size:14px;
+      color:#fff;
+      line-height:1.5;
+      font-size:16px;
+      font-weight:700;
       word-break:break-word;
     }
 
+    .footer-card a:hover{color:var(--gold)}
+
+    /* ===== Footer legal row + social icons ===== */
+    .site-footer{
+      padding:36px 0 42px;
+      color:rgba(255,255,255,0.6);
+      font-size:14px;
+      background:#0c1222;
+      margin-top:44px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-row{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:6px;
+    }
+
+    .footer-row span{
+      line-height:1.6;
+    }
+
+    .footer-row span:first-child{
+      color:#fff;
+      font-weight:800;
+      font-size:15px;
+      margin-bottom:2px;
+    }
+
+    .footer-row a{
+      color:rgba(255,255,255,0.6);
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    .footer-row a:hover{color:var(--gold)}
+
+    .footer-social{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      margin:26px 0 12px;
+    }
+
+    .footer-social a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .footer-social a:hover{
+      transform:translateY(-2px);
+      background:rgba(215,166,69,0.12);
+      border-color:rgba(215,166,69,0.4);
+    }
+
+    .footer-social img{
+      width:20px;
+      height:20px;
+      object-fit:contain;
+      border-radius:0;
+      filter:brightness(0) invert(1);
+      opacity:.85;
+    }
+
+    .footer-social a:hover img{opacity:1}
+
+    /* ===== Sticky call bar ===== */
     .sticky-call{
       position:fixed;
       left:12px;
       right:12px;
-      bottom:12px;
+      bottom:calc(12px + env(safe-area-inset-bottom));
       z-index:9998;
       display:none;
-      background:var(--gold);
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      background:linear-gradient(135deg, #e2b862 0%, var(--gold) 55%, var(--gold-2) 100%);
       color:#111;
-      padding:15px 18px;
+      padding:16px 18px;
       border-radius:16px;
       font-weight:800;
+      font-size:15px;
       text-align:center;
-      box-shadow:0 16px 40px rgba(0,0,0,0.28);
+      box-shadow:0 16px 40px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.15) inset;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+
+    .sticky-call:active{
+      transform:scale(0.98);
+      box-shadow:0 10px 28px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.15) inset;
+    }
+
+    .sticky-call svg{
+      flex:0 0 auto;
+      width:18px;
+      height:18px;
     }
 
     @media (max-width: 1100px){
@@ -885,17 +999,15 @@ if (window.location.pathname.endsWith("index.html")) {
       .cta-band{padding:22px}
       .cta-band h3{font-size:26px}
       #map{height:320px}
-      .sticky-call{display:block}
+      .sticky-call{display:flex}
+      .site-footer{padding-bottom:110px}
     }
 
     @media (max-width: 640px){
       .hero h1{font-size:34px}
       .quote-form-header h3{font-size:24px}
       .quote-section-title{font-size:20px}
-      .footer-row{
-        flex-direction:column;
-        align-items:flex-start;
-      }
+      .footer-row{gap:10px}
       .btn{width:100%}
     }
   </style>
@@ -1490,74 +1602,71 @@ if (window.location.pathname.endsWith("index.html")) {
     </p>
   </div>
 
-    <div class="container footer-contact-grid">
-      <div class="footer-card">
-        <strong>Email</strong>
-        <a href="mailto:info@leafletprouk.com">info@leafletprouk.com</a>
-      </div>
+    <div class="container footer-contact-wrap">
+      <div class="footer-contact-grid">
+        <div class="footer-card">
+          <div class="footer-card-icon">✉️</div>
+          <div class="footer-card-body">
+            <strong>Email</strong>
+            <a href="mailto:info@leafletprouk.com">info@leafletprouk.com</a>
+          </div>
+        </div>
 
-      <div class="footer-card">
-        <strong>Phone</strong>
-        <a href="tel:020 3051 5868">020 3051 5868</a>
-      </div>
-   
-      <div class="footer-card">
-        <strong>Address</strong>
-        <span>128 City Road, London, EC1V 2NX, United Kingdom</span>
+        <div class="footer-card">
+          <div class="footer-card-icon">📞</div>
+          <div class="footer-card-body">
+            <strong>Phone</strong>
+            <a href="tel:+442030515868">020 3051 5868</a>
+          </div>
+        </div>
+
+        <div class="footer-card">
+          <div class="footer-card-icon">📍</div>
+          <div class="footer-card-body">
+            <strong>Address</strong>
+            <span>128 City Road, London, EC1V 2NX, United Kingdom</span>
+          </div>
+        </div>
       </div>
     </div>
+
     <footer class="site-footer">
-  <div class="container footer-row">
-    <span>© 2026 LeafletPro UK</span><span>LeafletProUK Ltd · Company No. 17330538 · Registered in England &amp; Wales</span>
-    <span>
-      Premium tracked leaflet campaigns across London •
-      <a href="/privacy-policy.html">Privacy Policy</a>
-    </span>
+  <div class="container">
+    <div class="footer-social">
+      <a href="https://www.facebook.com/share/1786vZX94t/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="LeafletPro UK on Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
+      <a href="https://wa.me/447724342324" target="_blank" rel="noopener noreferrer" aria-label="LeafletPro UK on WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
+      <a href="mailto:info@leafletprouk.com" aria-label="Email LeafletPro UK">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+      </a>
+      <a href="https://x.com/LeafletProUK" target="_blank" rel="noopener noreferrer" aria-label="LeafletPro UK on X">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="X">
+      </a>
+      <a href="https://www.instagram.com/leafletprouk1/" target="_blank" rel="noopener noreferrer" aria-label="LeafletPro UK on Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@leafletprouk" target="_blank" rel="noopener noreferrer" aria-label="LeafletPro UK on TikTok">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+      </a>
+    </div>
+
+    <div class="footer-row">
+      <span>© 2026 LeafletPro UK</span>
+      <span>LeafletProUK Ltd · Company No. 17330538 · Registered in England &amp; Wales</span>
+      <span>Premium tracked leaflet campaigns across London · <a href="/privacy-policy.html">Privacy Policy</a></span>
+    </div>
   </div>
-   
-  <div style="display:flex; flex-direction:row; justify-content:center; align-items:center; gap:16px; margin:20px 0 10px 0;">
-  <a href="https://www.facebook.com/share/1786vZX94t/?mibextid=wwXIfr" target="_blank" style="display:inline-block; width:44px; height:44px; flex:0 0 44px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="display:block; width:44px; height:44px; max-width:44px; min-width:44px; border-radius:50%; object-fit:cover;">
-  </a>
-
-  <a href="https://wa.me/447724342324" target="_blank" style="display:inline-block; width:44px; height:44px; flex:0 0 44px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="display:block; width:44px; height:44px; max-width:44px; min-width:44px; border-radius:50%; object-fit:cover;">
-  </a>
-
- <a href="mailto:info@leafletprouk.com" style="display:inline-block; width:44px; height:44px; flex:0 0 44px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" style="display:block; width:44px; height:44px; max-width:44px; min-width:44px; border-radius:50%; object-fit:cover;">
-  </a>
-   <a href="https://x.com/LeafletProUK"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="LeafletPro UK on X"
-   style="display:inline-block; width:44px; height:44px; flex:0 0 44px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
-     alt="LeafletPro UK on X"
-     style="display:block; width:44px; height:44px; padding:9px; background:white; border-radius:50%; object-fit:contain;">
-</a>
-   <a href="https://www.instagram.com/leafletprouk1/"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="LeafletPro UK on Instagram"
-   style="display:inline-block; width:44px; height:44px; flex:0 0 44px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
-       alt="LeafletPro UK on Instagram"
-       style="display:block; width:44px; height:44px; max-width:44px; min-width:44px; border-radius:50%; object-fit:cover;">
-</a>
-   <a href="https://www.tiktok.com/@leafletprouk"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="LeafletPro UK on TikTok"
-   style="display:inline-block; width:44px; height:44px; flex:0 0 44px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
-       alt="LeafletPro UK on TikTok"
-       style="display:block; width:44px; height:44px; padding:7px; background:white; border-radius:50%; object-fit:contain;">
-</a>
-</div>
   </footer>
 
-  <a class="sticky-call" href="tel:020 3051 5868">Call Now: 020 3051 5868</a>
+  <a class="sticky-call" href="tel:+442030515868">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1L6.6 10.8Z" fill="#111"/>
+    </svg>
+    Call Now: 020 3051 5868
+  </a>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
