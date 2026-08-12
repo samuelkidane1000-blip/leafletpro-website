@@ -2238,7 +2238,7 @@ async function lookupPostcode(postcode) {
 
           if (response.ok) {
 
-  await fetch("https://leafletpro-backend.onrender.com/order", {
+  fetch("https://leafletpro-backend.onrender.com/order", {
     method: "POST",
     body: formData,
   });
