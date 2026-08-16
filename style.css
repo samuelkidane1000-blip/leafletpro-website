@@ -1317,4 +1317,13 @@
     width:100%;
   }
 }
+/* FINAL FIX: force small guide images on desktop */
+@media screen and (min-width: 981px) {
+  .home-guide-image-wrap,
+  .home-guide-image {
+    height: 150px !important;
+    max-height: 150px !important;
+  }
+}
+
 </style>
