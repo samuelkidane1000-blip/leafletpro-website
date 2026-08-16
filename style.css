@@ -1089,4 +1089,42 @@
     width:100%;
   }
 }
+/* Smaller Latest Guides on desktop only */
+@media (min-width:981px){
+
+  .latest-guides-section{
+    padding:48px 0;
+  }
+
+  .latest-guides-grid{
+    max-width:1000px;
+    margin:0 auto;
+    gap:16px;
+  }
+
+  .latest-guide-image{
+    height:145px;
+  }
+
+  .latest-guide-body{
+    padding:16px;
+  }
+
+  .latest-guide-body h3{
+    font-size:18px;
+    margin-bottom:8px;
+  }
+
+  .latest-guide-body p{
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:14px;
+  }
+
+  .latest-guide-label{
+    font-size:10px;
+    padding:5px 8px;
+    margin-bottom:8px;
+  }
+}
 </style>
