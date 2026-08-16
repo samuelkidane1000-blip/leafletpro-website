@@ -1170,4 +1170,26 @@
     line-height:1.5 !important;
   }
 }
+/* DESKTOP - force Latest Guides images small */
+@media screen and (min-width: 981px) {
+
+  #latest-guides img {
+    width: 100% !important;
+    height: 150px !important;
+    min-height: 150px !important;
+    max-height: 150px !important;
+    object-fit: cover !important;
+  }
+
+  #latest-guides .latest-guides-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  #latest-guides .latest-guide-card {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
 </style>
