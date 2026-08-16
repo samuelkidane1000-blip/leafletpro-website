@@ -1192,4 +1192,129 @@
     min-height: 0 !important;
   }
 }
+/* ===== HOME LATEST GUIDES ===== */
+
+.home-guides-wrap{
+  max-width:1050px;
+  margin:0 auto;
+}
+
+.home-guides-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px;
+}
+
+.home-guide{
+  background:#fff;
+  color:#111827;
+  border:1px solid #e7eaf1;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(0,0,0,.08);
+  display:flex;
+  flex-direction:column;
+}
+
+.home-guide-image-wrap{
+  display:block;
+  width:100%;
+  height:150px;
+  overflow:hidden;
+}
+
+.home-guide-image{
+  width:100% !important;
+  height:150px !important;
+  min-height:0 !important;
+  max-height:150px !important;
+  object-fit:cover !important;
+  display:block;
+}
+
+.home-guide-content{
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.home-guide-tag{
+  display:inline-block;
+  align-self:flex-start;
+  background:#f7efe0;
+  color:#956a16;
+  border-radius:999px;
+  padding:5px 8px;
+  margin-bottom:9px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.05em;
+}
+
+.home-guide-content h3{
+  margin:0 0 8px;
+  font-size:18px;
+  line-height:1.25;
+  color:#111827;
+}
+
+.home-guide-content p{
+  margin:0 0 14px;
+  color:#667085;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.home-guide-read{
+  margin-top:auto;
+  color:#956a16;
+  font-size:14px;
+  font-weight:800;
+}
+
+.home-guides-footer{
+  display:flex;
+  justify-content:center;
+  margin-top:24px;
+}
+
+
+/* ===== PHONE / TABLET ===== */
+
+@media (max-width:980px){
+
+  .home-guides-grid{
+    grid-template-columns:1fr;
+  }
+
+  .home-guide-image-wrap{
+    height:220px;
+  }
+
+  .home-guide-image{
+    height:220px !important;
+    max-height:220px !important;
+  }
+}
+
+@media (max-width:640px){
+
+  .home-guide-image-wrap{
+    height:190px;
+  }
+
+  .home-guide-image{
+    height:190px !important;
+    max-height:190px !important;
+  }
+
+  .home-guide-content{
+    padding:18px;
+  }
+
+  .home-guides-footer .btn{
+    width:100%;
+  }
+}
 </style>
