@@ -1127,4 +1127,47 @@
     margin-bottom:8px;
   }
 }
+/* FORCE COMPACT LATEST GUIDES ON DESKTOP */
+@media screen and (min-width: 981px){
+
+  #latest-guides .light-card{
+    max-width:1100px !important;
+    margin:0 auto !important;
+    padding:20px !important;
+  }
+
+  #latest-guides .latest-guides-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:18px !important;
+    width:100% !important;
+  }
+
+  #latest-guides .latest-guide-card{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  #latest-guides .latest-guide-image{
+    width:100% !important;
+    height:160px !important;
+    min-height:0 !important;
+    max-height:160px !important;
+    object-fit:cover !important;
+  }
+
+  #latest-guides .latest-guide-body{
+    padding:16px !important;
+  }
+
+  #latest-guides .latest-guide-body h3{
+    font-size:18px !important;
+    line-height:1.25 !important;
+  }
+
+  #latest-guides .latest-guide-body p{
+    font-size:14px !important;
+    line-height:1.5 !important;
+  }
+}
 </style>
