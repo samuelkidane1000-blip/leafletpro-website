@@ -1,0 +1,17 @@
+/* Add this to your existing <style> section */
+.postcode-label {
+  background: rgba(255,255,255,.95) !important;
+  border: 1px solid #d7a645 !important;
+  border-radius: 9px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15) !important;
+  color: #111827 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  padding: 5px 7px !important;
+  text-align: center !important;
+}
+
+.postcode-label::before {
+  display: none !important;
+}
