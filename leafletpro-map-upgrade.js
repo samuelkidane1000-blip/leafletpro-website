@@ -175,15 +175,6 @@ function toggleSector(layer, sector) {
 
   setLayerSelected(layer, sector, selecting);
   updateSelectionSummary();
-
-  const households = Number(householdCounts[sector] || 0);
-  layer.bindPopup(
-    `<strong>${sector}</strong><br>` +
-    `Households: ${households.toLocaleString("en-GB")}<br>` +
-    `Selected: ${selecting ? "Yes" : "No"}<br><br>` +
-    `<strong>Total selected households:</strong><br>` +
-    `${currentTotalHouseholds.toLocaleString("en-GB")}`
-  ).openPopup();
 }
 
 async function loadSectorPolygons() {
