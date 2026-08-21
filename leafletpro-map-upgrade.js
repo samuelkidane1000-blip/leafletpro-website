@@ -193,18 +193,47 @@ async function loadSectorPolygons() {
   }).addTo(map);
 }
 
+const GOLD_MARKER_ICON = L.divIcon({
+  className: "",
+  html: '<div class="leafletpro-pin"></div>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 29],
+  popupAnchor: [0, -28]
+});
+
+function showMapLoading(mapEl) {
+  let overlay = mapEl.querySelector(".map-loading-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "map-loading-overlay";
+    overlay.innerHTML = '<div class="map-loading-spinner"></div>';
+    mapEl.style.position = mapEl.style.position || "relative";
+    mapEl.appendChild(overlay);
+  }
+  return overlay;
+}
+
+function hideMapLoading(overlay) {
+  if (!overlay) return;
+  overlay.classList.add("hidden");
+  setTimeout(() => overlay.remove(), 300);
+}
+
 async function initMap() {
   const mapEl = document.getElementById("map");
   if (!mapEl || typeof L === "undefined") return;
 
+  const loadingOverlay = showMapLoading(mapEl);
+
   map = L.map(mapEl, { zoomControl: true }).setView([51.5072, -0.1276], 11);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "&copy; OpenStreetMap contributors"
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom: 20,
+    subdomains: "abcd",
+    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }).addTo(map);
 
-  marker = L.marker([51.5072, -0.1276]).addTo(map);
+  marker = L.marker([51.5072, -0.1276], { icon: GOLD_MARKER_ICON }).addTo(map);
 
   try {
     await loadHouseholdCounts();
@@ -219,6 +248,7 @@ async function initMap() {
   }
 
   updateSelectionSummary();
+  hideMapLoading(loadingOverlay);
 
   setTimeout(() => map.invalidateSize(), 250);
 }
@@ -252,7 +282,11 @@ async function lookupPostcode(postcode) {
       const lat = Number(data.result.latitude);
       const lon = Number(data.result.longitude);
       map.setView([lat, lon], 14);
-      marker?.setLatLng([lat, lon]);
+      if (marker) {
+        marker.setLatLng([lat, lon]);
+      } else {
+        marker = L.marker([lat, lon], { icon: GOLD_MARKER_ICON }).addTo(map);
+      }
 
       // If a full postcode was entered, derive its sector and highlight its polygon.
       const pc = String(data.result.postcode || "").toUpperCase();
