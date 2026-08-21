@@ -283,7 +283,8 @@ async function initMap() {
 async function lookupPostcode(postcode) {
   if (!postcode || !map) return;
 
-  const query = normaliseSector(postcode);
+  const raw = postcode.trim();
+  const query = normaliseSector(raw);
 
   // Allow direct postcode-sector searches such as "N1 1" or "SE11 4".
   if (/^[A-Z]{1,2}\d[A-Z\d]? \d$/.test(query) && householdCounts[query]) {
@@ -292,16 +293,51 @@ async function lookupPostcode(postcode) {
       if (getFeatureSector(layer.feature) === query) {
         found = true;
         map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-        layer.openPopup();
       }
     });
     if (found) return;
   }
 
+  // Allow outcode/district-only searches such as "SW11" or "N1" (no sector digit).
+  const outcodeMatch = raw.toUpperCase().replace(/\s+/g, "").match(/^([A-Z]{1,2}\d[A-Z\d]?)$/);
+  if (outcodeMatch) {
+    const outcode = outcodeMatch[1];
+
+    let matchedLayers = [];
+    sectorLayer?.eachLayer(layer => {
+      const sector = getFeatureSector(layer.feature);
+      if (sector.startsWith(outcode + " ")) matchedLayers.push(layer);
+    });
+
+    if (matchedLayers.length) {
+      const group = L.featureGroup(matchedLayers);
+      map.fitBounds(group.getBounds(), { padding: [20, 20] });
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://api.postcodes.io/outcodes/${encodeURIComponent(outcode)}`);
+      const data = await response.json();
+      if (response.ok && data?.result) {
+        const lat = Number(data.result.latitude);
+        const lon = Number(data.result.longitude);
+        map.setView([lat, lon], 13);
+        if (marker) {
+          marker.setLatLng([lat, lon]);
+        } else {
+          marker = L.marker([lat, lon], { icon: GOLD_MARKER_ICON }).addTo(map);
+        }
+        return;
+      }
+    } catch (error) {
+      console.error("Outcode lookup failed", error);
+    }
+  }
+
   try {
     // postcodes.io is purpose-built for full UK postcode lookups.
     const response = await fetch(
-      `https://api.postcodes.io/postcodes/${encodeURIComponent(postcode.trim())}`
+      `https://api.postcodes.io/postcodes/${encodeURIComponent(raw)}`
     );
     const data = await response.json();
 
@@ -323,7 +359,6 @@ async function lookupPostcode(postcode) {
         sectorLayer?.eachLayer(layer => {
           if (getFeatureSector(layer.feature) === sector) {
             map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-            layer.openPopup();
           }
         });
       }
