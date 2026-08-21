@@ -75,9 +75,52 @@ function updateSelectionSummary() {
   const selectedHouseholdText = document.getElementById("selectedHouseholdText");
 
   if (selectedAreaText) {
-    selectedAreaText.textContent = selectedAreas.length
-      ? selectedAreas.join(", ")
-      : "No areas selected";
+    if (!selectedAreas.length) {
+      selectedAreaText.innerHTML = "";
+      selectedAreaText.textContent = "No areas selected";
+    } else {
+      selectedAreaText.innerHTML = "";
+      selectedAreas.forEach(sector => {
+        const chip = document.createElement("span");
+        chip.className = "sector-chip";
+        chip.innerHTML = `<span class="sector-chip-label">${sector}</span>`;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "sector-chip-remove";
+        removeBtn.setAttribute("aria-label", `Remove ${sector}`);
+        removeBtn.textContent = "\u00d7";
+        removeBtn.addEventListener("click", () => {
+          const layer = selectedLayers.get(sector);
+          if (layer) {
+            toggleSector(layer, sector);
+          } else {
+            const idx = selectedAreas.indexOf(sector);
+            if (idx > -1) selectedAreas.splice(idx, 1);
+            updateSelectionSummary();
+          }
+        });
+
+        chip.appendChild(removeBtn);
+        selectedAreaText.appendChild(chip);
+      });
+
+      if (selectedAreas.length > 1) {
+        const clearBtn = document.createElement("button");
+        clearBtn.type = "button";
+        clearBtn.className = "sector-clear-all";
+        clearBtn.textContent = "Clear all";
+        clearBtn.addEventListener("click", () => {
+          [...selectedAreas].forEach(sector => {
+            const layer = selectedLayers.get(sector);
+            if (layer) setLayerSelected(layer, sector, false);
+          });
+          selectedAreas.length = 0;
+          updateSelectionSummary();
+        });
+        selectedAreaText.appendChild(clearBtn);
+      }
+    }
   }
 
   if (selectedHouseholdText) {

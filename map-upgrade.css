@@ -114,3 +114,67 @@
 @keyframes leafletpro-spin {
   to { transform: rotate(360deg); }
 }
+
+/* Selected-sector chips */
+#selectedAreaText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.sector-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #e6cf98;
+  border-radius: 999px;
+  padding: 5px 6px 5px 12px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.sector-chip-label {
+  white-space: nowrap;
+}
+
+.sector-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(215,166,69,0.18);
+  color: #9b6f16;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: background .15s ease, color .15s ease;
+}
+
+.sector-chip-remove:hover {
+  background: #d7a645;
+  color: #111;
+}
+
+.sector-clear-all {
+  border: none;
+  background: transparent;
+  color: #9b6f16;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+
+.sector-clear-all:hover {
+  color: #111827;
+}
