@@ -260,8 +260,6 @@ async function initMap() {
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }).addTo(map);
 
-  marker = L.marker([51.5072, -0.1276], { icon: GOLD_MARKER_ICON }).addTo(map);
-
   try {
     await loadHouseholdCounts();
     await loadSectorPolygons();
@@ -322,11 +320,6 @@ async function lookupPostcode(postcode) {
         const lat = Number(data.result.latitude);
         const lon = Number(data.result.longitude);
         map.setView([lat, lon], 13);
-        if (marker) {
-          marker.setLatLng([lat, lon]);
-        } else {
-          marker = L.marker([lat, lon], { icon: GOLD_MARKER_ICON }).addTo(map);
-        }
         return;
       }
     } catch (error) {
@@ -345,11 +338,6 @@ async function lookupPostcode(postcode) {
       const lat = Number(data.result.latitude);
       const lon = Number(data.result.longitude);
       map.setView([lat, lon], 14);
-      if (marker) {
-        marker.setLatLng([lat, lon]);
-      } else {
-        marker = L.marker([lat, lon], { icon: GOLD_MARKER_ICON }).addTo(map);
-      }
 
       // If a full postcode was entered, derive its sector and highlight its polygon.
       const pc = String(data.result.postcode || "").toUpperCase();
