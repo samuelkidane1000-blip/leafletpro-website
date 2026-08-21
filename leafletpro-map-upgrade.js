@@ -200,13 +200,6 @@ async function loadSectorPolygons() {
     style: () => DEFAULT_STYLE,
     onEachFeature(feature, layer) {
       const sector = getFeatureSector(feature);
-      const households = Number(householdCounts[sector] || 0);
-
-      layer.bindPopup(
-        `<strong>${sector}</strong><br>` +
-        `Households: ${households.toLocaleString("en-GB")}<br>` +
-        `Click to add/remove this campaign area.`
-      );
 
       layer.on("mouseover", function () {
         if (!selectedAreas.includes(sector)) {
