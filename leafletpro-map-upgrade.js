@@ -73,6 +73,11 @@ function updateSelectionSummary() {
 
   const selectedAreaText = document.getElementById("selectedAreaText");
   const selectedHouseholdText = document.getElementById("selectedHouseholdText");
+  const summaryBox = document.getElementById("selectedMapSummary");
+
+  if (summaryBox) {
+    summaryBox.style.display = selectedAreas.length ? "block" : "none";
+  }
 
   if (selectedAreaText) {
     if (!selectedAreas.length) {
@@ -252,7 +257,7 @@ async function initMap() {
 
   const loadingOverlay = showMapLoading(mapEl);
 
-  map = L.map(mapEl, { zoomControl: true }).setView([51.5072, -0.1276], 11);
+  map = L.map(mapEl, { zoomControl: true }).setView([51.5072, -0.1276], 13);
 
   L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
     maxZoom: 20,

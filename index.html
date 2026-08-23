@@ -1545,8 +1545,12 @@ if (window.location.pathname.endsWith("index.html")) {
             </p>
 
             <div class="map-tools">
-              <input id="mapPostcode" type="text" placeholder="Enter postcode" />
+              <input id="mapPostcode" type="text" placeholder="e.g. SW11 or SW11 1" />
               <button class="btn btn-gold" id="mapLookupBtn" type="button">Check Postcode</button>
+            </div>
+
+            <div style="margin-top:10px;color:#9b6f16;font-size:13px;font-weight:700;">
+              Tap an area on the map to select it for your campaign.
             </div>
 
             <div style="margin-top:14px;color:#6b7280;font-size:15px;line-height:1.7;">
@@ -1556,6 +1560,7 @@ if (window.location.pathname.endsWith("index.html")) {
 
           <div>
            <div id="selectedMapSummary" style="
+  display:none;
   margin-bottom:14px;
   padding:16px;
   border-radius:18px;
